@@ -32,6 +32,7 @@ function Login(){
                         </div>
                         <div>
                     <Link to="/Register" >
+                      
                         <Button type="button" class="btn btn-primary">הרשמה</Button>
                     </Link>
                         </div>
