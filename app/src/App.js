@@ -2,7 +2,7 @@ import './App.css';
 import Login from './Login';
 import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
 import Register from './Register';
-import DriveReq from './DriveReq.js'
+import DriveReq from './DriveReq.js';
 
 
 
@@ -18,10 +18,11 @@ function App(p) {
     <Switch>
 
       <Route path="/" exact component={Login}/>
+      
       <Route path="/Register" component={Register}/>
       <Route path="/DriveReq" component={DriveReq}/>
 
-      <Route path="*" />
+      <Route        path="*" />
     </Switch>
 
 
