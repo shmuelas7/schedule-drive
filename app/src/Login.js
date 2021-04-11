@@ -23,8 +23,13 @@ function Login(){
                             <input placeholder="הכנס מייל" class="form-control"></input>
                         </div>
                         <div >
+
+
+                            
                             <label for="pwd">:סיסמה</label>
                             <br/>
+                            
+                            
                             <input type="password" placeholder="הכנס סיסמה" class="form-control" ></input>
                         </div>
                         <div>
