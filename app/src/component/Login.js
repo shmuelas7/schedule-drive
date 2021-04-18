@@ -14,29 +14,26 @@ function Login(){
 
 
     return(
-    <div class="container Login">
-        <h1>התחברות</h1>
-                    <form>
-                        <div>
-                            <label for="email">:מייל</label>
-                            <br/>
-                            <input placeholder="הכנס מייל" class="form-control"></input>
-                        </div>
-                        <div >
+    <div class="container Login text-*-center">
+        <h1 class="text-center">התחברות</h1>
+        <div class="row">
+            <div class="col-lg-4 col-xs-12">
+                <form>
+                    <label for="email">:מייל</label>
+                        <br/>
+                        <input placeholder="הכנס מייל" class="form-control"></input>
                             <label for="pwd">:סיסמה</label>
                             <br/>
                             <input type="password" placeholder="הכנס סיסמה" class="form-control" ></input>
-                        </div>
-                        <div>
                             <Button type="button" class="btn btn-primary" >התחברות</Button>
-                        </div>
-                        <div>
+        
                     <Link to="/Register">
                         <Button type="button" class="btn btn-primary">הרשמה</Button>
                     </Link>
-                        </div>
                     </form>
+            </div>
         </div>
+    </div>
         
     );
 }
