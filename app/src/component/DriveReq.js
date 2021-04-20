@@ -20,23 +20,20 @@ function Req(){
                     </div>
                 </div>
                 <div class="col-lg-4 col-xs-12">
-                    <Button type="submit" id="btn" class="btn btn-primary">אשר נסיעה</Button>
+                    <Button  class="btn btn-primary">אשר נסיעה</Button>
                 </div>
 
                 <div class="col-lg-4 col-xs-12">
-                    <Button type="submit" id="btn" class="btn btn-primary">יומן נסיעות שבוצעו</Button>
+                    <Button class="btn btn-primary">יומן נסיעות שבוצעו</Button>
                 </div>
 
                 <div class="col-lg-4 col-xs-12">
-                    <Button type="submit" id="btn" class="btn btn-primary">יומן נסיעות מתוכננות</Button>
+                    <Button   class="btn btn-primary">יומן נסיעות מתוכננות</Button>
                 </div>
 
 
                 
             </form>
-
-
-
             </div>
 
     );
