@@ -2,7 +2,7 @@
 import Button from 'react-bootstrap/Button';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import style from '../style/Register.module.css';
+import style from '../style/Register.css';
 
 
  function Register(){
@@ -27,9 +27,9 @@ import style from '../style/Register.module.css';
                         <input type="password" placeholder="סיסמה*" class="form-control" required id="pwd" name="password"></input>
                         <h5 class=" text-right">אימות סיסמה:</h5>
                         <input type="password" placeholder="אישור סיסמה*" class="form-control" required id="pwd" name="password"></input>
-                        <input type="checkbox" class="form-check-input  text-right" value=""/>מסכים לתקנון
+                        
 
-                        <Button type="submit" id="btn" class="btn btn-primary">אישור</Button>
+                        <Button type="submit"  class="btn btn-primary">אישור</Button>
                     </div>
                 </div>              
             </form>
