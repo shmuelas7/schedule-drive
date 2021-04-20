@@ -1,13 +1,21 @@
-.Login{
-    position: absolute; 
-    top: 30%;
-    left: 40%;
+.log-bg{
+    background: url('./log.jpg') no-repeat;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
     
 }
-button{
-    margin-top:10px;
-    width:100%
+.from-container{
+border: 0px solid;
+padding: 50px 60px;
+margin-top: 20vh;
+-webkit-box-shadow: -2px 4px 26px 11px rgba(0,0,0,0.75);
+-moz-box-shadow: -2px 4px 26px 11px rgba(0,0,0,0.75);
+box-shadow: -2px 4px 26px 11px rgba(0,0,0,0.75);
 }
-input{
-    width:100%
+
+.log-btn{
+    margin-top: 10px;
+    width: 100%;
 }
