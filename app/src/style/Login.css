@@ -1,10 +1,10 @@
+
 .log-bg{
     background: url('./log.jpg') no-repeat;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    
-    
+    height: 100vh;
 }
 .from-container{
 border: 0px solid;
@@ -17,5 +17,4 @@ box-shadow: -2px 4px 26px 11px rgba(0,0,0,0.75);
 
 .log-btn{
     margin-top: 10px;
-    width: 100%;
 }
