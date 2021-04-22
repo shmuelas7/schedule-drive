@@ -1,8 +1,7 @@
 import React from 'react';
-import Button from 'react-bootstrap/Button';
-//import 'bootstrap/dist/css/bootstrap.min.css'
+import Button  from 'react-bootstrap/Button';
 import '../style/Login.css';
-import { Link, } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 
@@ -14,7 +13,7 @@ function Login(){
 
 
     return(
-    <div class="container-fluid  log-bg  ">
+    <div class="container-fluid log-bg  ">
         <div class="row">
         <div class="col-md-4 col-sm-4 col-xs-12 "></div>
             <div class="col-md-4 col-sm-4 col-xs-12 ">
@@ -30,12 +29,12 @@ function Login(){
                     </div>
                     <div>
                         <Link to ="DriveReq/">
-                            <Button type="button" class="btn " >התחברות</Button>
+                            <Button variant="dark"  block>התחברות</Button>
                         </Link>
                     </div>
                     <div>
                         <Link to="/Register">
-                            <Button type="button" class="btn btn-dark btn-block">הרשמה</Button>
+                            <Button variant="dark"  block  className="log-btn" >הרשמה</Button>
                         </Link>
                     </div>
                     </form>
