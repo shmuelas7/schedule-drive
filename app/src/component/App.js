@@ -11,8 +11,8 @@ import DriveReq from './DriveReq';
 
 function App(p) {
   return (
+    <div style={{height:'100%',display:"flex"}}>
 
-    
       <BrowserRouter>
         <Switch>
           <Route path="/" exact component={Login}/>
@@ -22,6 +22,9 @@ function App(p) {
         </Switch>
 
       </BrowserRouter>
+
+    </div>
+    
 
    
   );
