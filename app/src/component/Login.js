@@ -17,7 +17,7 @@ function Login(){
         <div class="row">
         <div class="col-md-4 col-sm-4 col-xs-12 "></div>
             <div class="col-md-4 col-sm-4 col-xs-12 ">
-                <form class="from-container text-light">
+                <form class="from-container text-light log-con ">
                     <h1 class="text-center">כניסה</h1>
                     <div class="form-group">
                         <h5 class=" text-right">שם משתמש</h5>
