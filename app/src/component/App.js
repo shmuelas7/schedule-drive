@@ -11,7 +11,7 @@ import DriveReq from './DriveReq';
 
 function App(p) {
   return (
-    <div style={{height:'100%',display:"flex"}}>
+  
 
       <BrowserRouter>
         <Switch>
@@ -23,7 +23,6 @@ function App(p) {
 
       </BrowserRouter>
 
-    </div>
     
 
    
