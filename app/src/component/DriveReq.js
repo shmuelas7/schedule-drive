@@ -7,10 +7,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function Req(){
 
     return(
-        <div class="container" dir="rtl">
-            <form class="was-validated" >
-                <div class="row">
-                    <div class="col-lg-4 col-xs-12">
+        <div class="container-fluid Req-bg">
+            <div class="row">
+                <div class="col-md-4 col-sm-4 col-xs-12 "></div>
+                    <div class="col-md-4 col-sm-4 col-xs-12">
                         <input placeholder="תאריך יציאה" class="form-control" required></input>
                         <input placeholder="מוצא" class="form-control" required ></input>
                         <input placeholder="יעד" class="form-control" required ></input>
@@ -19,23 +19,9 @@ function Req(){
 
                     </div>
                 </div>
-                <div class="col-lg-4 col-xs-12">
-                    <Button  class="btn btn-primary">אשר נסיעה</Button>
-                </div>
+            
 
-                <div class="col-lg-4 col-xs-12">
-                    <Button class="btn btn-primary">יומן נסיעות שבוצעו</Button>
-                </div>
-
-                <div class="col-lg-4 col-xs-12">
-                    <Button   class="btn btn-primary">יומן נסיעות מתוכננות</Button>
-                </div>
-
-
-                
-            </form>
             </div>
-
     );
 }
 
