@@ -15,7 +15,7 @@ function Login(){
     return(
     <div class="container-fluid log-bg  ">
         <div class="row">
-        <div class="col-md-4 col-sm-4 col-xs-12 "></div>
+            <div class="col-md-4 col-sm-4 col-xs-12 "></div>
             <div class="col-md-4 col-sm-4 col-xs-12 ">
                 <form class="from-container text-light log-con ">
                     <h1 class="text-center">כניסה</h1>
@@ -25,7 +25,7 @@ function Login(){
                     </div>
                     <div class="form-group">
                         <h5 class=" text-right">סיסמה</h5>
-                            <input type="password" placeholder="הכנס סיסמה" class="form-control" ></input>
+                            <input type="password" placeholder="הכנס סיסמה" class="form-control text-right"  ></input>
                     </div>
                     <div>
                         <Link to ="DriveReq/">
