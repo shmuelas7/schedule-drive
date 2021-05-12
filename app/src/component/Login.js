@@ -28,7 +28,7 @@ function Login(){
                             <input type="password" placeholder="הכנס סיסמה" class="form-control text-right"  ></input>
                     </div>
                     <div>
-                        <Link to ="DriveReq/">
+                        <Link to ="DriveReq">
                             <Button variant="dark"  block>התחברות</Button>
                         </Link>
                     </div>
