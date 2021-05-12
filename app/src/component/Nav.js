@@ -1,10 +1,10 @@
 import React from 'react';
-import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 import Icon from "./icon_profile";
 import Car from "./Icon_car"
 import Wheel from "./Wheel"
+
 
 
 function Nav(){
@@ -13,7 +13,7 @@ function Nav(){
         <nav>
         <div class="row">
             <div class="col-md-4 col-sm-12 col-xs-12 text-center">
-               <Link to="profile" >
+               <Link to="Profile" >
                    <Icon/>
                    <label class="text-center"> אזור אישי</label>
                </Link> 
