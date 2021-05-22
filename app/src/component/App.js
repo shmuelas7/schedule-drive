@@ -5,6 +5,8 @@ import Register from './Register';
 import DriveReq from './DriveReq';
 import Profile from './Profile';
 import Driver from './Driver';
+import FutureDrive from './FutureDrive'
+import PreviousDrive from './PreviousDrive'
 
 
 
@@ -23,6 +25,9 @@ function App(p) {
           <Route path="/DriveReq" component={DriveReq}/>
           <Route path="/Profile" component={Profile}/>
           <Route path="/Driver" component={Driver}/>
+          <Route path="/FutureDrive" component={FutureDrive}/>
+          <Route path="/PreviousDrive" component={PreviousDrive}/>
+
           <Route path="*" />
         </Switch>
 
