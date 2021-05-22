@@ -20,14 +20,14 @@ function Nav(){
            </div>
 
            <div class="col-md-4 col-sm-12 col-xs-12 text-center ">
-           <Link to="profile" >
+           <Link to="PreviousDrive" >
                    <Wheel/>
                <label>נסיעות שבוצעו</label>
             </Link>
            </div>
 
            <div class="col-md-4 col-sm-12 col-xs-12 text-center ">
-           <Link to="profile" >
+           <Link to="FutureDrive" >
            <Car/>
                <label>נסיעות עתידיות</label>
             </Link>
