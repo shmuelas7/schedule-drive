@@ -12,10 +12,10 @@ function Profile(){
             <div class="col-md-4 col-sm-4 col-xs-12 "></div>
             <div class="col-md-4 col-sm-4 col-xs-12 ">
             <form >
-                        <h1 class="text-center">עידכון פרטיים אישיים </h1>
+                        <h1 class="text-center">עדכון פרטיים אישיים </h1>
 
                         <div>
-                            <h5 h5 class=" text-right"> עידכון מספר טלפון</h5>
+                            <h5 h5 class=" text-right"> עדכון מספר טלפון</h5>
                             <input placeholder="מספר נייד*" class="form-control text-right" ></input>
                         </div>
                         <div>
