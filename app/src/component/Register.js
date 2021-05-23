@@ -40,6 +40,11 @@ import  '../style/Register.css';
                             <h5 class=" text-right">אימות סיסמה</h5>
                             <input type="password" placeholder="אישור סיסמה*" class="form-control text-right" required id="pwd" name="password"></input>
                         </div>
+                        <h5 class=" text-right">הוספת תמונת פרופיל</h5>
+                        <div class="custom-file">
+                             <input type="file" class="custom-file-input" id="customFile"/>
+                            <label class="custom-file-label " for="customFile">בחר תמונה</label>
+                        </div>
                         <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"/>
                         <h5 class="form-check-label " for="inlineRadio1">מסיע</h5>
