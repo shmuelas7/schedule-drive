@@ -34,7 +34,7 @@ import  '../style/Register.css';
                         </div>
                         <div>
                             <h5 class=" text-right" >אזור</h5>
-                            <input placeholder="הוסף אזור נסיעה*" class="form-control text-right" required ></input>
+                            <input placeholder="בחר אזור*" class="form-control text-right" required ></input>
                         </div>
                         <div>
                             <h5 class=" text-right">  סיסמה</h5>
@@ -49,7 +49,7 @@ import  '../style/Register.css';
                              <input type="file" class="custom-file-input" id="customFile"/>
                             <label class="custom-file-label " for="customFile">בחר תמונה</label>
                         </div>
-                
+                      
                         <Button type="submit" variant="dark"  block  className="log-btn">שלח</Button>              
                     </form>
                 </div>
