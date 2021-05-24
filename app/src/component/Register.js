@@ -33,6 +33,10 @@ import  '../style/Register.css';
                             <input placeholder="מספר נייד*" class="form-control text-right" required ></input>
                         </div>
                         <div>
+                            <h5 class=" text-right" >אזור</h5>
+                            <input placeholder="הוסף אזור נסיעה*" class="form-control text-right" required ></input>
+                        </div>
+                        <div>
                             <h5 class=" text-right">  סיסמה</h5>
                             <input type="password" placeholder="סיסמה*" class="form-control text-right" required id="pwd" name="password"></input>
                         </div>
@@ -45,14 +49,7 @@ import  '../style/Register.css';
                              <input type="file" class="custom-file-input" id="customFile"/>
                             <label class="custom-file-label " for="customFile">בחר תמונה</label>
                         </div>
-                        <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"/>
-                        <h5 class="form-check-label " for="inlineRadio1">מסיע</h5>
-                        </div>
-                        <div class="form-check form-check-inline ">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"/>
-                        <h5 class="form-check-label" for="inlineRadio2">נוסע</h5>
-                        </div>
+                
                         <Button type="submit" variant="dark"  block  className="log-btn">שלח</Button>              
                     </form>
                 </div>
