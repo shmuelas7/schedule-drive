@@ -11,15 +11,15 @@ function FutureDrive(){
             <Table striped bordered hover variant="dark">
                 <thead class="text-right">
                     <tr>
-                    <th>ערוך נסיעה</th>
-                    <th>סטטוס</th>
-                    <th>אזור</th>
-                    <th>מספר טלפון</th>
-                    <th>יעד</th>
-                    <th>מוצא</th>
-                    <th>שעה</th>
-                    <th>תאריך</th>
-                    <th>שם המבקש</th>
+                        <th>עריכת נסיעה</th>
+                        <th>סטטוס</th>
+                        <th>אזור</th>
+                        <th>מספר טלפון</th>
+                        <th>יעד</th>
+                        <th>מוצא</th>
+                        <th>שעה</th>
+                        <th>תאריך</th>
+                        <th>שם המבקש</th>
                     </tr>
                 </thead>
                 <tbody>
