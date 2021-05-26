@@ -5,6 +5,7 @@ import Nav from "./Nav";
 
 
 
+
 function Req(){
 
     return(
@@ -22,13 +23,13 @@ function Req(){
                         <input  type="time" placeholder="שעה" class="form-control input-d " required ></input>
                         <Button type="submit" variant="dark"  block className="log-btn">שלח</Button>
 
-                        <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"/>
-                        <h5 class="form-check-label " for="inlineRadio1">מלווה</h5>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"/>
+                            <h5 class="form-check-label " for="inlineRadio1">מלווה</h5>
                         </div>
-                        <div class="form-check form-check-inline ">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"/>
-                        <h5 class="form-check-label" for="inlineRadio2">כיסא גלגלים</h5>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"/>
+                            <h5 class="form-check-label" for="inlineRadio2">כיסא גלגלים</h5>
                         </div>
                     </div>
                    
