@@ -9,8 +9,8 @@ function Driver(){
 
             <Nav/>
             <Table striped bordered hover variant="dark">
-                <thead>
-                <th>אשר נסיעה</th>
+                <thead class="text-right">
+                    <th>אשר נסיעה</th>
                     <th>מספר טלפון</th>
                     <th>יעד</th>
                     <th>מוצא</th>
