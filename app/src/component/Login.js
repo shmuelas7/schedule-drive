@@ -59,9 +59,8 @@ function Login(){
                         <h5 class=" text-right">סיסמה</h5>
                             <input type="password" placeholder="הכנס סיסמה" class="form-control text-right"  ref={passwordRef}></input>
                     </div>
-                        <Link to ="Driver">
-                            <Button variant="dark"  block  disabled={loading}>התחברות</Button>
-                        </Link>
+                            <Button variant="dark" type="submit" block  disabled={loading}>התחברות</Button>
+                       
                     
                         <Link to="/Register">
                             <Button variant="dark"  block  className="log-btn" >הרשמה</Button>
