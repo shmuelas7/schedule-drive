@@ -24,9 +24,8 @@ function App(p) {
 
     <AuthProvider>
         <Switch>
-          
-          <Route path="/" exact component={Login}/>
           <PrivateRoute path="/" exact component={Driver} />
+          <Route path="/" exact component={Login}/>
           <Route path="/Register" component={Register}/>
           <Route path="/DriveReq" component={DriveReq}/>
           <Route path="/Profile" component={Profile}/>
