@@ -1,23 +1,36 @@
-import React from 'react';
+
+import {React, useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
-import Icon from "../icon/icon_profile";
-import Car from "../icon/Icon_car";
-import Wheel from "../icon/Wheel";
-import caRQ from "../icon/icon_caRQ";
 import '../style/nav.css';
-import firebase from 'firebase';
+import { useAuth } from "../contexts/AuthContext"
+import { useHistory } from "react-router-dom"
+import Button  from 'react-bootstrap/Button';
+
+import exit from "../icon/exit.png"
+import Car from "../icon/Car.png"
+import Icon from "../icon/icon_profile";
+import Wheel from "../icon/Wheel.png";
+import caRQ from "../icon/carRQ.png";
+
 
 
 
 function Nav(){
 
-    function signout(){
-    firebase.auth().signOut().then(() => {
-        // Sign-out successful.
-      }).catch((error) => {
-        // An error happened.
-      });
+    const [error, setError] = useState("")
+    const { currentUser, logout } = useAuth()
+    const history = useHistory()
+  
+    async function handleLogout() {
+      setError("")
+  
+      try {
+        await logout()
+        history.push("/")
+      } catch {
+        setError("Failed to log out")
+      }
     }
 
     return(
@@ -26,34 +39,52 @@ function Nav(){
             </div>
         <div class="row">
 
-            <div class="col-md-3 col-sm-12 col-xs-12 text-center">
+            <div class="col-md-2 col-sm-12 col-xs-12 text-center">
                <Link to="Profile" >
-                   <Icon/>
+               <Icon/>
                    <label class="text-center"> אזור אישי</label>
                </Link> 
            </div>
 
-           <div class="col-md-3 col-sm-12 col-xs-12 text-center ">
+           <div class="col-md-2 col-sm-12 col-xs-12 text-center ">
            <Link to="PreviousDrive" >
-                   <Wheel/>
+           <img src={Wheel} alt="img"/>
+                <br/>
                <label>נסיעות שבוצעו</label>
             </Link>
            </div>
 
-           <div class="col-md-3 col-sm-12 col-xs-12 text-center ">
+           <div class="col-md-2 col-sm-12 col-xs-12 text-center ">
            <Link to="FutureDrive" >
-            <Car/>
+           <img src={Car} alt="img"/>
+                <br/>
                <label>נסיעות עתידיות</label>
             </Link>
            </div>
 
-           <div class="col-md-3 col-sm-12 col-xs-12 text-center ">
+           <div class="col-md-2 col-sm-12 col-xs-12 text-center ">
            <Link to="DriveReq" >
-                <caRQ/>
+           <img src={caRQ} alt="img"/>
+                <br/>
                <label>בקשת נסיעה </label>
             </Link>
            </div>
+           <div class="col-md-2 col-sm-12 col-xs-12 text-center ">
+           <Link to="DriveReq" >
+               <label>בקשת נסיעה </label>
+            </Link>
+           </div>
+           <div class="col-md-2 col-sm-12 col-xs-12 text-center ">
+                <Button variant="link" onClick={handleLogout}>
+                    <img src={exit} alt="img"/>
+                    <br/>
+                    <label>יציאה </label>
+                </Button>
+                
+
+           </div>
        </div>
+
        </nav>
     );
 }
