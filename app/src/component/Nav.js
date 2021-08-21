@@ -9,9 +9,11 @@ import Button  from 'react-bootstrap/Button';
 
 import exit from "../icon/exit.png"
 import Car from "../icon/Car.png"
-import Icon from "../icon/icon_profile";
+import user from "../icon/user.png";
 import Wheel from "../icon/Wheel.png";
 import caRQ from "../icon/carRQ.png";
+import alldrive from "../icon/alldrive.png"
+import logo from "../style/logo.png"
 
 
 
@@ -35,48 +37,56 @@ function Nav(){
 
     return(
         <nav>
-            <div class="text-center logo">
-            </div>
-        <div class="row">
 
-            <div class="col-md-2 col-sm-12 col-xs-12 text-center">
+           
+        <div className="text-center ">
+            <img src={logo} alt="logo " className="logo"/>
+        </div>
+
+        <div className="row">
+
+            <div className="col-md-2 col-sm-12 col-xs-12 text-center">
                <Link to="Profile" >
-               <Icon/>
-                   <label class="text-center"> אזור אישי</label>
+               <img src={user} alt="img" className="icon"/>
+               <br/>
+                   <label className="text-center"> אזור אישי</label>
                </Link> 
            </div>
 
-           <div class="col-md-2 col-sm-12 col-xs-12 text-center ">
+           <div className="col-md-2 col-sm-12 col-xs-12 text-center">
            <Link to="PreviousDrive" >
-           <img src={Wheel} alt="img"/>
+           <img src={Wheel} alt="img" className="icon"/>
                 <br/>
-               <label>נסיעות שבוצעו</label>
+               <label>היסטורית נסיעות</label>
             </Link>
            </div>
 
-           <div class="col-md-2 col-sm-12 col-xs-12 text-center ">
+           <div className="col-md-2 col-sm-12 col-xs-12 text-center ">
            <Link to="FutureDrive" >
-           <img src={Car} alt="img"/>
+           <img src={Car} alt="img" className="icon"/>
                 <br/>
-               <label>נסיעות עתידיות</label>
+               <label>הנסיעות שלי</label>
+            </Link>
+           </div>
+           <div className="col-md-2 col-sm-12 col-xs-12 text-center ">
+            <Link to="Driver">
+                <img src={alldrive} alt="img" className="icon" />
+                <br/>
+                <label>כול הנסיעות</label>
             </Link>
            </div>
 
-           <div class="col-md-2 col-sm-12 col-xs-12 text-center ">
+           <div className="col-md-2 col-sm-12 col-xs-12 text-center ">
            <Link to="DriveReq" >
-           <img src={caRQ} alt="img"/>
+           <img src={caRQ} alt="img" className="icon"/>
                 <br/>
                <label>בקשת נסיעה </label>
             </Link>
            </div>
-           <div class="col-md-2 col-sm-12 col-xs-12 text-center ">
-           <Link to="DriveReq" >
-               <label>בקשת נסיעה </label>
-            </Link>
-           </div>
-           <div class="col-md-2 col-sm-12 col-xs-12 text-center ">
+
+           <div className="col-md-2 col-sm-12 col-xs-12 text-center ">
                 <Button variant="link" onClick={handleLogout}>
-                    <img src={exit} alt="img"/>
+                    <img src={exit} alt="img" className="icon"/>
                     <br/>
                     <label>יציאה </label>
                 </Button>
@@ -84,7 +94,6 @@ function Nav(){
 
            </div>
        </div>
-
        </nav>
     );
 }
