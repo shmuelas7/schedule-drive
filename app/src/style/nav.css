@@ -1,7 +1,7 @@
 .logo{
-    background: url('./logo.png');
+    width: 15% ;
 }
-img{
+.icon{
     width:20%;
     height:50%;
 }
