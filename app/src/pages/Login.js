@@ -42,24 +42,24 @@ function Login(){
     
 
     return(
-    <div class="container-fluid log-bg  ">
-        <div class="row">
-            <div class="col-md-4 col-sm-4 col-xs-12 "></div>
-            <div class="col-md-4 col-sm-4 col-xs-12 ">
-            <h1 class="text-center">כניסה</h1>
+    <div className="container-fluid log-bg  ">
+        <div className="row">
+            <div className="col-md-4 col-sm-4 col-xs-12 "></div>
+            <div className="col-md-4 col-sm-4 col-xs-12 ">
+            <h1 className="text-center">כניסה</h1>
             {error && <Alert variant="danger">{error}</Alert>}
-                <form class="from-container text-light log-con " onSubmit={handleSubmit}>
+                <form className="from-container text-light log-con " onSubmit={handleSubmit}>
                     
 
-                    <div class="form-group">
-                        <h5 class=" text-right">שם משתמש</h5>
-                            <input placeholder="Example@Example.com" class="form-control  text-right" ref={emailRef}></input>
+                    <div className="form-group">
+                        <h5 className="text-right">שם משתמש</h5>
+                            <input placeholder="Example@Example.com" className="form-control  text-right" ref={emailRef}></input>
                     </div>
-                    <div class="form-group">
-                        <h5 class=" text-right">סיסמה</h5>
-                            <input type="password" placeholder="הכנס סיסמה" class="form-control text-right"  ref={passwordRef}></input>
+                    <div className="form-group">
+                        <h5 className=" text-right">סיסמה</h5>
+                            <input type="password" placeholder="הכנס סיסמה" className="form-control text-right"  ref={passwordRef}></input>
                     </div>
-                            <Button variant="dark" type="submit" block  disabled={loading}>התחברות</Button>
+                            <Button variant="dark" type="submit" block  disabled={loading} className="log-btn">התחברות</Button>
                        
                     
                         <Link to="/Register">

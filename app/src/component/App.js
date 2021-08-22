@@ -1,12 +1,12 @@
 import '../style/App.css';
-import Login from './Login';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
-import Register from './Register';
-import DriveReq from './DriveReq';
-import Profile from './Profile';
-import Driver from './Driver';
-import FutureDrive from './FutureDrive'
-import PreviousDrive from './PreviousDrive'
+import Login from '../pages/Login';
+import Register from '../pages/Register';
+import DriveReq from '../pages/DriveReq'
+import Profile from '../pages/Profile';
+import Driver from '../pages/Driver';
+import FutureDrive from '../pages/FutureDrive'
+import PreviousDrive from '../pages/PreviousDrive'
 import { AuthProvider } from "../contexts/AuthContext"
 import PrivateRoute from "./PrivateRoute"
 
