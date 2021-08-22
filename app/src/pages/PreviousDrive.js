@@ -1,7 +1,6 @@
 import React from 'react';
 import Nav from "../component/Nav";
 import Table from 'react-bootstrap/Table'
-import Footer from '../component/Footer';
   
 
 function PreviousDrive(){
@@ -24,7 +23,6 @@ function PreviousDrive(){
                 <tbody>
                 </tbody>
             </Table>
-            <Footer/>
         </div>
 
 
