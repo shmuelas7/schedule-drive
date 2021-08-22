@@ -7,6 +7,7 @@ import { useAuth } from "../contexts/AuthContext"
 import {  useHistory } from "react-router-dom"
 
 
+
  function Register(){
 
         const emailRef = useRef()
