@@ -1,6 +1,5 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
-import Footer from '../component/Footer';
 import Nav from "../component/Nav";
 
 function Profile(){
@@ -34,7 +33,6 @@ function Profile(){
                     </form>
                 </div>
             </div>
-            <Footer/>
         </div>
     );
 }
