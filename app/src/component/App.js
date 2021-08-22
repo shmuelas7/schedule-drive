@@ -9,6 +9,9 @@ import FutureDrive from '../pages/FutureDrive'
 import PreviousDrive from '../pages/PreviousDrive'
 import { AuthProvider } from "../contexts/AuthContext"
 import PrivateRoute from "./PrivateRoute"
+import Footer from './Footer';
+
+
 
 
 
@@ -35,6 +38,9 @@ function App(p) {
           
         </Switch>
         </AuthProvider>
+
+        <Footer/>
+
       
       </Router>   
   );
