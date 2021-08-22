@@ -14,6 +14,7 @@ import Wheel from "../icon/Wheel.png";
 import caRQ from "../icon/carRQ.png";
 import alldrive from "../icon/alldrive.png"
 import logo from "../style/logo.png"
+import Footer from './Footer';
 
 
 
@@ -72,7 +73,7 @@ function Nav(){
             <Link to="Driver">
                 <img src={alldrive} alt="img" className="icon" />
                 <br/>
-                <label>כול הנסיעות</label>
+                <label>כל הנסיעות</label>
             </Link>
            </div>
 
@@ -95,6 +96,7 @@ function Nav(){
            </div>
        </div>
        </nav>
+       
     );
 }
 
