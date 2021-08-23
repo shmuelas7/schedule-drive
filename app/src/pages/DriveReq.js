@@ -2,7 +2,6 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import '../style/DriveReq.css';
 import Nav from "../component/Nav";
-import Footer from '../component/Footer';
 
 
 
@@ -41,7 +40,6 @@ function Req(){
                     </div>
                    
                 </div>
-            <Footer/>
     </div>
     );
 }
