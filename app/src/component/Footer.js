@@ -21,7 +21,7 @@ function Footer(){
             <div className="col-md-5 col-12">
 
                 <div className="form-outline form-white mb-4">
-                <input placeholder="כתוב כאן" className="form-control text-right"></input>
+                <textarea placeholder="כתוב כאן" className="form-control text-right"></textarea>
 
                 </div>
             </div>
