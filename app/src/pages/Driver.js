@@ -13,6 +13,7 @@ function Driver(){
     return(
         <div className="container-fluid Req-bg">
             <Nav/>
+            <h1 className="text-center">כל הנסיעות</h1>
             <Table striped bordered hover variant="dark">
                 <thead className="text-right">
                 <tr>
