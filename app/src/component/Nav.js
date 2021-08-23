@@ -14,7 +14,6 @@ import Wheel from "../icon/Wheel.png";
 import caRQ from "../icon/carRQ.png";
 import alldrive from "../icon/alldrive.png"
 import logo from "../style/logo.png"
-import Footer from './Footer';
 
 
 
@@ -38,7 +37,6 @@ function Nav(){
 
     return(
         <nav>
-<<<<<<< Updated upstream
 
            
         <div className="text-center ">
@@ -48,10 +46,6 @@ function Nav(){
         <div className="row">
 
             <div className="col-md-2 col-sm-12 col-xs-12 text-center">
-=======
-        <div class="row" position="center">
-            <div class="col-md-2 col-sm-12 col-xs-12 text-center">
->>>>>>> Stashed changes
                <Link to="Profile" >
                <img src={user} alt="img" className="icon"/>
                <br/>
@@ -59,7 +53,6 @@ function Nav(){
                </Link> 
            </div>
 
-<<<<<<< Updated upstream
            <div className="col-md-2 col-sm-12 col-xs-12 text-center">
            <Link to="PreviousDrive" >
            <img src={Wheel} alt="img" className="icon"/>
@@ -80,19 +73,6 @@ function Nav(){
                 <img src={alldrive} alt="img" className="icon" />
                 <br/>
                 <label>כל הנסיעות</label>
-=======
-           <div class="col-md-2 col-sm-12 col-xs-12 text-center ">
-           <Link to="profile" >
-                   <Wheel/>
-               <label>נסיעות שבוצעו</label>
-            </Link>
-           </div>
-
-           <div class="col-md-2 col-sm-12 col-xs-12 text-center ">
-           <Link to="profile" >
-           <Car/>
-               <label>נסיעות עתידיות</label>
->>>>>>> Stashed changes
             </Link>
            </div>
 
