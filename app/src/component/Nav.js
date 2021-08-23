@@ -72,7 +72,7 @@ function Nav(){
             <Link to="Driver">
                 <img src={alldrive} alt="img" className="icon" />
                 <br/>
-                <label>כול הנסיעות</label>
+                <label>כל הנסיעות</label>
             </Link>
            </div>
 
