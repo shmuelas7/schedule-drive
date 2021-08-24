@@ -10,11 +10,12 @@ function Driver(){
 
 
     return(
-        <div class="container-fluid Req-bg">
+        <div className="container-fluid Req-bg">
             <Nav/>
             <h1 className="text-center">כל הנסיעות</h1>
             <Table striped bordered hover variant="dark">
-                <thead class="text-right">
+                <thead className="text-right">
+                <tr>
                     <th>אשר נסיעה</th>
                     <th>מספר טלפון</th>
                     <th>יעד</th>
@@ -22,6 +23,7 @@ function Driver(){
                     <th>שעה</th>
                     <th>תאריך</th>
                     <th>שם המבקש</th>
+                </tr>
                 </thead>
                 <tbody>
                 </tbody>
