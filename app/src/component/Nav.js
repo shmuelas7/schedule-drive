@@ -13,7 +13,7 @@ import user from "../icon/user.png";
 import Wheel from "../icon/Wheel.png";
 import caRQ from "../icon/carRQ.png";
 import alldrive from "../icon/alldrive.png"
-import logo from "../style/logo.png"
+import logo from "../style/black logo.png"
 
 
 
