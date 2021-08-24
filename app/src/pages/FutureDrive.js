@@ -6,10 +6,10 @@ import Table from 'react-bootstrap/Table'
 
 function FutureDrive(){
     return(
-        <div class="container-fluid Req-bg" >
+        <div className="container-fluid Req-bg" >
             <Nav/>
             <Table striped bordered hover variant="dark">
-                <thead class="text-right">
+                <thead className="text-right">
                     <tr>
                         <th>עריכת נסיעה</th>
                         <th>סטטוס</th>
