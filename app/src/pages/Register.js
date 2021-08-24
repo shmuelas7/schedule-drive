@@ -5,6 +5,7 @@ import  '../style/Register.css';
 import { useState,useRef} from 'react';
 import { useAuth } from "../contexts/AuthContext"
 import {  useHistory } from "react-router-dom"
+import firebase from 'firebase';
 
 
 
@@ -17,6 +18,9 @@ import {  useHistory } from "react-router-dom"
         const [error, setError] = useState("")
         const [loading, setLoading] = useState(false)
         const history = useHistory()
+        const [firstname,setfirstname]=useState("")
+
+        const ref=firebase.firestore().collection("user")
       
         async function handleSubmit(e) {
           e.preventDefault()
@@ -34,6 +38,11 @@ import {  useHistory } from "react-router-dom"
             setError("Failed to create an account")
           }
           setLoading(false)
+
+        //   ref
+        //   .doc(firstname)
+        //   .set(firstname)
+        //   .catch((err)=>console.log(err))
          
 
         }
@@ -53,7 +62,7 @@ import {  useHistory } from "react-router-dom"
                         
                         <div className="from-group">
                             <h5 className=" text-right">שם פרטי</h5>
-                            <input placeholder="שם פרטי*" className="form-control text-right" name="firstName" type="text"    required></input>
+                            <input placeholder="שם פרטי*" className="form-control text-right" name="firstName" type="text" onChange={(e)=>setfirstname(e.target.value)}   required></input>
                         </div>
                         <div>
                             <h5 className=" text-right" >שם משפחה</h5>
