@@ -8,8 +8,8 @@ function Footer(){
 
     return(
 
-    <footer className="bg-dark text-center text-white" dir="rtl">
-        <div className="container p-4 pb-0">
+    <footer className="bg-dark text-center text-white footer"  dir="rtl">
+        <div className="container pb-1">
             <strong className="text-center ">ליצירת קשר עם העמותה</strong>
         
             <form action="">
@@ -28,7 +28,7 @@ function Footer(){
                 </div>
             </form>
         </div>
-        <div className="text-center p-3">
+        <div className="text-center">
             © האתר נבנה ע"י : 
             <p className="text-white"> שמואל אשרוב ואסף הגר</p>
             <img src={logo} alt="logo" className="flogo text-left"/>
