@@ -50,7 +50,7 @@ import firebase from 'firebase';
 
 
     return(
-        <div className="container-fluid reg-bg">
+        <div className="container-fluid bg-secondary">
             <div className="row">
                 <div className="col-md-4 col-sm-4 col-xs-12 "></div>
                 <div className="col-md-4 col-sm-4 col-xs-12 ">
