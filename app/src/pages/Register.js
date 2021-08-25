@@ -52,15 +52,15 @@ import firebase from 'firebase';
 
 
     return(
-        <div className="container-fluid reg-bg">
+        <div className="container-fluid bg-primary">
             <div className="row">
                 <div className="col-md-4 col-sm-4 col-xs-12 "></div>
                 <div className="col-md-4 col-sm-4 col-xs-12 ">
                 </div>
-                <div className="col-md-4 col-sm-12 col-xs-12 " >
+                <div className="col-md-4 col-sm-12 col-xs-12" >
                 {error && <Alert variant="danger">{error}</Alert>}
                 <h1 className="text-center">טופס הרשמה</h1>
-                    <form className="from-container text-light" id="user-data" onSubmit={handleSubmit}>
+                    <form className="from-container text-light bg-info" id="user-data" onSubmit={handleSubmit}>
                         
                         <div className="from-group">
                             <h5 className=" text-right">שם פרטי</h5>
