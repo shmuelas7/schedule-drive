@@ -21,11 +21,10 @@ import firebase from 'firebase';
         const [firstname,setfirstname]=useState("")
 
         const ref=firebase.firestore().collection("user")
-      
-        async function handleSubmit(e) {
-          e.preventDefault()
-      
-          if (passwordRef.current.value !== passwordConfirmRef.current.value) {
+
+
+        async function log(){
+        if (passwordRef.current.value !== passwordConfirmRef.current.value) {
             return setError("Passwords do not match")
           }
       
@@ -39,10 +38,13 @@ import firebase from 'firebase';
           }
           setLoading(false)
 
-        //   ref
-        //   .doc(firstname)
-        //   .set(firstname)
-        //   .catch((err)=>console.log(err))
+       }
+      
+        function handleSubmit(e) {
+          e.preventDefault()
+          log()
+      
+
          
 
         }
