@@ -12,6 +12,7 @@ function FutureDrive(){
                 <thead className="text-right">
                     <tr>
                         <th>עריכת נסיעה</th>
+                        <th>שם המתנדב</th>
                         <th>סטטוס</th>
                         <th>אזור</th>
                         <th>מספר טלפון</th>
