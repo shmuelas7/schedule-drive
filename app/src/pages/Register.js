@@ -6,6 +6,7 @@ import { useState,useRef} from 'react';
 import { useAuth } from "../contexts/AuthContext"
 import {  useHistory } from "react-router-dom"
 import firebase from 'firebase';
+import logo from '../style/white logo.png'
 
 
 
@@ -35,7 +36,7 @@ import firebase from 'firebase';
           try {
             setError("")
             setLoading(true)
-            const{user} = await signup(emailRef.current.value, passwordRef.current.value)
+            await signup(emailRef.current.value, passwordRef.current.value)
             history.push("/")
           } catch {
             setError("Failed to create an account")
@@ -70,8 +71,10 @@ import firebase from 'firebase';
 
     return(
         <div className="container-fluid bg-primary">
+            
             <div className="row">
                 <div className="col-md-4 col-sm-4 col-xs-12 "></div>
+                <img src={logo} alt="logo" className="rg-logo"/>
                 <div className="col-md-4 col-sm-4 col-xs-12 ">
                 </div>
                 <div className="col-md-4 col-sm-12 col-xs-12" >
