@@ -1,11 +1,4 @@
 
-.log-bg{
-    background: url('./log.jpg') no-repeat;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100vh;
-}
 .from-container{
 border: 0px solid;
 padding: 50px 60px;
@@ -15,9 +8,13 @@ padding: 50px 60px;
 box-shadow: -2px 4px 26px 11px rgba(0,0,0,0.75);
 }
 .log-con{
-    margin-top: 20vh; 
+    margin-top: 10%; 
+    margin-bottom: 10%;
 }
 
 .log-btn{
     margin-top: 10px;
+}
+.login-logo{
+    width: 100%;
 }
