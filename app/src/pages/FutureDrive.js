@@ -8,6 +8,7 @@ function FutureDrive(){
     return(
         <div className="container-fluid bg-warning" >
             <Nav/>
+            <h1 className="text-center">הנסיעות שלי</h1>
             <Table striped bordered hover variant="dark">
                 <thead className="text-right">
                     <tr>
