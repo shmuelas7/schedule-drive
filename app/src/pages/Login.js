@@ -50,7 +50,7 @@ function Login(){
             
             {error && <Alert variant="danger">{error}</Alert>}
             
-                <form className="from-container  log-con bg-light " onSubmit={handleSubmit}>
+                <form className="from-container  log-con bg-light rounded " onSubmit={handleSubmit}>
                 <h1 className="text-center">כניסה</h1>
                     <img src={logo} alt="logo" className="login-logo" />
                     <div className="form-group">
