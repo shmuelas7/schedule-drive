@@ -8,15 +8,15 @@ import Nav from "../component/Nav";
 function Req(){
 
     return(
-        <div className="container-fluid Req-bg">
+        <div className="container-fluid bg-warning">
             <Nav/>
             <div className="row">
                 <div className="col-md-4 col-sm-4 col-xs-12 "></div>
                 <div className="col-md-4 col-sm-4 col-xs-12 "></div>
+                <h1 className="text-center h1-d">בקשת נסיעה</h1>
                
-                    <div className="col-md-4 col-sm-4 col-xs-12">
-                        <h1 className="text-center h1-d">בקשת נסיעה</h1>
-                        <input  type="date" placeholder="תאריך יציאה"className="form-control  input-d" required></input>
+                    <form className="center">
+                        <input type="date" placeholder="תאריך יציאה" className="form-control input-d" required></input>
                         <input placeholder="מוצא" className="form-control text-right input-d" required ></input>
                         <input placeholder="יעד" className="form-control text-right input-d" required ></input>
                         <input  type="time" placeholder="שעה" className="form-control input-d " required ></input>
@@ -37,7 +37,7 @@ function Req(){
                         
                         </div>
                         <Button type="submit" variant="primary"  block className="log-btn">שלח</Button>
-                    </div>
+                    </form>
                    
                 </div>
     </div>
