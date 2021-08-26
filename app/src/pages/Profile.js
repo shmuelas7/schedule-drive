@@ -1,18 +1,19 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Nav from "../component/Nav";
+import '../style/Profile.css';
 
 function Profile(){
 
     return(
        
-        <div className="container-fluid">
+        <div className="container-fluid bg-warning">
             <Nav/>
             <div className="row">
             <div className="col-md-4 col-sm-4 col-xs-12 "></div>
             <div className="col-md-4 col-sm-4 col-xs-12 ">
-            <form >
-                        <h1 className="text-center">עדכון פרטיים אישיים </h1>
+            <h1 className="text-center">עדכון פרטיים אישיים </h1>
+            <form class="center" >
 
                         <div>
                             <h5  className=" text-right"> עדכון מספר טלפון</h5>
