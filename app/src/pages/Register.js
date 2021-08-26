@@ -19,30 +19,47 @@ import firebase from 'firebase';
         const [loading, setLoading] = useState(false)
         const history = useHistory()
         const [firstname,setfirstname]=useState("")
+        const [lasttname,setlastname]=useState("")
+        const [phone,setphone]=useState("")
+        const [area,setarea]=useState("")
+    
+ 
 
-        const ref=firebase.firestore().collection("user")
+        
 
 
         async function log(){
         if (passwordRef.current.value !== passwordConfirmRef.current.value) {
             return setError("Passwords do not match")
           }
-      
           try {
             setError("")
             setLoading(true)
-            await signup(emailRef.current.value, passwordRef.current.value)
+            const{user} = await signup(emailRef.current.value, passwordRef.current.value)
             history.push("/")
           } catch {
             setError("Failed to create an account")
           }
           setLoading(false)
-
+    
        }
+
+
+    function adddata(){
+    const db=firebase.firestore().collection("user").doc(firebase.auth().currentUser.uid)
+    db.set({
+      first_name:firstname,
+      last_name:lasttname,
+      phone_number:phone,
+      area:area
+    })
+
+    }
       
         function handleSubmit(e) {
           e.preventDefault()
           log()
+          adddata()
       
 
          
@@ -68,7 +85,7 @@ import firebase from 'firebase';
                         </div>
                         <div>
                             <h5 className=" text-right" >שם משפחה</h5>
-                            <input placeholder="שם משפחה*" className="form-control text-right" name="lastName" required ></input>
+                            <input placeholder="שם משפחה*" className="form-control text-right" name="lastName" required onChange={(e)=>setlastname(e.target.value)} ></input>
                         </div>
                         <div>
                             <h5 className=" text-right">מייל</h5>
@@ -76,11 +93,11 @@ import firebase from 'firebase';
                         </div>
                         <div>
                             <h5  className=" text-right">טלפון</h5>
-                            <input placeholder="מספר נייד*" className="form-control text-right" required ></input>
+                            <input placeholder="מספר נייד*" className="form-control text-right" required onChange={(e)=>setphone(e.target.value)}></input>
                         </div>
                         <div>
                             <h5 className=" text-right" >אזור</h5>
-                            <input placeholder="בחר אזור*" className="form-control text-right" required ></input>
+                            <input placeholder="בחר אזור*" className="form-control text-right" required onChange={(e)=>setarea(e.target.value)} ></input>
                         </div>
                         <div>
                             <h5 className=" text-right">  סיסמה</h5>
