@@ -10,6 +10,7 @@ function FutureDrive(){
         <div className="container-fluid " >
             
             <Nav/>
+
             <div className="bg-warning">
                 <h1 className="text-center">הנסיעות שלי</h1>
                 <Search/>
