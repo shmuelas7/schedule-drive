@@ -1,14 +1,19 @@
 import React from 'react';
 import Nav from "../component/Nav";
 import Table from 'react-bootstrap/Table'
+import Search from '../component/Search';
 
   
 
 function FutureDrive(){
     return(
-        <div className="container-fluid bg-warning" >
+        <div className="container-fluid " >
+            
             <Nav/>
-            <Table striped bordered hover variant="dark">
+            <div className="bg-warning">
+                <h1 className="text-center">הנסיעות שלי</h1>
+                <Search/>
+                <Table striped bordered hover variant="dark">
                 <thead className="text-right">
                     <tr>
                         <th>עריכת נסיעה</th>
@@ -26,6 +31,7 @@ function FutureDrive(){
                 <tbody>
                 </tbody>
             </Table>
+            </div>
         </div>
 
 
