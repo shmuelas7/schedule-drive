@@ -2,6 +2,7 @@
 import {React, useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
+import {  Alert } from "react-bootstrap"
 import '../style/nav.css';
 import { useAuth } from "../contexts/AuthContext"
 import { useHistory } from "react-router-dom"
@@ -21,7 +22,7 @@ import logo from "../style/black logo.png"
 function Nav(){
 
     const [error, setError] = useState("")
-    const { currentUser, logout } = useAuth()
+    const { logout } = useAuth()
     const history = useHistory()
   
     async function handleLogout() {
@@ -36,13 +37,11 @@ function Nav(){
     }
 
     return(
-        <nav>
-
-           
-        <div className="text-center ">
+        <nav className="bg-light">
+        <div className="text-center  ">
             <img src={logo} alt="logo " className="logo"/>
         </div>
-
+        {error && <Alert variant="danger">{error}</Alert>}
         <div className="row">
 
             <div className="col-md-2 col-sm-12 col-xs-12 text-center">
