@@ -1,14 +1,16 @@
 import React from 'react';
 import Nav from "../component/Nav";
 import Table from 'react-bootstrap/Table'
+import Search from '../component/Search';
   
 
 function PreviousDrive(){
     return(
-        <div className="container-fluid bg-warning" >
-
+        <div className="container-fluid " >
+            <div className=" bg-warning">
             <Nav/>
             <h1 className="text-center">היסטורית נסיעות</h1>
+            <Search/>
             <Table striped bordered hover variant="dark">
                 <thead className="text-right">
                     <tr>
@@ -24,6 +26,7 @@ function PreviousDrive(){
                 <tbody>
                 </tbody>
             </Table>
+            </div>
         </div>
 
 
