@@ -10,6 +10,8 @@ import PreviousDrive from '../pages/PreviousDrive'
 import { AuthProvider } from "../contexts/AuthContext"
 import PrivateRoute from "./PrivateRoute"
 import Footer from './Footer';
+import Gift from '../pages/Gift'
+import Contact from '../pages/Contact'
 
 
 
@@ -34,6 +36,8 @@ function App(p) {
           <Route path="/Profile" component={Profile}/>
           <Route path="/FutureDrive" component={FutureDrive}/>
           <Route path="/PreviousDrive" component={PreviousDrive}/>
+          <Route path="/contact" component={Contact}/>
+          <Route path="gift" component={Gift}/>
           <Route path="*" />
           
         </Switch>
