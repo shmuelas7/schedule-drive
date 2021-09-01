@@ -2,7 +2,7 @@
 import Button from 'react-bootstrap/Button';
 import { Alert } from "react-bootstrap"
 import  '../style/Register.css';
-import { useState,useRef} from 'react';
+import { useState,useRef,useEffect} from 'react';
 import { useAuth } from "../contexts/AuthContext"
 import {  useHistory } from "react-router-dom"
 import firebase from 'firebase';
@@ -24,8 +24,17 @@ import logo from '../style/black logo.png'
         const [phone,setphone]=useState("")
         const [area,setarea]=useState("")
         const [age,setage]=useState(0);
+
+        const data="https://data.gov.il/api/3/action/datastore_search?resource_id=5c78e9fa-c2e2-4771-93ff-7f400a12f7ba&limit=5"
+
+
     
- 
+        useEffect(() => {
+            let x =fetch (data)
+            . then(x => x.json())
+            .then(x=>x);
+           console.log(JSON.stringify(x))
+        }, [area])
 
         
 
@@ -63,11 +72,9 @@ import logo from '../style/black logo.png'
           e.preventDefault()
           log()
           adddata()
-      
-
-         
-
         }
+
+
     
 
 
@@ -108,7 +115,7 @@ import logo from '../style/black logo.png'
                             <input placeholder="מספר נייד*" className="form-control text-right" required onChange={(e)=>setphone(e.target.value)}></input>
                             
                             <h5 className=" text-right" >אזור</h5>
-                            <input placeholder="בחר אזור*" className="form-control text-right" required onChange={(e)=>setarea(e.target.value)} ></input>
+                            <input placeholder="בחר אזור*" className="form-control text-right" id="area" required onChange={(e)=>setarea(e.target.value)} ></input>
 
                             <h5 className=" text-right">  סיסמה</h5>
                             <input type="password" placeholder="סיסמה*" className="form-control text-right" required  name="password" ref={passwordRef} autoComplete="off"></input>
