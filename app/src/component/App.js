@@ -37,7 +37,7 @@ function App(p) {
           <Route path="/FutureDrive" component={FutureDrive}/>
           <Route path="/PreviousDrive" component={PreviousDrive}/>
           <Route path="/contact" component={Contact}/>
-          <Route path="gift" component={Gift}/>
+          <Route path="/gift" component={Gift}/>
           <Route path="*" />
           
         </Switch>
