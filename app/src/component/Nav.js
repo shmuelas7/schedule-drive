@@ -89,8 +89,6 @@ function Nav(){
                     <br/>
                     <label>יציאה </label>
                 </Button>
-                
-
            </div>
        </div>
        </nav>
