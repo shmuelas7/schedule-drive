@@ -12,6 +12,8 @@ import PrivateRoute from "./PrivateRoute"
 import Footer from './Footer';
 import Gift from '../pages/Gift'
 import Contact from '../pages/Contact'
+import Home from '../pages/Home'
+
 
 
 
@@ -38,6 +40,7 @@ function App(p) {
           <Route path="/PreviousDrive" component={PreviousDrive}/>
           <Route path="/contact" component={Contact}/>
           <Route path="/gift" component={Gift}/>
+          <Route path="/home" component={Home}/>
           <Route path="*" />
           
         </Switch>
