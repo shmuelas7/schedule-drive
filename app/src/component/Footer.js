@@ -21,7 +21,7 @@ function Footer(){
             </div>
             <div className="row">
                 <div className="col-12">
-                    <p className="text-white text-center"><b>האתר נבנה ע"י שמואל אשרוב ואסף הגר ©</b></p>
+                    <p className="text-white text-center"><b> © האתר נבנה ע"י שמואל אשרוב ואסף הגר</b></p>
                 </div>
                     
                 
