@@ -32,7 +32,7 @@ function Login(){
       setError("")
       setLoading(true)
       await login(emailRef.current.value, passwordRef.current.value)
-      history.push("driver")
+      history.push("home")
     } catch {
       setError("Failed to log in")
     }
