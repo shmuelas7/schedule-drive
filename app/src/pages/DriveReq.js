@@ -37,7 +37,7 @@ function Req(){
                                 <label className="form-check-label" >מלווה</label>
                             </div>
                         </div>
-                        <Button type="submit" variant="primary"  block className="log-btn  mb-2">שלח</Button>
+                        <Button type="submit" variant="primary"  block className="log-btn mb-2">שלח</Button>
                     </form>
                 </div>
                 <div className="col-md-2 col-sm-4 col-xs-12"></div>  
