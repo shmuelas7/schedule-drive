@@ -56,7 +56,7 @@ function Home(){
            </div>
 
            <div className="col-md-4 col-sm-12 col-xs-12 text-center ">
-           <Link to="FutureDrive" >
+           <Link to="Driver" >
            <img src={help} alt="img" className="icon"/>
                 <br/>
                <label>הצעת עזרה</label>
