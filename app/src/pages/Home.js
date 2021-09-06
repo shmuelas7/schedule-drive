@@ -45,9 +45,12 @@ function Home(){
 
         </div>
 
+ 
+           
+
         <div className="row bg-warning">
 
-            <div className="col-md-4 col-sm-12 col-xs-12 text-center ">
+            <div className="col-md-6 col-sm-12 col-xs-12 text-center ">
            <Link to="DriveReq" >
            <img src={helping} alt="img" className="icon"/>
                 <br/>
@@ -55,7 +58,7 @@ function Home(){
             </Link>
            </div>
 
-           <div className="col-md-4 col-sm-12 col-xs-12 text-center ">
+           <div className="col-md-6 col-sm-12 col-xs-12 text-center ">
            <Link to="Driver" >
            <img src={help} alt="img" className="icon"/>
                 <br/>
@@ -63,14 +66,6 @@ function Home(){
             </Link>
            </div>
 
-           <div className="col-md-3 col-sm-12 col-xs-12 text-center ">
-                <Button variant="link" onClick={handleLogout}>
-                    <img src={exit} alt="img" className="icon"/>
-                    <br/>
-                    <label>יציאה </label>
-                </Button>
-           </div>
-           
         </div>
         </div>
 
