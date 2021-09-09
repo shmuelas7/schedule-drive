@@ -1,19 +1,12 @@
 import {React, useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
-import {  Alert } from "react-bootstrap"
 import '../style/nav.css';
 import { useAuth } from "../contexts/AuthContext"
 import { useHistory } from "react-router-dom"
 import Button  from 'react-bootstrap/Button';
-
-import exit from "../icon/exit.png"
-import helping from "../icon/helping.png"
-import help from "../icon/help.png";
-import Wheel from "../icon/Wheel.png";
-import caRQ from "../icon/carRQ.png";
-import alldrive from "../icon/alldrive.png"
 import logo from "../style/black logo.png"
+
 
 
   
@@ -60,14 +53,15 @@ function Home(){
            
            </div>
 
-           <div className="col-md-4 col-sm-12 col-xs-12 text-center ">
+           <div className="col-md-6 col-sm-12 col-xs-12 text-center ">
                <br/>
            <Link to="Driver" >
-           <Button variant="info" size="lg">
-                   הצעת עזרה
+           <Button variant="primary" size="lg">
+                                  הצעת עזרה
                 </Button>{' '}
             </Link>
            </div>
+
 
         </div>
         </div>
