@@ -51,18 +51,21 @@ function Home(){
         <div className="row bg-warning">
 
             <div className="col-md-6 col-sm-12 col-xs-12 text-center ">
-           <Link to="DriveReq" >
-           <img src={helping} alt="img" className="icon"/>
                 <br/>
-               <label>בקשת נסיעה </label>
+           <Link to="DriveReq" >
+            <Button variant="success" size="lg">
+                    בקשת נסיעה
+                </Button>{' '}
             </Link>
+           
            </div>
 
-           <div className="col-md-6 col-sm-12 col-xs-12 text-center ">
+           <div className="col-md-4 col-sm-12 col-xs-12 text-center ">
+               <br/>
            <Link to="Driver" >
-           <img src={help} alt="img" className="icon"/>
-                <br/>
-               <label>הצעת עזרה</label>
+           <Button variant="info" size="lg">
+                   הצעת עזרה
+                </Button>{' '}
             </Link>
            </div>
 
