@@ -1,3 +1,4 @@
+import React from 'react';
 import '../style/App.css';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import Login from '../pages/Login';
@@ -33,11 +34,13 @@ function App(p) {
           <Route path="/Register" component={Register}/>
           <PrivateRoute path="/driver" component={Driver}/>
           <Route path="/DriveReq" component={DriveReq}/>
-          <Route path="/Profile" component={Profile}/>
+          <PrivateRoute path="/Profile" component={Profile}/>
           <Route path="/FutureDrive" component={FutureDrive}/>
           <Route path="/PreviousDrive" component={PreviousDrive}/>
           <Route path="/contact" component={Contact}/>
           <Route path="gift" component={Gift}/>
+          
+
           <Route path="*" />
           
         </Switch>
