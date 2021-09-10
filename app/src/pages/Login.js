@@ -19,7 +19,7 @@ function Login(){
 
   const emailRef = useRef()
   const passwordRef = useRef()
-  const { login } = useAuth()
+  const { login,currentUser } = useAuth()
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
   const history = useHistory()
