@@ -12,19 +12,23 @@ function Profile(){
 
     const passwordRef = useRef()
     const passwordConfirmRef = useRef()
-    const { updatePassword} = useAuth()
+    const { updatePassword,currentUser} = useAuth()
     const [error, setError] = useState("")
     const [loading, setLoading] = useState(false)
     const history = useHistory()
     const [area,setarea]=useState("")
     const [phone,setphone]=useState("")
 
+    const db=firebase.firestore().collection("user").doc(currentUser.uid)
+
     function handleSubmit(e) {
         e.preventDefault()
+        console.log(currentUser.uid)
+        if(passwordRef.current.value!=="")
+        {
         if (passwordRef.current.value !== passwordConfirmRef.current.value) {
           return setError("Passwords do not match")
         }
-
         const promises = []
         setLoading(true)
         setError("")
@@ -43,9 +47,13 @@ function Profile(){
           .finally(() => {
             setLoading(false)
           })
+        }
 
-          const db=firebase.firestore().collection("user").doc(firebase.auth().currentUser.uid)
-    db.set({
+          
+          console.log(currentUser.uid)
+    db.update({
+       phone:phone,
+        area:area
     })
     }
 
