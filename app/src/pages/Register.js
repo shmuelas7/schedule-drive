@@ -1,11 +1,12 @@
-
+import React from 'react';
 import Button from 'react-bootstrap/Button';
 import { Alert } from "react-bootstrap"
 import  '../style/Register.css';
-import { useState,useRef,useEffect} from 'react';
+import { useState,useRef} from 'react';
 import { useAuth } from "../contexts/AuthContext"
 import {  useHistory } from "react-router-dom"
 import firebase from 'firebase';
+import "firebase/firestore";
 import logo from '../style/black logo.png'
 
 
@@ -15,7 +16,7 @@ import logo from '../style/black logo.png'
         const emailRef = useRef()
         const passwordRef = useRef()
         const passwordConfirmRef = useRef()
-        const { signup } = useAuth()
+        const { signup,currentUser } = useAuth()
         const [error, setError] = useState("")
         const [loading, setLoading] = useState(false)
         const history = useHistory()
@@ -25,28 +26,28 @@ import logo from '../style/black logo.png'
         const [area,setarea]=useState("")
         const [age,setage]=useState(0);
 
-        const data="https://data.gov.il/api/3/action/datastore_search?resource_id=5c78e9fa-c2e2-4771-93ff-7f400a12f7ba&limit=5"
+        //const data="https://data.gov.il/api/3/action/datastore_search?resource_id=5c78e9fa-c2e2-4771-93ff-7f400a12f7ba&limit=5"
 
 
     
-        useEffect(() => {
-            let x =fetch (data)
-            . then(x => x.json())
-            .then(x=>x);
-           console.log(JSON.stringify(x))
-        }, [area])
+        // useEffect(() => {
+        //     let x =fetch (data)
+        //     . then(x => x.json())
+        //     .then(x=>x);
+        //    console.log(JSON.stringify(x))
+        // }, [area])
 
         
 
 
-        async function log(){
+        function log(){
         if (passwordRef.current.value !== passwordConfirmRef.current.value) {
             return setError("Passwords do not match")
           }
           try {
             setError("")
             setLoading(true)
-            await signup(emailRef.current.value, passwordRef.current.value)
+            signup(emailRef.current.value, passwordRef.current.value)
             history.push("/")
           } catch {
             setError("Failed to create an account")
@@ -57,14 +58,23 @@ import logo from '../style/black logo.png'
 
 
     function adddata(){
-    const db=firebase.firestore().collection("user").doc(firebase.auth().currentUser.uid)
+    const db = firebase.firestore().collection("user").doc(currentUser.uid)
     db.set({
-      first_name:firstname,
-      last_name:lasttname,
-      phone_number:phone,
-      area:area,
-      age:age
-    })
+        first_name:firstname,
+        last_name:lasttname,
+        phone_number:phone,
+        area:area,
+        age:age
+      })
+      .then(() => {
+          console.log("Document successfully written!");
+      })
+      .catch((error) => {
+          console.error("Error writing document: ", error);
+      });
+    console.log(currentUser.uid)
+    console.log(firebase.auth().currentUser.uid)
+  
 
     }
       
@@ -128,7 +138,7 @@ import logo from '../style/black logo.png'
                         </div>
 
  
-                        <Button type="submit" disabled={loading} variant="success"  block  className="log-btn mx-5 mb-2 btn-lg">שלח</Button>         
+                        <Button type="submit" disabled={loading}  variant="success"  block  className="log-btn mx-5 mb-2 btn-lg">שלח</Button>         
                         
                     </div>
                     </form>
