@@ -1,18 +1,28 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Nav from "../component/Nav";
+import firebase from 'firebase';
+import { useAuth } from '../contexts/AuthContext';
+
+
 
 
 
 function Req(){
 
+    const {currentUser} = useAuth()
+
+const db=firebase.firestore().collection("user").doc(currentUser.uid)
+function handleSubmit(e) {
+    
+}
     return(
         <div className="container-fluid">
             <Nav/>
             <div className="row bg-warning">
                 <div className="col-md-2 col-sm-4 col-xs-12 "></div>  
                 <div className="col-md-8 col-sm-4 col-xs-12 ">
-                    <form className=" border border-dark rounded mt-2 mb-2 bg-light">
+                    <form className=" border border-dark rounded mt-2 mb-2 bg-light"  onSubmit={handleSubmit} >
                         <h1 className="text-center">בקשת נסיעה</h1>
                         <h6 className="text-right">הכנס תאריך</h6>
                         <input type="date" placeholder="תאריך יציאה" className="form-control input-d" required></input>
