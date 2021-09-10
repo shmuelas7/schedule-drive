@@ -40,6 +40,7 @@ function Nav(){
         <nav className="bg-light">
         <div className="text-center  ">
             <img src={logo} alt="logo " className="logo"/>
+            
         </div>
         {error && <Alert variant="danger">{error}</Alert>}
         <div className="row">
@@ -89,8 +90,6 @@ function Nav(){
                     <br/>
                     <label>יציאה </label>
                 </Button>
-                
-
            </div>
        </div>
        </nav>
