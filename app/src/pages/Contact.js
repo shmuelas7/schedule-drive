@@ -1,5 +1,8 @@
 import {React} from 'react';
 import Nav from "../component/Nav";
+import '../style/Contact.css';
+import logo from '../style/black logo.png'
+
 
 
 function Contact(){
@@ -7,76 +10,45 @@ function Contact(){
 
 
     return(
-        <div className="container-fluid" dir="rtl">
-            <Nav/>
-            
-            <div className="bg-warning">
-            <h1 className="text-center">יצירת קשר</h1>
+     <div class="contact1 ">
+		<div class="container-contact1">
+			<div class="contact1-pic js-tilt">
+				<img src={logo} alt="IMG"/>
+			</div>
 
-            <div className='ContactForm'>
-      <div className='container'>
-        <div className='row'>
-          <div className='col-12 text-center'>
-            <div className='contactForm'>
-              <form id='contact-form' noValidate>
+			<form class="contact1-form validate-form">
+				<span class="contact1-form-title">
+					יצירת קשר
+				</span>
 
-                <div className='row formRow'>
-                  <div className='col-6'>
-                    <input
-                      type='text'
-                      name='name'
-                      className='form-control formInput'
-                      placeholder='שם'
-                    ></input>
-                  </div>
-                  <div className='col-6'>
-                    <input
-                      type='email'
-                      name='email'
-                      className='form-control formInput'
-                      placeholder='מייל'
-                    ></input>
-                  </div>
-                </div>
+				<div class="wrap-input1 validate-input" data-validate = "Name is required">
+					<input class="input1 text-right" type="text" name="name" placeholder="שם" />
+					<span class="shadow-input1"></span>
+				</div>
 
-                <div className='row formRow'>
-                  <div className='col'>
-                    <input
-                      type='text'
-                      name='subject'
-                      className='form-control formInput'
-                      placeholder='נושא'
-                    ></input>
-                  </div>
-                </div>
+				<div class="wrap-input1 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+					<input class="input1 text-right" type="text" name="email" placeholder="אמייל"/>
+					<span class="shadow-input1"></span>
+				</div>
 
-                <div className='row formRow'>
-                  <div className='col'>
-                    <textarea
-                      rows={3}
-                      name='message'
-                      className='form-control formInput'
-                      placeholder='הודעה'
-                    ></textarea>
-                  </div>
-                </div>
-                <button type="submit" variant="primary"  block className="log-btn mb-2">
-                  שלח
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+				<div class="wrap-input1 validate-input" data-validate = "Subject is required">
+					<input class="input1 text-right" type="text" name="subject" placeholder="נושא"/>
+					<span class="shadow-input1"></span>
+				</div>
 
-    
+				<div class="wrap-input1 validate-input" data-validate = "Message is required">
+					<textarea class="input1 text-right" name="message" placeholder="הודעה"></textarea>
+					<span class="shadow-input1"></span>
+				</div>
 
-       
-                <tbody>
-                </tbody>
-            </div>
-        </div>
+				<div class="container-contact1-form-btn">
+					<button class="contact1-form-btn">
+							שלח
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
 
 
     )
