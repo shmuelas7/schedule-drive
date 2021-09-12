@@ -89,7 +89,7 @@ import logo from '../style/black logo.png'
 
 
     return(
-        <div className="container-fluid bg-primary">
+        <div className="bg-primary">
 
             <div className="row">
                 <div className="col-md-3 col-sm-12 col-xs-12 "></div>
