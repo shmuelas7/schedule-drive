@@ -6,7 +6,7 @@ function Footer(){
 
     return(
 
-    <div className="container-fluid">
+    
         <footer className="bg-dark text-center text-white"  dir="rtl">
             <div className="row">
                 <div className="col-12">
@@ -31,7 +31,6 @@ function Footer(){
 
 
     </footer>
-    </div>
   
     );
 }
