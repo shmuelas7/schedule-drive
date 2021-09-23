@@ -8,6 +8,7 @@ import {  useHistory } from "react-router-dom"
 import firebase from 'firebase';
 import "firebase/firestore";
 import logo from '../style/black logo.png'
+import {db} from '../firebase'
 
 
 
@@ -40,14 +41,14 @@ import logo from '../style/black logo.png'
         
 
 
-        function log(){
+        async function log(){
         if (passwordRef.current.value !== passwordConfirmRef.current.value) {
             return setError("Passwords do not match")
           }
           try {
             setError("")
             setLoading(true)
-            signup(emailRef.current.value, passwordRef.current.value)
+           await signup(emailRef.current.value, passwordRef.current.value)
             history.push("/")
           } catch {
             setError("Failed to create an account")
@@ -58,8 +59,8 @@ import logo from '../style/black logo.png'
 
 
     function adddata(){
-    const db = firebase.firestore().collection("user").doc(currentUser.uid)
-    db.set({
+        console.log(currentUser.uid)
+     db.doc(currentUser.uid).set({
         first_name:firstname,
         last_name:lasttname,
         phone_number:phone,
@@ -72,7 +73,7 @@ import logo from '../style/black logo.png'
       .catch((error) => {
           console.error("Error writing document: ", error);
       });
-    console.log(currentUser.uid)
+    
     console.log(firebase.auth().currentUser.uid)
   
 
@@ -89,7 +90,7 @@ import logo from '../style/black logo.png'
 
 
     return(
-        <div className="bg-primary">
+        <div className="container bg-primary">
 
             <div className="row">
                 <div className="col-md-3 col-sm-12 col-xs-12 "></div>
