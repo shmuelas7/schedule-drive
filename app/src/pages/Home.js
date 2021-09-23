@@ -4,11 +4,9 @@ import { Link } from 'react-router-dom';
 
 import '../style/home.css'
 
-import Button  from 'react-bootstrap/Button';
 import logo from "../style/black logo.png"
 import img1 from '../style/backwards.png'
 import img2 from '../style/arrow.png'
-import backround from '../style/backround.jpg'
 
 
 
