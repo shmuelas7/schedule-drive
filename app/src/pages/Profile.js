@@ -19,7 +19,7 @@ function Profile(){
     const [area,setarea]=useState("")
     const [phone,setphone]=useState("")
 
-    const db=firebase.firestore().collection("user").doc(currentUser.uid)
+    const db = firebase.firestore().collection("user")
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -51,7 +51,7 @@ function Profile(){
 
           
           console.log(currentUser.uid)
-    db.update({
+    db.doc(currentUser.uid).update({
        phone:phone,
         area:area
     })
