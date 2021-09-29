@@ -9,58 +9,88 @@ import firebase from 'firebase';
 import "firebase/firestore";
 import logo from '../style/black logo.png'
 import {db} from '../firebase'
+import swal from 'sweetalert2'
 
 
 
  function Register(){
 
-        const emailRef = useRef()
-        const passwordRef = useRef()
-        const passwordConfirmRef = useRef()
-        const { signup,currentUser } = useAuth()
-        const [error, setError] = useState("")
-        const [loading, setLoading] = useState(false)
-        const history = useHistory()
-        const [firstname,setfirstname]=useState("")
-        const [lasttname,setlastname]=useState("")
-        const [phone,setphone]=useState("")
-        const [area,setarea]=useState("")
+        const emailRef = useRef();
+        const passwordRef = useRef();
+        const passwordConfirmRef = useRef();
+        const { signup } = useAuth();
+        const [error, setError] = useState("");
+        const [loading, setLoading] = useState(false);
+        const history = useHistory();
+        const [firstname,setfirstname]=useState("");
+        const [lasttname,setlastname]=useState("");
+        const [phone,setphone]=useState("");
+        const [area,setarea]=useState("");
         const [age,setage]=useState(0);
+        var x="";
 
-        //const data="https://data.gov.il/api/3/action/datastore_search?resource_id=5c78e9fa-c2e2-4771-93ff-7f400a12f7ba&limit=5"
+        const regexEmail = /\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;
+        const regexletters = /^[\u05D0-\u05EA]+$/i;
+        const regexphone = /^0\d([\d]{0,1})([-]{0,1})\d{7}$/;
 
 
-    
-        // useEffect(() => {
-        //     let x =fetch (data)
-        //     . then(x => x.json())
-        //     .then(x=>x);
-        //    console.log(JSON.stringify(x))
-        // }, [area])
 
         
 
+        function validation(){
+            if(!regexEmail.test(emailRef.current.value))
+            {
+                swal.fire({
+                    icon: 'error',
+                    title: 'שגיאה',
+                    text: 'מייל לא תקין ',
+                    confirmButtonText: 'בסדר',
+                  })
+                console.log("false email");
+                return false;
+            }
+            if(!regexletters.test(firstname) || !regexletters.test(lasttname))
+            {
+                console.log("name false");
+                return false;
+            }
+            if(age<10 || age> 120)
+            {
+                console.log("age false");
+                return false;
+            }
+            if(!regexphone.test(phone))
+            {
+                console.log("phone false");
+                return false;
+
+            }
+
+            return true;
+        }
 
         async function log(){
         if (passwordRef.current.value !== passwordConfirmRef.current.value) {
-            return setError("Passwords do not match")
+            return setError("Passwords do not match");
           }
           try {
-            setError("")
-            setLoading(true)
-           await signup(emailRef.current.value, passwordRef.current.value)
-            history.push("/")
+            setError("");
+            setLoading(true);
+           await signup(emailRef.current.value, passwordRef.current.value).then(cred=>{ x=cred.user.uid;
+                            console.log("login id " + x)});
+    
+            history.push("/");
           } catch {
-            setError("Failed to create an account")
+            setError("Failed to create an account");
           }
-          setLoading(false)
+          setLoading(false);
     
        }
 
 
     function adddata(){
-        console.log(currentUser.uid)
-     db.doc(currentUser.uid).set({
+        console.log(x);
+     db.doc(x).set({
         first_name:firstname,
         last_name:lasttname,
         phone_number:phone,
@@ -74,15 +104,15 @@ import {db} from '../firebase'
           console.error("Error writing document: ", error);
       });
     
-    console.log(firebase.auth().currentUser.uid)
-  
-
+    console.log(firebase.auth().currentUser.uid);
     }
       
         function handleSubmit(e) {
-          e.preventDefault()
-          log()
-          adddata()
+          e.preventDefault();
+          if(validation())
+            log().then(()=>setTimeout(adddata(),3000))
+          
+          
         }
 
 
@@ -90,7 +120,7 @@ import {db} from '../firebase'
 
 
     return(
-        <div className="container bg-primary">
+        <div className=" bg-primary">
 
             <div className="row">
                 <div className="col-md-3 col-sm-12 col-xs-12 "></div>
