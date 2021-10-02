@@ -51,37 +51,62 @@ import swal from 'sweetalert2'
             }
             if(!regexletters.test(firstname) || !regexletters.test(lasttname))
             {
-                console.log("name false");
+                swal.fire({
+                    icon: 'error',
+                    title: 'שגיאה',
+                    text: 'שם פרטי או שם משפחה לא תקין ',
+                    footer: 'אפשר לכתוב רק בעברית',
+                    confirmButtonText: 'בסדר',
+                  })
                 return false;
             }
             if(age<10 || age> 120)
             {
+                swal.fire({
+                    icon: 'error',
+                    title: 'שגיאה',
+                    text: 'גיל לא תקין',
+                    footer: 'גיל תקין 10-120',
+                    confirmButtonText: 'בסדר',
+                  })
                 console.log("age false");
                 return false;
             }
             if(!regexphone.test(phone))
             {
+                swal.fire({
+                    icon: 'error',
+                    title: 'שגיאה',
+                    text: 'טלפון לא תקין',
+                    confirmButtonText: 'בסדר',
+                  })
                 console.log("phone false");
                 return false;
-
             }
+            if (passwordRef.current.value !== passwordConfirmRef.current.value) {
+                swal.fire({
+                    icon: 'error',
+                    title: 'שגיאה',
+                    text: 'סיסמאות לא תואמות',
+                    confirmButtonText: 'בסדר',
+                  })
+                console.log("pass false");
+                return false;
+            }
+                
 
             return true;
         }
 
         async function log(){
-        if (passwordRef.current.value !== passwordConfirmRef.current.value) {
-            return setError("Passwords do not match");
-          }
           try {
-            setError("");
             setLoading(true);
            await signup(emailRef.current.value, passwordRef.current.value).then(cred=>{ x=cred.user.uid;
                             console.log("login id " + x)});
     
             history.push("/");
           } catch {
-            setError("Failed to create an account");
+            setError("לא הצליח ליצור חשבון");
           }
           setLoading(false);
     
@@ -99,6 +124,7 @@ import swal from 'sweetalert2'
       })
       .then(() => {
           console.log("Document successfully written!");
+          swal.fire("נרשמתה בהצלחה", "success")
       })
       .catch((error) => {
           console.error("Error writing document: ", error);
@@ -122,7 +148,7 @@ import swal from 'sweetalert2'
     return(
         <div className=" bg-primary">
 
-            <div className="row">
+            <div className="row" dir="rtl">
                 <div className="col-md-3 col-sm-12 col-xs-12 "></div>
                 
                 
@@ -134,8 +160,9 @@ import swal from 'sweetalert2'
                     
                     <div className="row">
                         <div className="from-gtoup col-md-6 col-sm-12">
-                            <h5 className=" text-right" >שם משפחה</h5>
-                            <input placeholder="שם משפחה*" className="form-control text-right" name="lastName" required onChange={(e)=>setlastname(e.target.value)} ></input>
+
+                             <h5 className=" text-right">שם פרטי</h5>
+                            <input placeholder="שם פרטי*" className="form-control text-right" name="firstName" type="text" onChange={(e)=>setfirstname(e.target.value)}   required></input>
 
                             <h5 className=" text-right">מייל</h5>
                             <input placeholder="מייל*" className="form-control text-right" required  ref={emailRef}></input>
@@ -148,9 +175,9 @@ import swal from 'sweetalert2'
                     
                         </div>
                         <div className="from-group col-md-6 col-sm-12">
-                            <h5 className=" text-right">שם פרטי</h5>
-                            <input placeholder="שם פרטי*" className="form-control text-right" name="firstName" type="text" onChange={(e)=>setfirstname(e.target.value)}   required></input>
-                        
+
+                        <h5 className=" text-right" >שם משפחה</h5>
+                            <input placeholder="שם משפחה*" className="form-control text-right" name="lastName" required onChange={(e)=>setlastname(e.target.value)} ></input>
 
                             <h5  className=" text-right">טלפון</h5>
                             <input placeholder="מספר נייד*" className="form-control text-right" required onChange={(e)=>setphone(e.target.value)}></input>
@@ -163,7 +190,7 @@ import swal from 'sweetalert2'
                             <h5 className=" text-right">הוספת תמונת פרופיל</h5>
                         <div className="custom-file">
                              <input type="file" className="custom-file-input" id="customFile"/>
-                            <label className="custom-file-label ">בחר תמונה</label>
+                            <label className="custom-file-label " dir="rtl">בחר תמונה</label>
                         </div>
                       
                         </div>
