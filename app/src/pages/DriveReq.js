@@ -1,8 +1,10 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Nav from "../component/Nav";
-import firebase from 'firebase';
 import { useAuth } from '../contexts/AuthContext';
+import {dbReq} from '../firebase';
+import swal from 'sweetalert2'
+import { useState} from 'react';
 
 
 
@@ -10,10 +12,29 @@ import { useAuth } from '../contexts/AuthContext';
 
 function Req(){
 
-    const {currentUser} = useAuth()
+const {currentUser} = useAuth();
+const [date , setdate]= useState(Date);
+const [exit , setexit]= useState("");
+const [destination , setdestination]= useState("");
+const [time,settime]= useState("");
 
-const db=firebase.firestore().collection("user").doc(currentUser.uid)
 function handleSubmit(e) {
+    e.preventDefault();
+    console.log(currentUser.uid);
+    dbReq.doc(currentUser.uid).set({
+        date:date,
+        exit:exit,
+        destination:destination,
+        time:time,
+        id:currentUser.uid
+     })
+     .then(() => {
+         console.log("Document successfully written!");
+         swal.fire("הבקשה נקלטה במערכת", "success")
+     })
+     .catch((error) => {
+         console.error("Error writing document: ", error);
+     });
     
 }
     return(
@@ -25,13 +46,13 @@ function handleSubmit(e) {
                     <form className=" border border-dark rounded mt-2 mb-2 bg-light"  onSubmit={handleSubmit} >
                         <h1 className="text-center">בקשת נסיעה</h1>
                         <h6 className="text-right">הכנס תאריך</h6>
-                        <input type="date" placeholder="תאריך יציאה" className="form-control input-d" required></input>
+                        <input type="date" placeholder="תאריך יציאה" className="form-control input-d" onChange={(e)=>setdate(e.target.value)} required></input>
                         <h6 className="text-right">מוצא</h6>
-                        <input placeholder="מוצא" className="form-control text-right " required ></input>
+                        <input placeholder="מוצא" className="form-control text-right" onChange={(e)=>setexit(e.target.value)} required ></input>
                         <h6 className="text-right">יעד</h6>
-                        <input placeholder="יעד" className="form-control text-right " required ></input>
+                        <input placeholder="יעד" className="form-control text-right" onChange={(e)=>setdestination(e.target.value)} required ></input>
                         <h6 className="text-right">שעה</h6>
-                        <input  type="time" placeholder="שעה" className="form-control" required ></input>
+                        <input  type="time" placeholder="שעה" className="form-control" onChange={(e)=>settime(e.target.value)} required ></input>
                         <div className="text-right">
                             <h6>הערות</h6>
                             <textarea className="form-control" rows="2"></textarea>
