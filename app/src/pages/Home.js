@@ -8,22 +8,22 @@ function Home(){
 
     return(
         
-        
-        <div className="home-backround text-center">
+        <body>
+        <div className="home-backround text-center h-100 d-inline-block" >
             <img src={logo} alt="logo" className="logo"/>
 
-            <div className="row justify-content-center mt-5">
+            <div className="row justify-content-center mt-5 ">
 
-                <div class='is-grouped'>
+                <div className='is-grouped  ' >
 
                     <Link to="DriveReq" >
-                        <Button variant="outline-info" size="xxl">בקשת נסיעה</Button>
+                        <Button variant="outline-info   mb-4" size="xxl">בקשת נסיעה</Button>
 
                     </Link>
 
 
                     <Link to="Driver">
-                        <Button variant="outline-success" size="xxl">הצעת עזרה</Button>
+                        <Button variant="outline-success  mb-4" size="xxl">הצעת עזרה</Button>
 
                     </Link>
 
@@ -33,6 +33,8 @@ function Home(){
 
 
         </div>
+        </body>
+  
 
 
     )
