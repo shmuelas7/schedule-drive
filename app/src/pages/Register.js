@@ -141,10 +141,6 @@ import swal from 'sweetalert2'
           
         }
 
-
-    
-
-
     return(
         <div className=" bg-primary">
 
@@ -162,7 +158,7 @@ import swal from 'sweetalert2'
                         <div className="from-gtoup col-md-6 col-sm-12">
 
                              <h5 className=" text-right">שם פרטי</h5>
-                            <input placeholder="שם פרטי*" className="form-control text-right" name="firstName" type="text" onChange={(e)=>setfirstname(e.target.value)}   required></input>
+                            <input placeholder="שם פרטי*" className="form-control text-right" name="firstName" type="text" onChange={(e)=>setfirstname(e.target.value)} required></input>
 
                             <h5 className=" text-right">מייל</h5>
                             <input placeholder="מייל*" className="form-control text-right" required  ref={emailRef}></input>
@@ -171,7 +167,7 @@ import swal from 'sweetalert2'
                             <input type="number" placeholder="גיל" className="form-control text-right" required  name="age" onChange={(e)=>setage(e.target.value)}></input>
 
                             <h5 className=" text-right">אימות סיסמה</h5>
-                            <input type="password" placeholder="אישור סיסמה*" className="form-control text-right" required  name="password" ref={passwordConfirmRef} autoComplete="off"></input> 
+                            <input type="password" placeholder="אישור סיסמה*" className="form-control text-right" required name="password" ref={passwordConfirmRef} autoComplete="off"></input> 
                     
                         </div>
                         <div className="from-group col-md-6 col-sm-12">
@@ -194,19 +190,14 @@ import swal from 'sweetalert2'
                         </div>
                       
                         </div>
-
- 
                         <Button type="submit" disabled={loading}  variant="success"  block  className="log-btn mx-5 mb-2 btn-lg">שלח</Button>         
                         
                     </div>
                     </form>
                 </div>
                 <div className="col-3">
-
-                </div>
-                
-            </div>
-           
+                </div>               
+            </div>           
         </div>
         
     );
