@@ -120,7 +120,8 @@ import swal from 'sweetalert2'
         last_name:lasttname,
         phone_number:phone,
         area:area,
-        age:age
+        age:age,
+        id:x
       })
       .then(() => {
           console.log("Document successfully written!");
