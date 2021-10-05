@@ -17,7 +17,7 @@ function Home(){
                 <div class='is-grouped'>
 
                     <Link to="DriveReq" >
-                        <Button type="button" variant="outline-info mr-5" size="xxl">בקשת נסיעה</Button>
+                        <Button variant="outline-info mr-5" size="xxl">בקשת נסיעה</Button>
 
                     </Link>
 
@@ -25,6 +25,7 @@ function Home(){
                         <Button variant="outline-success" size="xxl">הצעת עזרה</Button>
 
                     </Link>
+                    
 
 
                     </div>          
