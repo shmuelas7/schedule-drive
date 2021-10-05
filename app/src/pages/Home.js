@@ -25,8 +25,6 @@ function Home(){
                         <Button variant="outline-success" size="xxl">הצעת עזרה</Button>
 
                     </Link>
-                    
-
 
                     </div>          
            </div>
