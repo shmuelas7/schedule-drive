@@ -1,14 +1,8 @@
 import {React} from 'react';
-import Nav from "../component/Nav";
 import '../style/Contact.css';
 import logo from '../style/black logo.png'
 
-
-
 function Contact(){
-
-
-
     return(
      <div class="contact1 ">
 		<div class="container-contact1">
@@ -49,8 +43,6 @@ function Contact(){
 			</form>
 		</div>
 	</div>
-
-
     )
 }
 
