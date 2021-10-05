@@ -17,16 +17,14 @@ function Home(){
                 <div class='is-grouped'>
 
                     <Link to="DriveReq" >
-                        <Button class="btn1 mr-5" variant="outline-warning mr-5" size="xxl">בקשת נסיעה</Button>
+                        <button class="btn1 mr-5">בקשת נסיעה</button>
 
                     </Link>
 
                     <Link to="Driver">
-                        <Button class="btn2" variant="outline-warning" size="xxl">הצעת עזרה</Button>
+                        <button class="btn2">הצעת עזרה</button>
 
                     </Link>
-
-
 
                     </div>          
            </div>
