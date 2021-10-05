@@ -1,4 +1,3 @@
-
 import React, { useRef, useState } from "react"
 import Button from 'react-bootstrap/Button'
 import { Form, Alert } from "react-bootstrap"
@@ -6,8 +5,6 @@ import Nav from "../component/Nav"
 import { useAuth } from "../contexts/AuthContext"
 import { useHistory } from "react-router-dom"
 import firebase from 'firebase'
-
-
 
 function Profile(){
 
