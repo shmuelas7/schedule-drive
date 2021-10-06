@@ -19,9 +19,8 @@ function FutureDrive(){
                     <tr>
                         <th>עריכת נסיעה</th>
                         <th>שם המתנדב</th>
-                        <th>סטטוס</th>
-                        <th>אזור</th>
-                        <th>מספר טלפון</th>
+                        <th>טלפון מתנדב</th>
+                        <th>טלפון נוסע</th>
                         <th>יעד</th>
                         <th>מוצא</th>
                         <th>שעה</th>
