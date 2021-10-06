@@ -4,6 +4,9 @@ import Table from 'react-bootstrap/Table'
 import Search from '../component/Search';
 import { useEffect } from 'react';
 import firebase from 'firebase';
+import { useAuth } from "../contexts/AuthContext"
+import { Button } from 'react-bootstrap';
+import {Confirmation} from "../firebase"
 
 
 
@@ -14,7 +17,15 @@ import firebase from 'firebase';
 function Driver(){
 
 
-    const tbody = document.getElementById('tbody1');
+    var tbody = document.getElementById('tbody1');
+    const { currentUser } = useAuth();
+    var phone="";
+    var dest =""
+    var exit = ""
+    var time =""
+    var date =""
+    var name =""
+    var id =""
 
 
 
@@ -22,7 +33,7 @@ function Driver(){
     useEffect(getdata)
     async function getdata () {
         const data = firebase.firestore().collection('request')
-        var tbody=document.getElementById("tbody1")
+        
         
 
         await data.get().then((q) => {
@@ -35,30 +46,32 @@ function Driver(){
             
           })
 
-          function additems(phone,dest,exit,time,date,name){
+          function additems(){
             const tr= document.createElement('tr');
             const td1= document.createElement('td');
-            const td2= document.createElement('td');
             const td3= document.createElement('td');
             const td4= document.createElement('td');
             const td5= document.createElement('td');
             const td6= document.createElement('td');
             const td7= document.createElement('td');
 
-            var btn = document.createElement('input');
+            const btn = document.createElement('input');
+                
                 btn.type = "button";
                 btn.className = "btn btn-primary  text-center";
                 btn.value = "אשר נסיעה";
-               // btn.onclick = RideApproval(phone,dest,exit,time,date,name);
-            td1.appendChild(btn);
-            td2.innerHTML=phone;
+                btn.onclick = RideApproval;
+                
+            
             td3.innerHTML=dest;
             td4.innerHTML=exit;
             td5.innerHTML=time;
             td6.innerHTML=date;
             td7.innerHTML=name;
+            
+            td1.appendChild(btn);
             tr.appendChild(td1);
-            tr.appendChild(td2);
+            
             tr.appendChild(td3);
             tr.appendChild(td4);
             tr.appendChild(td5);
@@ -79,35 +92,40 @@ function Driver(){
                 .get()
                 .then((value)=> {
                     info=value.data()
-                    console.log(info)
                     getuser(info,element)
                 } )
-                 console.log("var"+info)
-
-              
           })
  
         }
+        
         function getuser(user,req){
-            let phone =user.phone_number
-            let dest = req.destination
-            let exit = req.exit
-            let time = req.time
-            let date =req.date
-            let name = user.first_name +" "+user.last_name
-            additems(phone,dest,exit,time,date,name)
+             phone =user.phone_number
+             dest = req.destination
+             exit = req.exit
+             time = req.time
+             date =req.date
+             name = user.first_name +" "+user.last_name
+             id = user.id
+             console.log(currentUser.phone_number)
+            additems()
         }
 
-        function RideApproval(phone,dest,exit,time,date,name){
-             const Confirmation = firebase.firestore().collection("myDrive");
+         function RideApproval(){
+                
              Confirmation.doc().set({
-                name:name,
-                phone:phone,
-                dest:dest,
-                ext:exit,
-                time:time,
-                data:data
+                name_ask:name,
+                name_driver:currentUser.first_name +" "+currentUser.last_name,
+                id_driver:currentUser.uid,
+                id_ask:id,
+                phone_ask:phone,
+                //phone_driver:currentUser.phone_number,
+                 dest:dest,
+                 ext:exit,
+                 time:time,
+                 data:date
+
               })
+              console.log("sucsses")
 
         }
 
@@ -129,7 +147,6 @@ function Driver(){
                 <thead className="text-right">
                 <tr>
                     <th>אשר נסיעה</th>
-                    <th>מספר טלפון</th>
                     <th>יעד</th>
                     <th>מוצא</th>
                     <th>שעה</th>
