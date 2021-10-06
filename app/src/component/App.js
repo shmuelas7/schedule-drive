@@ -14,13 +14,7 @@ import Footer from './Footer';
 import Gift from '../pages/Gift'
 import Contact from '../pages/Contact'
 import Home from '../pages/Home'
-
-
-
-
-
-
-
+import CardProfile from '../pages/CardProfile'
 
 
 
@@ -40,7 +34,7 @@ function App(p) {
           <Route path="/FutureDrive" component={FutureDrive}/>
           <Route path="/PreviousDrive" component={PreviousDrive}/>
           <Route path="/contact" component={Contact}/>
-
+          <Route path="/CardProfile" component={CardProfile}/>
           <Route path="/gift" component={Gift}/>
           <Route path="/home" component={Home}/>
           <Route path="*" />
