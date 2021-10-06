@@ -1,14 +1,8 @@
 import {React} from 'react';
-import Nav from "../component/Nav";
 import '../style/Contact.css';
 import logo from '../style/black logo.png'
 
-
-
 function Contact(){
-
-
-
     return(
      <div class="contact1 ">
 		<div class="container-contact1">
@@ -27,7 +21,7 @@ function Contact(){
 				</div>
 
 				<div class="wrap-input1 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-					<input class="input1 text-right" type="text" name="email" placeholder="אמייל"/>
+					<input class="input1 text-right" type="text" name="email" placeholder="מייל"/>
 					<span class="shadow-input1"></span>
 				</div>
 
@@ -49,8 +43,6 @@ function Contact(){
 			</form>
 		</div>
 	</div>
-
-
     )
 }
 

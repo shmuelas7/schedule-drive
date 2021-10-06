@@ -6,10 +6,6 @@ import {dbReq} from '../firebase';
 import swal from 'sweetalert2'
 import { useState} from 'react';
 
-
-
-
-
 function Req(){
 
 const {currentUser} = useAuth();
