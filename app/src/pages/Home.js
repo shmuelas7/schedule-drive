@@ -2,20 +2,18 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 import '../style/home.css'
 import logo from "../style/black logo.png"
-import { Button } from 'react-bootstrap';
-
 
 function Home(){
 
     return(
 
               
-        <div className="home-backround text-center" style = {{height:"93vh"}}>
+        <div className="home-backround text-center" style = {{height:"93.5vh"}}>
             <img src={logo} alt="logo" className="logo"/>
 
-            <div className="row justify-content-center mt-5 ">
+            <div className="row justify-content-center mt-5">
 
-                <div className='is-grouped  ' >
+                <div className='is-grouped' style = {{margin:"85px"}} >
 
                     <Link to="DriveReq" >
 
