@@ -21,13 +21,14 @@ function CardProfile(){
                         <div class="ml-3">
                             <h2 class="name">יוסי כהן</h2>
                             <p class="mail">25</p>
-                            <p class="mail">פתח תקווה</p>
+                            <p class="mail"><b>פתח תקווה</b></p>
                             <p class="mail">05236416497</p>
                             <p class="mail">yossi@gmail.com</p>
                         </div>
                     </div>
                     
-                    <h3 class="mt-4">ביקורות</h3>
+                    <h3 class="name">ביקורות</h3>
+                    <br></br>
                     <div class="w3-container">
                         <ul>
                             <li><b>איציק :</b> הגיע בזמן ומאוד עזר לי</li>
