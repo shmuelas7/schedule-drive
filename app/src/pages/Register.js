@@ -188,6 +188,7 @@ import swal from 'sweetalert2'
                              <input type="file" className="custom-file-input" id="customFile"/>
                             <label className="custom-file-label " dir="rtl">בחר תמונה</label>
                         </div>
+                        
 
                         </div>
                         <Button type="submit" disabled={loading}  variant="success"  block  className="log-btn mx-5 mb-2 btn-lg">שלח</Button>         
