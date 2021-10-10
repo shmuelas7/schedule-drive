@@ -76,10 +76,15 @@ function FutureDrive(){
                 //btn.onclick = RideApproval;
                 
             td2.innerHTML=driver.first_name;
+            td2.className="text-right"
             td3.innerHTML=data.dest;
+            td3.className="text-right"
             td4.innerHTML=data.exit;
+            td4.className="text-right"
             td5.innerHTML=data.time;
+            td5.className="text-right"
             td6.innerHTML=data.date;
+            td6.className="text-right"
            // td7.innerHTML=name;
             
             td1.appendChild(btn);
