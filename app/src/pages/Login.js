@@ -7,14 +7,6 @@ import { Link,useHistory } from 'react-router-dom';
 import { useAuth } from "../contexts/AuthContext"
 import logo from '../style/black logo.png'
 
-
-
-
-
-
-
-
-
 function Login(){
 
   const emailRef = useRef()
@@ -63,7 +55,7 @@ function Login(){
                     </div>
                         <Button variant="dark" type="submit" block  disabled={loading} className="log-btn">התחברות</Button>
                         <Link to="/Register">
-                            <Button variant="dark"  block  className="log-btn" >הרשמה</Button>
+                            <Button variant="dark"  block  className="log-btn">הרשמה</Button>
                         </Link>
                     </form>
                 </div>
