@@ -12,7 +12,6 @@ import {db} from '../firebase'
 import swal from 'sweetalert2'
 
 
-
  function Register(){
 
         const emailRef = useRef();
@@ -190,13 +189,6 @@ import swal from 'sweetalert2'
                             <label className="custom-file-label " dir="rtl">בחר תמונה</label>
                         </div>
 
-                        <h5 className=" text-right" >אישור תנאים</h5>
-
-                        <div className="form-check form-check-inline">
-                                <input className="form-check-input" type="checkbox" value="option2"/>
-                                <label className="form-check-label">אישור תנאים</label>
-                            </div>
-                      
                         </div>
                         <Button type="submit" disabled={loading}  variant="success"  block  className="log-btn mx-5 mb-2 btn-lg">שלח</Button>         
                         
