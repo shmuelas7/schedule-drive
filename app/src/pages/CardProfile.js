@@ -35,7 +35,7 @@ function CardProfile(){
                             <li><b>דני :</b> ממליץ מאוד לנסוע איתו</li>
                             </ul>
                             </div>  
-                            <div className="text-right">                          
+                            <div className="text-right" dir="rtl">                          
                         <textarea className="form-control" rows="1"></textarea>
                         </div>
                         <button>הוסף ביקורת</button>
