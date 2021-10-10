@@ -6,7 +6,8 @@ import { useEffect } from 'react';
 import firebase from 'firebase';
 import { useAuth } from "../contexts/AuthContext"
 import { Button } from 'react-bootstrap';
-import {Confirmation} from "../firebase"
+import {dbReq} from '../firebase'
+import Swal from 'sweetalert2';
 
 
 
@@ -17,24 +18,39 @@ import {Confirmation} from "../firebase"
 function Driver(){
 
 
-    var tbody = document.getElementById('tbody1');
+    
     const { currentUser } = useAuth();
-    var phone="";
-    var dest =""
-    var exit = ""
-    var time =""
-    var date =""
-    var name =""
-    var id =""
+    var dest ="";
+    var exit = "";
+    var time ="";
+    var date ="";
+    var name ="";
+    var id ="";
+    var phone_ask="";
+    var phone_driver="";
+    var name_driver ="";
 
 
+    useEffect(() => {
+         firebase.firestore().collection('users').doc(currentUser.uid).get()
+        .then((p)=>{
+            curntus(p.data())
 
+        })
 
-    useEffect(getdata)
+        getdata()
+      });
+      function curntus(user){
+        console.log("user"+user.age)
+        phone_driver=user.phone_number
+        name_driver=user.first_name
+      }
+    
+
     async function getdata () {
+        
+        
         const data = firebase.firestore().collection('request')
-        
-        
 
         await data.get().then((q) => {
             var req = [];
@@ -45,8 +61,10 @@ function Driver(){
             addAllItems(req)
             
           })
+        }
 
           function additems(){
+            var tbody = document.getElementById('tbody1');
             const tr= document.createElement('tr');
             const td1= document.createElement('td');
             const td3= document.createElement('td');
@@ -58,16 +76,21 @@ function Driver(){
             const btn = document.createElement('input');
                 
                 btn.type = "button";
-                btn.className = "btn btn-primary  text-center";
+                btn.className = "btn btn-primary text-right";
                 btn.value = "אשר נסיעה";
                 btn.onclick = RideApproval;
                 
             
             td3.innerHTML=dest;
+            td3.className="text-right"
             td4.innerHTML=exit;
+            td4.className="text-right"
             td5.innerHTML=time;
+            td5.className="text-right"
             td6.innerHTML=date;
+            td6.className="text-right"
             td7.innerHTML=name;
+            td7.className="text-right"
             
             td1.appendChild(btn);
             tr.appendChild(td1);
@@ -81,55 +104,48 @@ function Driver(){
             
               
               
-              tbody.appendChild(tr)
-          }
+            tbody.appendChild(tr)
+        }
+            function RideApproval(){
+                
+             dbReq.doc(id).update({
+                id_driver:currentUser.uid
+              })
+              Swal.fire(
+                'תודה שהתנדבתה להסיע את ',
+                'You clicked the button!',
+                'success'
+              )
+              console.log("sucsses")
+            }
+
             function addAllItems(reqData){
+            var tbody = document.getElementById('tbody1');
             tbody.innerHTML="";
                 var info='';
-            reqData.forEach(element =>{
+                reqData.forEach(element =>{
 
-                 firebase.firestore().collection('users').doc( element.id)
-                .get()
-                .then((value)=> {
-                    info=value.data()
-                    getuser(info,element)
-                } )
-          })
+                    firebase.firestore().collection('users').doc( element.id_ask)
+                    .get()
+                    .then((value)=> {
+                        info=value.data()
+                        getuser(info,element)
+                    } )
+                })
  
-        }
+            }
         
         function getuser(user,req){
-             phone =user.phone_number
              dest = req.destination
              exit = req.exit
              time = req.time
              date =req.date
              name = user.first_name +" "+user.last_name
              id = user.id
-             console.log(currentUser.phone_number)
+             phone_ask = user.phone_number;
             additems()
-        }
+          }
 
-         function RideApproval(){
-                
-             Confirmation.doc().set({
-                name_ask:name,
-                name_driver:currentUser.first_name +" "+currentUser.last_name,
-                id_driver:currentUser.uid,
-                id_ask:id,
-                phone_ask:phone,
-                //phone_driver:currentUser.phone_number,
-                 dest:dest,
-                 ext:exit,
-                 time:time,
-                 data:date
-
-              })
-              console.log("sucsses")
-
-        }
-
-    }
 
 
 
