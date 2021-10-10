@@ -1,5 +1,4 @@
 import {React} from 'react';
-import '../style/Contact.css';
 import Nav from "../component/Nav";
 import '../style/CardProfile.css';
 
