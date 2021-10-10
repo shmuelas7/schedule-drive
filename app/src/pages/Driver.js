@@ -27,24 +27,11 @@ function Driver(){
     var name ="";
     var id ="";
     var phone_ask="";
-    var phone_driver="";
-    var name_driver ="";
 
 
-    useEffect(() => {
-         firebase.firestore().collection('users').doc(currentUser.uid).get()
-        .then((p)=>{
-            curntus(p.data())
 
-        })
-
-        getdata()
-      });
-      function curntus(user){
-        console.log("user"+user.age)
-        phone_driver=user.phone_number
-        name_driver=user.first_name
-      }
+    useEffect(getdata)
+    
     
 
     async function getdata () {
@@ -112,8 +99,9 @@ function Driver(){
                 id_driver:currentUser.uid
               })
               Swal.fire(
-                'תודה שהתנדבתה להסיע את ',
-                'You clicked the button!',
+                '  תודה שהתנדבתה להסיע את ' +name,
+                ' מספר טלפון ליצירת קשר '+ phone_ask,
+                
                 'success'
               )
               console.log("sucsses")
