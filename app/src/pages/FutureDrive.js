@@ -11,8 +11,8 @@ import { useAuth } from "../contexts/AuthContext"
 function FutureDrive(){
 
     const { currentUser } = useAuth();
-    var ask="";
-    var driver="";
+    var ask=[];
+    var driver=[];
 
     useEffect(getdata)
 
@@ -124,12 +124,12 @@ function FutureDrive(){
             tbody.appendChild(tr)
         }
         function getuser1(x){
-            ask=x;
+            ask.push(x);
             console.log(ask.first_name)
         }
 
         function getuser2(x){
-            driver=x;
+            driver.push(x);
             console.log(driver.first_name)
         }
         
