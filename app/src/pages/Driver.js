@@ -126,6 +126,7 @@ function Driver(){
             }
         
         function getuser(user,req){
+            console.log("ff"+user.first_name)
              dest = req.destination
              exit = req.exit
              time = req.time
