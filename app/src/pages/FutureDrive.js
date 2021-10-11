@@ -29,8 +29,10 @@ function FutureDrive(){
                 console.log(doc.data())
 
             });
-           setTimeout(addToTable(drive),500000)
-        })
+            
+                addToTable(drive)
+            })
+        
     }
 
         async function addToTable(drive){
@@ -53,7 +55,8 @@ function FutureDrive(){
                 y = driv.data();
                 getuser2(y)
             })
-            add(element)
+            setTimeout(() => {
+                add(element)}, 2000)
             })
         }
         function add(data){
@@ -67,7 +70,8 @@ function FutureDrive(){
             const td5= document.createElement('td');
             const td6= document.createElement('td');
             const td7= document.createElement('td');
-
+            const td8= document.createElement('td');
+            const td9= document.createElement('td');
             const btn = document.createElement('input');
                 
                 btn.type = "button";
@@ -77,15 +81,22 @@ function FutureDrive(){
                 
             td2.innerHTML=driver.first_name;
             td2.className="text-right"
-            td3.innerHTML=data.dest;
+            td3.innerHTML=driver.phone_number;
             td3.className="text-right"
-            td4.innerHTML=data.exit;
+            td4.innerHTML=ask.phone_number;
             td4.className="text-right"
-            td5.innerHTML=data.time;
+            td5.innerHTML=data.destination;
             td5.className="text-right"
-            td6.innerHTML=data.date;
+            td6.innerHTML=data.exit;
             td6.className="text-right"
-           // td7.innerHTML=name;
+            td7.innerHTML=data.time;
+            td7.className="text-right"
+
+            td8.innerHTML=data.date;
+            td8.className="text-right"
+
+            td9.innerHTML=ask.first_name;
+            td9.className="text-right"
             
             td1.appendChild(btn);
             tr.appendChild(td1);
@@ -95,6 +106,8 @@ function FutureDrive(){
             tr.appendChild(td5);
             tr.appendChild(td6);
             tr.appendChild(td7);
+            tr.appendChild(td8);
+            tr.appendChild(td9);
 
             
               
