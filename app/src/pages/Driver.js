@@ -5,20 +5,11 @@ import Search from '../component/Search';
 import { useEffect } from 'react';
 import firebase from 'firebase';
 import { useAuth } from "../contexts/AuthContext"
-import { Button } from 'react-bootstrap';
 import {dbReq} from '../firebase'
 import Swal from 'sweetalert2';
 
-
-
-
-
-  
-
 function Driver(){
 
-
-    
     const { currentUser } = useAuth();
     var dest ="";
     var exit = "";
@@ -28,15 +19,10 @@ function Driver(){
     var id ="";
     var phone_ask="";
 
-
-
     useEffect(getdata)
     
-    
-
     async function getdata () {
-        
-        
+            
         const data = firebase.firestore().collection('request')
 
         await data.get().then((q) => {
@@ -87,9 +73,6 @@ function Driver(){
             tr.appendChild(td5);
             tr.appendChild(td6);
             tr.appendChild(td7);
-
-            
-              
               
             tbody.appendChild(tr)
         }
@@ -99,7 +82,7 @@ function Driver(){
                 id_driver:currentUser.uid
               })
               Swal.fire({
-                title:'  תודה שהתנדבתה להסיע את '+name,
+                title:'  תודה שהתנדבת להסיע את '+name,
                 text:   ' מספר טלפון ליצירת קשר '+ phone_ask,
                 icon:'success',
                 confirmButtonText: 'ליצירת קשר',
@@ -120,13 +103,16 @@ function Driver(){
                     .then((value)=> {
                         info=value.data()
                         getuser(info,element)
+                        
                     } )
                 })
  
             }
         
         function getuser(user,req){
+
             console.log("ff"+user.first_name)
+
              dest = req.destination
              exit = req.exit
              time = req.time
@@ -136,12 +122,6 @@ function Driver(){
              phone_ask = user.phone_number;
             additems()
           }
-
-
-
-
-          
-
 
     return(
         <div className="container-fluid">

@@ -7,8 +7,7 @@ function Home(){
 
     return(
 
-              
-        <div className="home-backround text-center" style = {{height:"93.5vh"}}>
+        <div className="home-backround text-center" style = {{height:"93.0vh"}}>
             <img src={logo} alt="logo" className="logo"/>
 
             <div className="row justify-content-center mt-5">
@@ -22,11 +21,7 @@ function Home(){
                     </Link>
 
                     <Link to="Driver">
-                
-
                         <button class="btn2">הצעת עזרה</button>
-
-
                     </Link>
 
                     </div>          

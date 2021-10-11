@@ -125,7 +125,7 @@ import { Link } from 'react-router-dom';
       })
       .then(() => {
           console.log("Document successfully written!");
-          swal.fire("נרשמתה בהצלחה", "success")
+          swal.fire("נרשמת בהצלחה", "success")
       })
       .catch((error) => {
           console.error("Error writing document: ", error);
