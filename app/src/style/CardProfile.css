@@ -124,7 +124,7 @@ body {
   font-size: 18px;
 }
 
-button {
+.button-card {
   border: none;
   align-self: center;
   outline: 0;
