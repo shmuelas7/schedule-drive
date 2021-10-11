@@ -13,14 +13,11 @@ function Home(){
 
             <div className="row justify-content-center mt-5">
 
-                <div className='is-grouped' style = {{margin:"85px"}} >
+                <div className='is-grouped' style = {{margin:"75px"}} >
 
                     <Link to="DriveReq" >
 
-                        
-
                         <button class="btn1 mr-5">בקשת נסיעה</button>
-
 
                     </Link>
 
