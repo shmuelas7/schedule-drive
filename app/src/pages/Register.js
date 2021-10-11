@@ -10,6 +10,7 @@ import "firebase/firestore";
 import logo from '../style/black logo.png'
 import {db} from '../firebase'
 import swal from 'sweetalert2'
+import { Link } from 'react-router-dom';
 
 
  function Register(){
@@ -189,6 +190,13 @@ import swal from 'sweetalert2'
                             <label className="custom-file-label " dir="rtl">בחר תמונה</label>
                         </div>
                         
+                        <div className="form-check form-check-inline">
+                            <Link to="Terms" >
+                                <input className="form-check-input" type="checkbox"  value="option2"/>
+                                  <label for="javascript">אשר תנאים</label>
+                            </Link>
+                        </div>
+
 
                         </div>
                         <Button type="submit" disabled={loading}  variant="success"  block  className="log-btn mx-5 mb-2 btn-lg">שלח</Button>         
