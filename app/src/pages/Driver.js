@@ -99,7 +99,7 @@ function Driver(){
                 id_driver:currentUser.uid
               })
               Swal.fire({
-                title:'  תודה שהתנדבתה להסיע את '+name,
+                title:'  תודה שהתנדבת להסיע את '+name,
                 text:   ' מספר טלפון ליצירת קשר '+ phone_ask,
                 icon:'success',
                 confirmButtonText: 'ליצירת קשר',
@@ -120,6 +120,7 @@ function Driver(){
                     .then((value)=> {
                         info=value.data()
                         getuser(info,element)
+                        
                     } )
                 })
  
@@ -135,12 +136,6 @@ function Driver(){
              phone_ask = user.phone_number;
             additems()
           }
-
-
-
-
-          
-
 
     return(
         <div className="container-fluid">
