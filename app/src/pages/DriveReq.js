@@ -22,7 +22,7 @@ function handleSubmit(e) {
         exit:exit,
         destination:destination,
         time:time,
-        id:currentUser.uid
+        id_ask:currentUser.uid
      })
      .then(() => {
          console.log("Document successfully written!");
