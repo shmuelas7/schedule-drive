@@ -38,7 +38,7 @@ function CardProfile(){
                             <div className="text-right" dir="rtl">                          
                         <textarea className="form-control" rows="1"></textarea>
                         </div>
-                        <button>הוסף ביקורת</button>
+                        <button className="button-card">הוסף ביקורת</button>
                 </div>
             </div>
 
