@@ -98,12 +98,14 @@ function Driver(){
              dbReq.doc(id).update({
                 id_driver:currentUser.uid
               })
-              Swal.fire(
-                '  תודה שהתנדבתה להסיע את ' +name,
-                ' מספר טלפון ליצירת קשר '+ phone_ask,
-                
-                'success'
-              )
+              Swal.fire({
+                title:'  תודה שהתנדבתה להסיע את '+name,
+                text:   ' מספר טלפון ליצירת קשר '+ phone_ask,
+                icon:'success',
+                confirmButtonText: 'ליצירת קשר',
+                showDenyButton: true,
+                denyButtonText: 'בטל נסיעה',
+              })
               console.log("sucsses")
             }
 
