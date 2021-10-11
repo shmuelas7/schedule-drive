@@ -42,7 +42,7 @@ function handleSubmit(e) {
                     <form className=" border border-dark rounded mt-2 mb-2 bg-light"  onSubmit={handleSubmit} >
                         <h1 className="text-center">בקשת נסיעה</h1>
                         <h6 className="text-right">הכנס תאריך</h6>
-                        <input type="date" placeholder="תאריך יציאה" className="form-control input-d" onChange={(e)=>setdate(e.target.value)} required></input>
+                        <input type="date" placeholder="תאריך יציאה" className="form-control input-d" data-date-format="mm/dd/yyyy" onChange={(e)=>setdate(e.target.value)} required></input>
                         <h6 className="text-right">מוצא</h6>
                         <input placeholder="מוצא" className="form-control text-right" onChange={(e)=>setexit(e.target.value)} required ></input>
                         <h6 className="text-right">יעד</h6>
