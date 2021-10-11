@@ -21,11 +21,20 @@ function FutureDrive(){
         const data =   firebase.firestore().collection('request')
         data.where('id_driver','!=', null )
         .where('id_driver', '==', currentUser.uid )
-        //.where('date','>',Date.now())
         .get().then((q) => {
             var drive = [];
             q.forEach(doc=>{
-                drive.push(doc.data());
+                let x= doc.data()
+                var today = new Date();
+                var dd = String(today.getDate()).padStart(2, '0');
+                var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+                var yyyy = today.getFullYear();
+                today = mm + '/' + dd + '/' + yyyy;
+                if(x.date > today)
+                {
+                    console.log(today)
+                    drive.push(doc.data());
+                }
                 console.log(doc.data())
 
             });
