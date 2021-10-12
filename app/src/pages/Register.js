@@ -146,7 +146,7 @@ import { Link } from 'react-router-dom';
         <div className=" bg-primary">
 
             <div className="row" dir="rtl">
-                <div className="col-md-3 col-sm-12 col-xs-12 "></div>
+                <div className="col-md-3 col-sm-12 col-xs-12"></div>
                 
                 
                 <div className="col-md-6 col-sm-12 col-xs-12" >
@@ -156,56 +156,77 @@ import { Link } from 'react-router-dom';
                     <h1 className="text-center">טופס הרשמה</h1>
                     
                     <div className="row">
-                        <div className="from-gtoup col-md-6 col-sm-12">
-
+                        <div className="col-lg-6 col-md-6 col-sm-12 ">
                              <h5 className=" text-right">שם פרטי</h5>
                             <input placeholder="שם פרטי*" className="form-control text-right" name="firstName" type="text" onChange={(e)=>setfirstname(e.target.value)} required></input>
-
-                            <h5 className=" text-right">מייל</h5>
-                            <input placeholder="מייל*" className="form-control text-right" required  ref={emailRef}></input>
-
-                            <h5 className=" text-right">גיל</h5>
-                            <input type="number" placeholder="גיל" className="form-control text-right" required  name="age" onChange={(e)=>setage(e.target.value)}></input>
-
-                            <h5 className=" text-right">אימות סיסמה</h5>
-                            <input type="password" placeholder="אישור סיסמה*" className="form-control text-right" required name="password" ref={passwordConfirmRef} autoComplete="off"></input> 
-                    
                         </div>
-                        <div className="from-group col-md-6 col-sm-12">
-
+                        <div className="col-lg-6 col-md-6 col-sm-12 ">
                         <h5 className=" text-right" >שם משפחה</h5>
                             <input placeholder="שם משפחה*" className="form-control text-right" name="lastName" required onChange={(e)=>setlastname(e.target.value)} ></input>
+                        </div>
+                    </div>
 
+                    <div className="row">
+                        <div className="col-lg-6 col-md-6 col-sm-12 ">
+                            <h5 className=" text-right">גיל</h5>
+                            <input type="number" placeholder="גיל" className="form-control text-right" required  name="age" onChange={(e)=>setage(e.target.value)}></input>
+                        </div>
+                        <div className="col-lg-6 col-md-6 col-sm-12 ">
                             <h5  className=" text-right">טלפון</h5>
                             <input placeholder="מספר נייד*" className="form-control text-right" required onChange={(e)=>setphone(e.target.value)}></input>
-                            
+                        </div>
+                    </div>
+                    
+                    <div className="row">
+                        <div className="col-lg-6 col-md-6 col-sm-12 ">
                             <h5 className=" text-right" >אזור</h5>
                             <input placeholder="בחר אזור*" className="form-control text-right" id="area" required onChange={(e)=>setarea(e.target.value)} ></input>
+                        </div>
 
+                        <div className="col-lg-6 col-md-6 col-sm-12 ">
+                            <h5 className=" text-right">מייל</h5>
+                            <input placeholder="מייל*" className="form-control text-right" required  ref={emailRef}></input>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-lg-6 col-md-6 col-sm-12 ">
                             <h5 className=" text-right">  סיסמה</h5>
                             <input type="password" placeholder="סיסמה*" className="form-control text-right" required  name="password" ref={passwordRef} autoComplete="off"></input>
-                            <h5 className=" text-right">הוספת תמונת פרופיל</h5>
-                        <div className="custom-file">
-                             <input type="file" className="custom-file-input" id="customFile"/>
-                            <label className="custom-file-label " dir="rtl">בחר תמונה</label>
                         </div>
-                        
-                        <div className="form-check form-check-inline">
+                        <div className="col-lg-6 col-md-6 col-sm-12 ">
+                            <h5 className=" text-right">אימות סיסמה</h5>
+                            <input type="password" placeholder="אישור סיסמה*" className="form-control text-right" required name="password" ref={passwordConfirmRef} autoComplete="off"></input>
+                        </div>
+                    </div>
+
+                    <div className="row">
+                    <div className="col-lg-3 col-md-3 col-sm-12 "></div>
+                        <div className="col-lg-6 col-md-6 col-sm-12 ">
+
+                            <h5 className=" text-right">הוספת תמונת פרופיל</h5>
+                            <div className="custom-file">
+                                <input type="file" className="custom-file-input" id="customFile"/>
+                                <label className="custom-file-label " dir="rtl">בחר תמונה</label>
+                            </div>
+                        </div>
+                    </div> 
+                    <div className="row">
+                        <div className="form-check form-check-inline col-lg-2">
+                            
+                            <input className="form-check-input ml-2" type="checkbox"  value="option2"/>
                             <Link to="Terms" >
-                                <input className="form-check-input" type="checkbox"  value="option2"/>
-                                  <label for="javascript">אשר תנאים</label>
+                                <label>אשר תנאים</label>
                             </Link>
                         </div>
-
-
-                        </div>
-                        <Button type="submit" disabled={loading}  variant="success"  block  className="log-btn mx-5 mb-2 btn-lg">שלח</Button>         
-                        
                     </div>
-                    </form>
-                </div>
-                <div className="col-3">
-                </div>               
+
+                    <div className="row">
+                        
+                        <Button type="submit" disabled={loading}  variant="success"  block  className="log-btn mx-5 mb-2 btn-lg">שלח</Button>         
+                    </div>
+                    
+                </form> 
+                </div>              
             </div>           
         </div>
         
