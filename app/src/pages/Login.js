@@ -32,7 +32,10 @@ function Login(){
     setLoading(false)
   }
     
+    function page(){
+        Link("/Register")
     
+    }
 
     return(
     <div className="container-fluid bg-primary  ">
@@ -54,9 +57,9 @@ function Login(){
                             <input type="password" placeholder="הכנס סיסמה" className="form-control text-right"  ref={passwordRef}></input>
                     </div>
                         <Button variant="dark" type="submit" block  disabled={loading} className="log-btn">התחברות</Button>
-                        <Link to="/Register">
-                            <Button variant="dark"  block  className="log-btn">הרשמה</Button>
-                        </Link>
+                        
+                        <Button variant="dark"  block  className="log-btn" onClick={()=>(history.push("/Register"))}>הרשמה</Button>
+                        
                     </form>
                 </div>
             </div>
