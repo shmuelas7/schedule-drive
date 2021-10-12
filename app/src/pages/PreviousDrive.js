@@ -9,8 +9,6 @@ import { useAuth } from "../contexts/AuthContext"
 
 function PreviousDrive(){
     const { currentUser } = useAuth();
-    var ask="";
-    var driver="";
 
     useEffect(getdata)
 
@@ -27,6 +25,9 @@ function PreviousDrive(){
                 var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
                 var yyyy = today.getFullYear();
                 today = mm + '/' + dd + '/' + yyyy;
+                console.log(x)
+                console.log(today)
+                console.log(x.date)
                 if(x.date < today)
                 {
                     console.log(today)
@@ -53,19 +54,19 @@ function PreviousDrive(){
            firebase.firestore().collection('users').doc(element.id_ask)
             .get().then((as)=>{
                     x =as.data()
-                    getuser1(x)
+                    
         })
         console.log(element.id_driver)
              firebase.firestore().collection('users').doc(element.id_driver)
             .get().then((driv)=>{
                 y = driv.data();
-                getuser2(y)
+                
             })
             setTimeout(() => {
-                add(element)}, 2000)
+                add(element,x,y)}, 2000)
             })
         }
-        function add(data){
+        function add(data,ask,driver){
             console.log("check "+ask.age)
             var tbody = document.getElementById('tbody1');
             const tr= document.createElement('tr');
@@ -119,15 +120,7 @@ function PreviousDrive(){
               
             tbody.appendChild(tr)
         }
-        function getuser1(x){
-            ask=x;
-            console.log(ask.first_name)
-        }
 
-        function getuser2(x){
-            driver=x;
-            console.log(driver.first_name)
-        }
     return(
         <div className="container-fluid " >
             <div className=" bg-warning">
