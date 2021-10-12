@@ -2,7 +2,6 @@ import {React} from 'react';
 import Nav from "../component/Nav";
 import '../style/CardProfile.css';
 
-
 function CardProfile(){
     return(
         <div className="container-fluid">
