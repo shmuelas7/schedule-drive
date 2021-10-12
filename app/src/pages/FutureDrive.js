@@ -11,8 +11,9 @@ import { useAuth } from "../contexts/AuthContext"
 function FutureDrive(){
 
     const { currentUser } = useAuth();
-    var ask=[];
-    var driver=[];
+    // var ask="";
+    // var driver="";
+    // var time = 0;
 
     useEffect(getdata)
 
@@ -56,19 +57,23 @@ function FutureDrive(){
            firebase.firestore().collection('users').doc(element.id_ask)
             .get().then((as)=>{
                     x =as.data()
-                    getuser1(x)
+                       // getuser1(x)
+                        
+                    
         })
         console.log(element.id_driver)
              firebase.firestore().collection('users').doc(element.id_driver)
             .get().then((driv)=>{
                 y = driv.data();
-                getuser2(y)
+              //  getuser2(y)
             })
             setTimeout(() => {
-                add(element)}, 2000)
+
+                add(element,x,y)},2500)
             })
         }
-        function add(data){
+        function add(data,ask,driver){
+
             console.log("check "+ask.age)
             var tbody = document.getElementById('tbody1');
             const tr= document.createElement('tr');
@@ -117,21 +122,18 @@ function FutureDrive(){
             tr.appendChild(td7);
             tr.appendChild(td8);
             tr.appendChild(td9);
-
-            
-              
-              
             tbody.appendChild(tr)
         }
-        function getuser1(x){
-            ask.push(x);
-            console.log(ask.first_name)
-        }
+        // function getuser1(x){
+            
+        //     ask=x;
+        //     console.log(ask.first_name)
+        // }
 
-        function getuser2(x){
-            driver.push(x);
-            console.log(driver.first_name)
-        }
+        // function getuser2(x){
+        //     driver=x;
+        //     console.log(driver.first_name)
+        // }
         
               
 
