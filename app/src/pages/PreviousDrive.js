@@ -112,12 +112,7 @@ function PreviousDrive(){
             tr.appendChild(td4);
             tr.appendChild(td5);
             tr.appendChild(td6);
-            tr.appendChild(td7);
-
-
-            
-              
-              
+            tr.appendChild(td7);             
             tbody.appendChild(tr)
         }
 
