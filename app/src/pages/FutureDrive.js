@@ -18,7 +18,7 @@ function FutureDrive(){
     useEffect(getdata)
 
     async function getdata () {
-        var tbody = document.getElementById('tbody1');
+         document.getElementById('tbody1');
         const data =   firebase.firestore().collection('request')
         data.where('id_driver','!=', null )
         .where('id_driver', '==', currentUser.uid )
