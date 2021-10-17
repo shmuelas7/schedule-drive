@@ -14,7 +14,7 @@ function CardProfile(){
             <div class="container mt-3">
                 <div class="card">
                     <div class="top-container"> 
-                        <img src="https://i.imgur.com/G1pXs7D.jpg" class="img-fluid profile-image" width="100">
+                        <img src="https://i.imgur.com/G1pXs7D.jpg" class="img-fluid profile-image" width="100" alt="profile">
                         </img>
                         <div class="ml-3">
                             <h2 class="name">יוסי כהן</h2>
