@@ -5,6 +5,8 @@ import Nav from "../component/Nav"
 import { useAuth } from "../contexts/AuthContext"
 import { useHistory } from "react-router-dom"
 import firebase from 'firebase'
+import app from '../firebase';
+import swal from 'sweetalert2'
 
 function Profile(){
 
@@ -16,10 +18,15 @@ function Profile(){
     const history = useHistory()
     const [area,setarea]=useState("")
     const [phone,setphone]=useState("")
+    const [imgUrl,setImgUrl]=useState("")
 
     const db = firebase.firestore().collection("user")
+    const regexphone = /^0\d([\d]{0,1})([-]{0,1})\d{7}$/;
 
-    function handleSubmit(e) {
+   
+
+
+    async function handleSubmit(e) {
         e.preventDefault()
         console.log(currentUser.uid)
         if(passwordRef.current.value!=="")
@@ -46,15 +53,46 @@ function Profile(){
             setLoading(false)
           })
         }
+   
 
-          
-          console.log(currentUser.uid)
-    db.doc(currentUser.uid).update({
-       phone:phone,
-        area:area
+        if(!regexphone.test(phone))
+        {
+            swal.fire({
+                icon: 'error',
+                title: 'שגיאה',
+                text: 'טלפון לא תקין',
+                confirmButtonText: 'בסדר',
+              })
+            console.log("phone false");
+            return false;
+        }
+
+      console.log(currentUser.uid)
+      db.doc(currentUser.uid).update({
+        phone:phone,
+        area:area,
+        imgUrl:imgUrl
+    })
+
+    swal.fire({
+      icon: 'sucsses',
+      title: 'אישור',
+      text: 'העידכון בוצעה בהצלחה',
+      confirmButtonText: 'בסדר',
     })
     }
 
+    async function addImg(e){
+      const file = e.target.files[0]
+      const storagRef =app.storage().ref()
+      const fileRef = storagRef.child(file.name)
+     await fileRef.put(file).then(()=>{
+          console.log("uploaded img")
+      })
+     const url= await fileRef.getDownloadURL()
+       setImgUrl(url)
+      console.log("ac" +url)
+  }
     return(
        
         <div className="container-fluid">
@@ -67,17 +105,17 @@ function Profile(){
 
                     <h1 className="text-center">עדכון פרטיים אישיים </h1>
                     <h6  className=" text-right"> עדכון מספר טלפון</h6>
-                    <input autocomplete="off" placeholder="מספר נייד" className="form-control text-right"onChange={(e)=>setphone(e.target.value)}   ></input>
+                    <input autoComplete="off" placeholder="מספר נייד" className="form-control text-right" onChange={(e)=>setphone(e.target.value)}   ></input>
                     <h6 className=" text-right">  שינוי סיסמה</h6>
-                    <input type="password" placeholder="הכנס סיסמה חדשה" className="form-control text-right" ref={passwordRef} autocomplete="off" ></input>
+                    <input type="password" placeholder="הכנס סיסמה חדשה" className="form-control text-right" ref={passwordRef} autoComplete ="off" ></input>
                     <h6 className="text-right">אימות סיסמה</h6>
-                    <input type="password" placeholder="אימות סיסמה" className="form-control text-right" ref={passwordConfirmRef} ></input>
+                    <input type="password" placeholder="אימות סיסמה" className="form-control text-right" ref={passwordConfirmRef} autoComplete="off" ></input>
                     <h6 className="text-right">שינוי אזור</h6>
                     
                     <input placeholder="אזור" className="form-control text-right" onChange={(e)=>setarea(e.target.value)} ></input>
                     <h6 className=" text-right">שינוי תמונת פרופיל</h6>
                     <div className="custom-file">
-                        <input type="file" className="custom-file-input" id="customFile"/>
+                        <input type="file" className="custom-file-input" id="customFile" onChange={addImg}/>
                         <label className="custom-file-label ">בחר תמונה</label>
                     </div>
 
