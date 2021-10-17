@@ -6,8 +6,6 @@ import { useEffect } from 'react';
 import firebase from 'firebase';
 import { useAuth } from "../contexts/AuthContext"
 
-  
-
 function FutureDrive(){
 
     const { currentUser } = useAuth();
