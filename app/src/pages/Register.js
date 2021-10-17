@@ -11,6 +11,7 @@ import logo from '../style/black logo.png'
 import {db} from '../firebase'
 import swal from 'sweetalert2'
 import { Link } from 'react-router-dom';
+import app from '../firebase';
 
 
  function Register(){
@@ -20,13 +21,15 @@ import { Link } from 'react-router-dom';
         const passwordConfirmRef = useRef();
         const { signup } = useAuth();
         const [error, setError] = useState("");
-        const [loading, setLoading] = useState(false);
+        const [loading] = useState(false);
         const history = useHistory();
         const [firstname,setfirstname]=useState("");
         const [lasttname,setlastname]=useState("");
         const [phone,setphone]=useState("");
         const [area,setarea]=useState("");
         const [age,setage]=useState(0);
+        const [imgUrl,setImgUrl]=useState(null)
+
         var x="";
 
         const regexEmail = /\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;
@@ -100,47 +103,68 @@ import { Link } from 'react-router-dom';
 
         async function log(){
           try {
-            setLoading(true);
+            //setLoading(true);
            await signup(emailRef.current.value, passwordRef.current.value).then(cred=>{ x=cred.user.uid;
                             console.log("login id " + x)});
     
-            history.push("/");
           } catch {
             setError("לא הצליח ליצור חשבון");
           }
-          setLoading(false);
+         // setLoading(false);
     
        }
 
 
-    function adddata(){
+     async function adddata(){
+ 
         console.log(x);
-     db.doc(x).set({
-        first_name:firstname,
+        console.log("set"+imgUrl)
+         await db.doc(x).set({
+         first_name:firstname,
         last_name:lasttname,
         phone_number:phone,
         area:area,
         age:age,
-        id:x
+        id:x,
+        imgUrl:imgUrl
       })
       .then(() => {
           console.log("Document successfully written!");
           swal.fire("נרשמת בהצלחה", "success")
+          
       })
       .catch((error) => {
           console.error("Error writing document: ", error);
       });
     
     console.log(firebase.auth().currentUser.uid);
+
+    }
+
+     async function addImg(e){
+        const file = e.target.files[0]
+        const storagRef =app.storage().ref()
+        const fileRef = storagRef.child(file.name)
+       await fileRef.put(file).then(()=>{
+            console.log("uploaded img")
+        })
+       const url= await fileRef.getDownloadURL()
+        setImgUrl(url)
+        console.log("ac" +url)
     }
       
-        function handleSubmit(e) {
+       async function handleSubmit(e) {
           e.preventDefault();
-          if(validation())
-            log().then(()=>setTimeout(adddata(),3000))
+          if(validation()){
+            //log().then(()=>setTimeout(adddata(),3000))
+           await log()
+           await adddata()
+            history.push("/");
+          }
           
           
         }
+
 
     return(
         <div className=" bg-primary">
@@ -205,7 +229,7 @@ import { Link } from 'react-router-dom';
 
                             <h5 className=" text-right">הוספת תמונת פרופיל</h5>
                             <div className="custom-file">
-                                <input type="file" className="custom-file-input" id="customFile"/>
+                                <input type="file" className="custom-file-input" id="file" onChange={addImg}/>
                                 <label className="custom-file-label " dir="rtl">בחר תמונה</label>
                             </div>
                         </div>
@@ -213,7 +237,7 @@ import { Link } from 'react-router-dom';
                     <div className="row">
                         <div className="form-check form-check-inline col-lg-2">
                             
-                            <input className="form-check-input ml-2" type="checkbox"  value="option2"/>
+                            <input className="form-check-input ml-2" type="checkbox"  required/>
                             <Link to="Terms" >
                                 <label>אשר תנאים</label>
                             </Link>
