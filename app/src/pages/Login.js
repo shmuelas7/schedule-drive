@@ -3,9 +3,11 @@ import { useState,useRef } from 'react';
 import { Alert } from "react-bootstrap"
 import Button  from 'react-bootstrap/Button';
 import '../style/Login.css';
-import { Link,useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useAuth } from "../contexts/AuthContext"
 import logo from '../style/black logo.png'
+
+
 
 function Login(){
 
@@ -32,10 +34,6 @@ function Login(){
     setLoading(false)
   }
     
-    function page(){
-        Link("/Register")
-    
-    }
 
     return(
     <div className="container-fluid bg-primary  ">
@@ -54,7 +52,7 @@ function Login(){
                     </div>
                     <div className="form-group">
                         <h5 className=" text-right">סיסמה</h5>
-                            <input type="password" placeholder="הכנס סיסמה" className="form-control text-right"  ref={passwordRef}></input>
+                            <input type="password" placeholder="הכנס סיסמה" className="form-control text-right" autoComplete="on"  ref={passwordRef}></input>
                     </div>
                         <Button variant="dark" type="submit" block  disabled={loading} className="log-btn">התחברות</Button>
                         
