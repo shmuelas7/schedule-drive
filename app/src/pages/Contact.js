@@ -3,6 +3,9 @@ import '../style/Contact.css';
 import logo from '../style/black logo.png'
 
 function Contact(){
+
+
+	
     return(
      <div class="contact1 ">
 		<div class="container-contact1">
