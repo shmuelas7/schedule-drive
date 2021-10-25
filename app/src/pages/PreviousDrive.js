@@ -5,26 +5,32 @@ import Search from '../component/Search';
 import { useEffect } from 'react';
 import firebase from 'firebase';
 import { useAuth } from "../contexts/AuthContext"
+import { useHistory } from 'react-router-dom';
+
   
 
 function PreviousDrive(){
+
+
     const { currentUser } = useAuth();
+    const history = useHistory()
+
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+    today = yyyy + '-' + mm + '-' + dd;
 
     useEffect(getdata)
 
-    async function getdata () {
-        const data =   firebase.firestore().collection('request')
-        data.where('id_driver','!=', null )
-        .where('id_driver', '==', currentUser.uid )
+    async function getdata () {//מקבל את המידע של הבקשת נסיעה
+        const data = firebase.firestore().collection('request')
+        await data.where('id_driver', '==', currentUser.uid )
         .get().then((q) => {
             var drive = [];
             q.forEach(doc=>{
                 let x= doc.data()
-                var today = new Date();
-                var dd = String(today.getDate()).padStart(2, '0');
-                var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-                var yyyy = today.getFullYear();
-                today = mm + '/' + dd + '/' + yyyy;
+
                 console.log(x)
                 console.log(today)
                 console.log(x.date)
@@ -82,11 +88,10 @@ function PreviousDrive(){
                 btn.type = "button";
                 btn.className = "btn btn-primary  text-center";
                 btn.value = "דרג";
-                //btn.onclick = RideApproval;
+                btn.onclick = (e) => {
+                    rating(ask);
+                  };
                 
-
-
-
             td2.innerHTML=data.destination;
             td2.className="text-right"
 
@@ -116,13 +121,21 @@ function PreviousDrive(){
             tbody.appendChild(tr)
         }
 
+        function rating(req){
+            if(currentUser.uid === req.id_driver )
+            history.push('/CardProfile', { id: req.id_ask })
+
+            else
+            history.push('/CardProfile', { id: req.id_driver })
+        }
+
     return(
         <div className="container-fluid " >
             <div className=" bg-warning">
             <Nav/>
             <h1 className="text-center">היסטורית נסיעות</h1>
             <Search/>
-            <Table striped bordered hover variant="dark">
+            <Table striped bordered hover variant="dark" responsive>
                 <thead className="text-right">
                     <tr>
                     <th>דירוג נהג / נוסע</th>
