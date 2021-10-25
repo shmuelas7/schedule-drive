@@ -40,7 +40,7 @@ import app from '../firebase';
 
         
 
-        function validation(){
+        function validation(){// בודק שכל הנתונים שהוכנסו נכונים
             if(!regexEmail.test(emailRef.current.value))
             {
                 swal.fire({
@@ -101,7 +101,7 @@ import app from '../firebase';
             return true;
         }
 
-        async function log(){
+        async function log(){//יוצר משתמש חדש
           try {
             //setLoading(true);
            await signup(emailRef.current.value, passwordRef.current.value).then(cred=>{ x=cred.user.uid;
@@ -115,7 +115,7 @@ import app from '../firebase';
        }
 
 
-     async function adddata(){
+     async function adddata(){//מכניס את המידע של המשתמש לפיירבייס
  
         console.log(x);
         console.log("set"+imgUrl)
@@ -141,7 +141,7 @@ import app from '../firebase';
 
     }
 
-     async function addImg(e){
+     async function addImg(e){// קולט את התמונה מהמשתמש
         const file = e.target.files[0]
         const storagRef =app.storage().ref()
         const fileRef = storagRef.child(file.name)
