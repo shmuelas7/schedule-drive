@@ -11,32 +11,49 @@ import Swal from 'sweetalert2';
 function Driver(){
 
     const { currentUser } = useAuth();
-    var dest ="";
-    var exit = "";
-    var time ="";
-    var date ="";
-    var name ="";
-    var id ="";
-    var phone_ask="";
+
+
+    var today = new Date();
+    const dd = String(today.getDate()).padStart(2, '0');
+    const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    const yyyy = today.getFullYear();
+    today = yyyy + '-' + mm + '-' + dd;
 
     useEffect(getdata)
     
-    async function getdata () {
+    async function getdata () {//מביא מידע של כל הבקשות נסיעה
             
         const data = firebase.firestore().collection('request')
 
         await data.get().then((q) => {
             var req = [];
             q.forEach(doc=>{
-                req.push(doc.data());
+                let x= doc.data()
+                if(x.have_driver===false && x.date >= today)//בודק שהנסיעה בתוקף וגם שאין עדיין נהג שאישר את הנסיעה
+                    req.push(doc.data());
 
             });
-            addAllItems(req)
+            getDataUserAsk(req)//פונקציה שמביא את הפרטים של מי שביקש את הנסיעה
             
           })
         }
+       async function getDataUserAsk(reqData){//מקבל מערך שך כל הבקשות נסיעה
+                reqData.forEach(element =>{
+                    var userAsk =[] 
+                    var x=""
+                    firebase.firestore().collection('users').doc( element.id_ask)//מוצי את המידע של מבקש הנסיעה
+                    .get()
+                    .then((value)=> {
+                        userAsk.push(value.data())//שומר את המידע של מבקש הנסיעה
+                        x=value.data()
+                       additems(x,element)//שולח את המידע של הקשת נסיעה וגם של מי שביקש את הנסיעה
+                    } )
 
-          function additems(){
+                })
+            }
+            
+
+          function additems(userAsk,req){// מכניס נתוניתם לטבלה
             var tbody = document.getElementById('tbody1');
             const tr= document.createElement('tr');
             const td1= document.createElement('td');
@@ -45,24 +62,24 @@ function Driver(){
             const td5= document.createElement('td');
             const td6= document.createElement('td');
             const td7= document.createElement('td');
-
             const btn = document.createElement('input');
                 
                 btn.type = "button";
                 btn.className = "btn btn-primary text-right";
                 btn.value = "אשר נסיעה";
-                btn.onclick = RideApproval;
+                btn.onclick = (e) => {
+                    RideApproval(userAsk,req );
+                  };
                 
-            
-            td3.innerHTML=dest;
+            td3.innerHTML=req.destination;
             td3.className="text-right"
-            td4.innerHTML=exit;
+            td4.innerHTML=req.exit;
             td4.className="text-right"
-            td5.innerHTML=time;
+            td5.innerHTML=req.time;
             td5.className="text-right"
-            td6.innerHTML=date;
+            td6.innerHTML=req.date;
             td6.className="text-right"
-            td7.innerHTML=name;
+            td7.innerHTML=userAsk.first_name +" "+userAsk.last_name;
             td7.className="text-right"
             
             td1.appendChild(btn);
@@ -76,52 +93,47 @@ function Driver(){
               
             tbody.appendChild(tr)
         }
-            function RideApproval(){
-                
-             dbReq.doc(id).update({
-                id_driver:currentUser.uid
+
+
+
+            function RideApproval(user,req){
+                if(currentUser.uid === req.id_ask)
+                    console.log("eror")
+                else
+                {
+                console.log(req.id_req)
+             dbReq.doc(req.id_req).update({
+                id_driver:currentUser.uid,
+                have_driver:true
               })
               Swal.fire({
-                title:'  תודה שהתנדבת להסיע את '+name,
-                text:   ' מספר טלפון ליצירת קשר '+ phone_ask,
+                title:'  תודה שהתנדבת להסיע את ' + user.first_name,
+                text:   ' מספר טלפון ליצירת קשר '+user.phone_number,
                 icon:'success',
                 confirmButtonText: 'ליצירת קשר',
                 showDenyButton: true,
                 denyButtonText: 'בטל נסיעה',
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    window.open("http://wa.me/"+user.phone_number+"/היי אני הנהג שלך")
+
+                } else if (result.isDenied) {
+                  Swal.fire('הנסיעה בוטלה', '', 'info')
+                   dbReq.doc(req.id_req).update({
+                     id_driver:null,
+                    have_driver:false
+                   })
+                }
               })
               console.log("sucsses")
             }
 
-            function addAllItems(reqData){
-            var tbody = document.getElementById('tbody1');
-            tbody.innerHTML="";
-                var info='';
-                reqData.forEach(element =>{
-
-                    firebase.firestore().collection('users').doc( element.id_ask)
-                    .get()
-                    .then((value)=> {
-                        info=value.data()
-                        getuser(info,element)
-                        
-                    } )
-                })
- 
+            
             }
+
+
         
-        function getuser(user,req){
 
-            console.log("ff"+user.first_name)
-
-             dest = req.destination
-             exit = req.exit
-             time = req.time
-             date =req.date
-             name = user.first_name +" "+user.last_name
-             id = user.id
-             phone_ask = user.phone_number;
-            additems()
-          }
 
     return(
         <div className="container-fluid">
@@ -130,7 +142,7 @@ function Driver(){
             <div className="bg-warning">
             <h1 className="text-center">כל הנסיעות</h1>
             <Search/>
-            <Table striped bordered hover variant="dark" id="drive">
+            <Table striped bordered hover variant="dark" id="drive" responsive>
                 <thead className="text-right">
                 <tr>
                     <th>אשר נסיעה</th>
