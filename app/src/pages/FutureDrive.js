@@ -9,27 +9,26 @@ import { useAuth } from "../contexts/AuthContext"
 function FutureDrive(){
 
     const { currentUser } = useAuth();
-    // var ask="";
-    // var driver="";
-    // var time = 0;
+    const data =   firebase.firestore().collection('request')
+
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+    today = yyyy + '-' + mm + '-' + dd;
 
     useEffect(getdata)
 
-    async function getdata () {
+    async function getdata () {//מוציא את פרטי הנסיעה של הנהג
          document.getElementById('tbody1');
-        const data =   firebase.firestore().collection('request')
-        data.where('id_driver','!=', null )
-        .where('id_driver', '==', currentUser.uid )
+       
+       await data.where('id_driver', '==', currentUser.uid )
         .get().then((q) => {
             var drive = [];
             q.forEach(doc=>{
                 let x= doc.data()
-                var today = new Date();
-                var dd = String(today.getDate()).padStart(2, '0');
-                var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-                var yyyy = today.getFullYear();
-                today = mm + '/' + dd + '/' + yyyy;
-                if(x.date > today)
+
+                if(x.date > today)//בודק תאריך
                 {
                     console.log(today)
                     drive.push(doc.data());
@@ -38,39 +37,38 @@ function FutureDrive(){
 
             });
             
-                addToTable(drive)
+                dataUsers(drive)
             })
         
     }
 
-        async function addToTable(drive){
+        async function dataUsers(drive){//מביא את המידע של הנהג ומבקש הנסיעה
             
         var tbody = document.getElementById('tbody1');
             tbody.innerHTML="";
         
-        await drive.forEach(element =>{
+         drive.forEach(element =>{
             var x="";
             var y=";"
             console.log(element.id_ask)
-           firebase.firestore().collection('users').doc(element.id_ask)
+             firebase.firestore().collection('users').doc(element.id_ask)//מידע של מבקש הנסיעה
             .get().then((as)=>{
                     x =as.data()
-                       // getuser1(x)
+                      
                         
                     
         })
         console.log(element.id_driver)
-             firebase.firestore().collection('users').doc(element.id_driver)
+             firebase.firestore().collection('users').doc(element.id_driver)//מידע של הנהג
             .get().then((driv)=>{
                 y = driv.data();
-              //  getuser2(y)
             })
             setTimeout(() => {
 
                 add(element,x,y)},2500)
             })
         }
-        function add(data,ask,driver){
+        function add(data,ask,driver){//מכניס מידע לטבלה
 
             console.log("check "+ask.age)
             var tbody = document.getElementById('tbody1');
@@ -89,7 +87,10 @@ function FutureDrive(){
                 btn.type = "button";
                 btn.className = "btn btn-primary  text-center";
                 btn.value = "בטל נסיעה";
-                //btn.onclick = RideApproval;
+                btn.onclick = (e) => {
+                    cancelation(data,driver);
+                  };
+                
                 
             td2.innerHTML=driver.first_name;
             td2.className="text-right"
@@ -122,16 +123,17 @@ function FutureDrive(){
             tr.appendChild(td9);
             tbody.appendChild(tr)
         }
-        // function getuser1(x){
+        function cancelation(req,driver){//מוחק נסיעה
+            if(currentUser.uid=== driver.id )//אם הנהג מבטל נסיעה הנסיעה חוזרת למאגר הנסיעות
+           data.doc(req.id_req).update({
+                id_driver:null,
+                have_driver:false
+              })
+            else//אם המבקש נסיעה מבטל את הנסיעה הנסיעה מיטבטלת
+                data.doc(req.id_req).delete()
             
-        //     ask=x;
-        //     console.log(ask.first_name)
-        // }
-
-        // function getuser2(x){
-        //     driver=x;
-        //     console.log(driver.first_name)
-        // }
+        }
+ 
         
               
 
