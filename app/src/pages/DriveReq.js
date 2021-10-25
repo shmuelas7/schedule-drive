@@ -5,6 +5,9 @@ import { useAuth } from '../contexts/AuthContext';
 import {dbReq} from '../firebase';
 import swal from 'sweetalert2'
 import { useState} from 'react';
+import { uuid } from 'uuidv4';
+
+
 
 function Req(){
 
@@ -19,11 +22,15 @@ var today = new Date();
 const dd = String(today.getDate()).padStart(2, '0');
 const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
 const yyyy = today.getFullYear();
- today = mm + '/' + dd + '/' + yyyy;
+ today = yyyy + '-' + mm + '-' + dd;
 
  function validation(){
-     if(date> today)
-     return true
+     if(date > today)
+     {
+        console.log("date ok")
+        return true
+        
+     }
         else
         {
             swal.fire({
@@ -38,26 +45,34 @@ const yyyy = today.getFullYear();
 
 
 function handleSubmit(e) {
-
-    if(validation)
     e.preventDefault();
+    console.log(date)
+    console.log(today)
+    if(validation())
+    {
     console.log(currentUser.uid);
-    dbReq.doc(currentUser.uid).set({
+    const id = uuid();
+    dbReq.doc(id).set({
         date:date,
         exit:exit,
         destination:destination,
         time:time,
         id_ask:currentUser.uid,
         id_driver:null,
-        comment:comment
+        comment:comment,
+        have_driver:false,
+        id_req:id
      })
-     .then(() => {
+     .then((x) => {
+
+         console.log(id)
          console.log("Document successfully written!");
          swal.fire("הבקשה נקלטה במערכת", "success")
      })
      .catch((error) => {
          console.error("Error writing document: ", error);
      });
+     }
     
 }
     return(
@@ -69,7 +84,7 @@ function handleSubmit(e) {
                     <form className=" border border-dark rounded mt-2 mb-2 bg-light"  onSubmit={handleSubmit} >
                         <h1 className="text-center">בקשת נסיעה</h1>
                         <h6 className="text-right">הכנס תאריך</h6>
-                        <input type="date" placeholder="תאריך יציאה" className="form-control input-d" data-date-format="yyy/dd/mm" onChange={(e)=>setdate(e.target.value)} required></input>
+                        <input type="date"  className="form-control " data-date-format="DD MMMM YYYY" placeholder="dd-mm-yyyy" onChange={(e)=>setdate(e.target.value)} required></input>
                         <h6 className="text-right">מוצא</h6>
                         <input placeholder="מוצא" className="form-control text-right" onChange={(e)=>setexit(e.target.value)} required ></input>
                         <h6 className="text-right">יעד</h6>
