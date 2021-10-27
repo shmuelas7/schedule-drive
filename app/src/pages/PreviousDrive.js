@@ -3,9 +3,10 @@ import Nav from "../component/Nav";
 import Table from 'react-bootstrap/Table'
 import Search from '../component/Search';
 import { useEffect } from 'react';
-import firebase from 'firebase';
 import { useAuth } from "../contexts/AuthContext"
 import { useHistory } from 'react-router-dom';
+import today from '../component/Date'
+import {dbReq,dbUser} from '../firebase'
 
   
 
@@ -15,19 +16,15 @@ function PreviousDrive(){
     const { currentUser } = useAuth();
     const history = useHistory()
 
-    var today = new Date();
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-    var yyyy = today.getFullYear();
-    today = yyyy + '-' + mm + '-' + dd;
+
 
     useEffect(getdata)
 
     async function getdata () {//מקבל את המידע של הבקשת נסיעה
-        const data = firebase.firestore().collection('request')
-        await data.where('id_driver', '==', currentUser.uid )
+        await dbReq.where('id_driver', '==', currentUser.uid )
         .get().then((q) => {
             var drive = [];
+            
             q.forEach(doc=>{
                 let x= doc.data()
 
@@ -57,13 +54,13 @@ function PreviousDrive(){
             var x="";
             var y=";"
             console.log(element.id_ask)
-           firebase.firestore().collection('users').doc(element.id_ask)
+           dbUser.doc(element.id_ask)
             .get().then((as)=>{
                     x =as.data()
                     
         })
         console.log(element.id_driver)
-             firebase.firestore().collection('users').doc(element.id_driver)
+             dbUser.doc(element.id_driver)
             .get().then((driv)=>{
                 y = driv.data();
                 
