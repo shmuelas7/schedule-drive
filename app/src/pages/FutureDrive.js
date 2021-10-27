@@ -3,35 +3,40 @@ import Nav from "../component/Nav";
 import Table from 'react-bootstrap/Table'
 import Search from '../component/Search';
 import { useEffect } from 'react';
-import firebase from 'firebase';
 import { useAuth } from "../contexts/AuthContext"
+import today from '../component/Date'
+import swal from 'sweetalert2'
+import {dbReq} from '../firebase';
+import {dbUser} from '../firebase';
+
 
 function FutureDrive(){
 
     const { currentUser } = useAuth();
-    const data =   firebase.firestore().collection('request')
+    
 
-    var today = new Date();
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-    var yyyy = today.getFullYear();
-    today = yyyy + '-' + mm + '-' + dd;
 
     useEffect(getdata)
 
     async function getdata () {//מוציא את פרטי הנסיעה של הנהג
-         document.getElementById('tbody1');
        
-       await data.where('id_driver', '==', currentUser.uid )
-        .get().then((q) => {
+       await dbReq.get()
+            .then((q) => {
             var drive = [];
             q.forEach(doc=>{
                 let x= doc.data()
+                let count =0;
 
                 if(x.date > today)//בודק תאריך
                 {
-                    console.log(today)
-                    drive.push(doc.data());
+                    console.log("ask "+x.id_ask)
+                    console.log("driver "+x.id_driver)
+                    console.log("curnt "+currentUser.uid)
+                    if(currentUser.uid === x.id_ask || currentUser.uid === x.id_driver)
+                        drive.push(x);
+
+                    console.log(count)
+
                 }
                 console.log(doc.data())
 
@@ -51,7 +56,7 @@ function FutureDrive(){
             var x="";
             var y=";"
             console.log(element.id_ask)
-             firebase.firestore().collection('users').doc(element.id_ask)//מידע של מבקש הנסיעה
+            dbUser.doc(element.id_ask)//מידע של מבקש הנסיעה
             .get().then((as)=>{
                     x =as.data()
                       
@@ -59,7 +64,8 @@ function FutureDrive(){
                     
         })
         console.log(element.id_driver)
-             firebase.firestore().collection('users').doc(element.id_driver)//מידע של הנהג
+                if(element.driver!= null)
+                dbUser.doc(element.id_driver)//מידע של הנהג
             .get().then((driv)=>{
                 y = driv.data();
             })
@@ -83,6 +89,7 @@ function FutureDrive(){
             const td8= document.createElement('td');
             const td9= document.createElement('td');
             const btn = document.createElement('input');
+            
                 
                 btn.type = "button";
                 btn.className = "btn btn-primary  text-center";
@@ -91,11 +98,22 @@ function FutureDrive(){
                     cancelation(data,driver);
                   };
                 
-                
+             if(driver.first_name !== undefined)   
+             {
             td2.innerHTML=driver.first_name;
-            td2.className="text-right"
+            
             td3.innerHTML=driver.phone_number;
-            td3.className="text-right"
+            
+             }
+             else{
+                td2.innerHTML="אין מיתנדב עדיין";
+            
+                td3.innerHTML="אין מיתנדב עדיין";
+
+             }
+             td2.className="text-right"
+             td3.className="text-right"
+
             td4.innerHTML=ask.phone_number;
             td4.className="text-right"
             td5.innerHTML=data.destination;
@@ -125,13 +143,15 @@ function FutureDrive(){
         }
         function cancelation(req,driver){//מוחק נסיעה
             if(currentUser.uid=== driver.id )//אם הנהג מבטל נסיעה הנסיעה חוזרת למאגר הנסיעות
-           data.doc(req.id_req).update({
+            dbReq.doc(req.id_req).update({
                 id_driver:null,
                 have_driver:false
               })
+              
             else//אם המבקש נסיעה מבטל את הנסיעה הנסיעה מיטבטלת
-                data.doc(req.id_req).delete()
-            
+            dbReq.doc(req.id_req).delete()
+                
+            swal.fire('הנסיעה בוטלה')
         }
  
         
