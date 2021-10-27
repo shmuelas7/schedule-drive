@@ -6,6 +6,8 @@ import {dbReq} from '../firebase';
 import swal from 'sweetalert2'
 import { useState} from 'react';
 import { uuid } from 'uuidv4';
+import {  useHistory } from "react-router-dom"
+import today from '../component/Date'
 
 
 
@@ -17,12 +19,8 @@ const [exit , setexit]= useState("");
 const [destination , setdestination]= useState("");
 const [time,settime]= useState("");
 const [comment,setComment]=useState("")
+const history = useHistory();
 
-var today = new Date();
-const dd = String(today.getDate()).padStart(2, '0');
-const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-const yyyy = today.getFullYear();
- today = yyyy + '-' + mm + '-' + dd;
 
  function validation(){
      if(date > today)
@@ -67,7 +65,19 @@ function handleSubmit(e) {
 
          console.log(id)
          console.log("Document successfully written!");
-         swal.fire("הבקשה נקלטה במערכת", "success")
+         swal.fire({
+            title:'הבקשה נקלטה במערכת',
+            showDenyButton: true,
+            confirmButtonText: 'בקשה נוספת',
+            denyButtonText: `העבר אותי לנסיעות שלי`,
+        }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                window.location.reload();
+            } else if (result.isDenied) {
+              history.push("/FutureDrive")
+            }
+          })
      })
      .catch((error) => {
          console.error("Error writing document: ", error);
