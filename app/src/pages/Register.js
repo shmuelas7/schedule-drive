@@ -8,7 +8,7 @@ import {  useHistory } from "react-router-dom"
 import firebase from 'firebase';
 import "firebase/firestore";
 import logo from '../style/black logo.png'
-import {db} from '../firebase'
+import { dbUser} from '../firebase'
 import swal from 'sweetalert2'
 import { Link } from 'react-router-dom';
 import app from '../firebase';
@@ -119,7 +119,7 @@ import app from '../firebase';
  
         console.log(x);
         console.log("set"+imgUrl)
-         await db.doc(x).set({
+         await dbUser.doc(x).set({
          first_name:firstname,
         last_name:lasttname,
         phone_number:phone,
