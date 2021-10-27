@@ -15,6 +15,10 @@ import Wheel from "../icon/Wheel.png";
 import caRQ from "../icon/carRQ.png";
 import alldrive from "../icon/alldrive.png"
 import logo from "../style/black logo.png"
+import { useEffect } from 'react';
+
+
+import {dbUser} from '../firebase'
 
 
 
@@ -22,9 +26,26 @@ import logo from "../style/black logo.png"
 function Nav(){
 
     const [error, setError] = useState("")
-    const { logout } = useAuth()
+    const { logout,currentUser } = useAuth()
     const history = useHistory()
-  
+
+
+    useEffect(getdata)
+
+    let user=""
+     async function getdata(){
+      await dbUser.doc(currentUser.uid).get().then((u)=>{
+          user=u.data()
+        
+      })
+       if(user.imgUrl !== null){ 
+      let element = document.getElementById('img');
+        element.src = user.imgUrl
+        element.className= " rounded-circle iconi "
+       }
+    }
+    
+ 
     async function handleLogout() {
       setError("")
   
@@ -47,7 +68,7 @@ function Nav(){
 
             <div className="col-md-2 col-sm-12 col-xs-12 text-center">
                <Link to="Profile" >
-               <img src={user} alt="img" className="icon"/>
+               <img src={user} alt="img" className="iconi" id="img"/  >
                <br/>
                    <label className="text-center"> אזור אישי</label>
                </Link> 
@@ -70,7 +91,7 @@ function Nav(){
            </div>
            <div className="col-md-2 col-sm-12 col-xs-12 text-center ">
             <Link to="Driver">
-                <img src={alldrive} alt="img" className="icon" />
+                <img src={alldrive} alt="img" className="icon"  />
                 <br/>
                 <label>כל הנסיעות</label>
             </Link>
