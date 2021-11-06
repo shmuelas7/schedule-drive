@@ -106,9 +106,9 @@ function FutureDrive(){
             
              }
              else{
-                td2.innerHTML="אין מיתנדב עדיין";
+                td2.innerHTML="אין מתנדב עדיין";
             
-                td3.innerHTML="אין מיתנדב עדיין";
+                td3.innerHTML="אין מתנדב עדיין";
 
              }
              td2.className="text-right"
