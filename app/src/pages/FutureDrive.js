@@ -20,7 +20,7 @@ function FutureDrive(){
 
     async function getdata () {//מוציא את פרטי הנסיעה של הנהג
        
-       await dbReq.orderBy("Date").get()
+       await dbReq.get()
             .then((q) => {
             var drive = [];
             q.forEach(doc=>{
