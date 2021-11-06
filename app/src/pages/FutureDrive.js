@@ -20,14 +20,14 @@ function FutureDrive(){
 
     async function getdata () {//מוציא את פרטי הנסיעה של הנהג
        
-       await dbReq.get()
+       await dbReq.orderBy("Date").get()
             .then((q) => {
             var drive = [];
             q.forEach(doc=>{
                 let x= doc.data()
                 let count =0;
 
-                if(x.date > today)//בודק תאריך
+                if(x.Date > today)//בודק תאריך
                 {
                     console.log("ask "+x.id_ask)
                     console.log("driver "+x.id_driver)
@@ -123,7 +123,7 @@ function FutureDrive(){
             td7.innerHTML=data.time;
             td7.className="text-right"
 
-            td8.innerHTML=data.date;
+            td8.innerHTML=data.Date;
             td8.className="text-right"
 
             td9.innerHTML=ask.first_name;
