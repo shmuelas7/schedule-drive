@@ -28,7 +28,7 @@ import app from '../firebase';
         const [phone,setphone]=useState("");
         const [area,setarea]=useState("");
         const [age,setage]=useState(0);
-        const [imgUrl,setImgUrl]=useState(null)
+        const [imgUrl,setImgUrl]=useState("")
 
         var x="";
 
