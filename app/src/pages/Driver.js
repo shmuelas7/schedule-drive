@@ -8,11 +8,32 @@ import {dbReq,dbUser} from '../firebase'
 import Swal from 'sweetalert2';
 import today from '../component/Date'
 import { useHistory } from 'react-router-dom';
+import { useState} from 'react'
 
-function Driver(){
+
+
+ 
+var x="Date"
+
+export const setDataReceivedFromChild=(index)=>{ 
+    console.log(index);
+    x=index
+}
+
+
+function Driver(name){
+        
+  
+    //const [search,setSearch]=useState("Date");
 
     const { currentUser } = useAuth();
     const history = useHistory()
+    const [filter,setilter]=useState("Date")
+
+
+
+    console.log(x)
+    
 
 
 
@@ -20,8 +41,15 @@ function Driver(){
     useEffect(getdata)
     
     async function getdata () {//מביא מידע של כל הבקשות נסיעה
-            console.log(currentUser)
-        await dbReq.get().then((q) => {
+        let user=""
+        await dbUser.doc(currentUser.uid).get().then((u)=>{
+            user=u.data()
+        })
+        console.log(user)
+        if(x==="exit")
+            setilter(user.exit)
+
+        await dbReq.orderBy(filter).get().then((q) => {
             var req = [];
             q.forEach(doc=>{
                 let x= doc.data()
@@ -73,7 +101,8 @@ function Driver(){
             uImg.setAttribute('src',userAsk.imgUrl );
             uImg.className="img-fluid rounded-circle  img-responsive" 
             uImg.onclick =(e)=>{
-                history.push(history.push('/CardProfile', { id: userAsk.id }))
+                console.log("1  "+ userAsk.id)
+                history.push({pathname:'/CardProfile', id: userAsk.id , flag:false  })
             }
                 
             td3.innerHTML=req.destination;
@@ -127,7 +156,7 @@ function Driver(){
                 denyButtonText: 'בטל נסיעה',
                 }).then((result) => {
                 if (result.isConfirmed) {
-                    window.open("http://wa.me/"+user.phone_number+"/היי אני הנהג שלך")
+                    window.open("http://wa.me/972"+user.phone_number+"/היי אני הנהג שלך")
 
                 } else if (result.isDenied) {
                   Swal.fire('הנסיעה בוטלה', '', 'info')
@@ -138,7 +167,6 @@ function Driver(){
                 }
               })
               console.log("sucsses")
-              window.location.reload();
             }
 
             
