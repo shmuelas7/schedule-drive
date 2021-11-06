@@ -1,8 +1,10 @@
 import React from 'react';
 import Button  from 'react-bootstrap/Button';
+import {setDataReceivedFromChild} from '../pages/Driver';
+import { useState} from 'react'
 
-function Search(){
 
+ function  Search(props){
 
 return(
 
@@ -14,14 +16,10 @@ return(
         </div>
       </div>
     <div className="col-2">
-        <Button className="btn btn-light" block>שם</Button>
+        <Button className="btn btn-light"   block onClick={(e)=>{setDataReceivedFromChild("exit")}}  >העיר שלי</Button>
     </div>
     <div className="col-2">
-        <Button className="btn btn-light" block>תאריך</Button>
-    </div>
-    <div className="input-group col-6">
-        <input type="search" className="form-control rounded" placeholder="חיפוש" aria-label="Search" />
-        <Button type="button" className="btn btn-primary ">OK</Button>
+        <Button className="btn btn-light" block onClick={(e)=>{setDataReceivedFromChild("date")}} >תאריך</Button>
     </div>
     </nav>
   </div>
