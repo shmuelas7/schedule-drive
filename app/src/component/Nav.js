@@ -38,7 +38,7 @@ function Nav(){
           user=u.data()
         
       })
-       if(user.imgUrl !== null){ 
+       if(user.imgUrl !== null ){ 
       let element = document.getElementById('img');
         element.src = user.imgUrl
         element.className= " rounded-circle iconi "
