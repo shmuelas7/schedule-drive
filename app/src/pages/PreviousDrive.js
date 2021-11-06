@@ -22,7 +22,7 @@ function PreviousDrive(){
 
     async function getdata () {//מקבל את המידע של הבקשת נסיעה
         await dbReq.where('id_driver', '==', currentUser.uid )
-        .get().then((q) => {
+        .orderBy("Date").get().then((q) => {
             var drive = [];
             
             q.forEach(doc=>{
@@ -31,7 +31,7 @@ function PreviousDrive(){
                 console.log(x)
                 console.log(today)
                 console.log(x.date)
-                if(x.date < today)
+                if(x.Date < today)
                 {
                     console.log(today)
                     drive.push(doc.data());
@@ -120,10 +120,10 @@ function PreviousDrive(){
 
         function rating(req){
             if(currentUser.uid === req.id_driver )
-            history.push('/CardProfile', { id: req.id_ask })
+            history.push('/CardProfile', { id: req.id_ask , flag :true })
 
             else
-            history.push('/CardProfile', { id: req.id_driver })
+            history.push('/CardProfile', { id: req.id_driver, flag : true })
         }
 
     return(
