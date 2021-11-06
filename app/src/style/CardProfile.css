@@ -23,8 +23,6 @@ body {
 
 .name {
     font-size: 30px;
-    font-weight: bold;
-    color: #272727;
     position: relative;
     top: 8px;
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
