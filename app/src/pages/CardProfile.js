@@ -1,8 +1,48 @@
 import {React} from 'react';
 import Nav from "../component/Nav";
 import '../style/CardProfile.css';
+import { useHistory } from 'react-router-dom';
+import { useEffect } from 'react';
+import {dbUser} from '../firebase'
 
 function CardProfile(){
+    const history = useHistory()
+
+    const data = history.location.id
+    console.log("info" + data)
+
+    useEffect(getdata)
+
+    async function getdata(){
+        var dataUser =""
+       await dbUser.doc(data).get().then((value)=> {
+            dataUser = value.data()
+            
+        })
+        enterData(dataUser)
+    }
+    function enterData(user){//מכניס את הנותים 
+        let userName = document.getElementById('name');
+        userName.innerHTML=user.first_name +" "+ user.last_name
+        userName.className="font-weight-bold"
+
+        let userAge = document.getElementById('age');
+        userAge.innerHTML= " בן  "+user.age
+        userAge.className="text-dark "
+
+        let userCity = document.getElementById('city');
+        userCity.innerHTML="מ"+user.area
+
+        let userPhone = document.getElementById('phone');
+        userPhone.innerHTML="הטלפון שלי  "+user.phone_number
+
+        let userImg = document.getElementById('imge');
+        userImg.src=user.imgUrl
+        console.log(user.imgUrl)
+
+    }
+
+
     return(
         <div className="container-fluid">
             
@@ -11,23 +51,21 @@ function CardProfile(){
         <div className="bg-warning">
             <h1 className="text-center">דף משתמש</h1>
 
-            <div class="container mt-3">
-                <div class="card">
-                    <div class="top-container"> 
-                        <img src="https://i.imgur.com/G1pXs7D.jpg" class="img-fluid profile-image" width="100" alt="profile">
-                        </img>
-                        <div class="ml-3">
-                            <h2 class="name">יוסי כהן</h2>
-                            <p class="mail">25</p>
-                            <p class="mail"><b>פתח תקווה</b></p>
-                            <p class="mail">05236416497</p>
-                            <p class="mail">yossi@gmail.com</p>
+            <div className="container mt-3">
+                <div className="card">
+                    <div className="top-container"> 
+                        <img  className="img-fluid profile-image" width="100" alt="profile" id="imge"/>
+                        <div className="ml-3">
+                            <h2 className="name" id="name"> </h2>
+                            <p  className="mail" id="age"></p>
+                            <p className="mail"id="city" ></p>
+                            <p className="mail" id="phone"></p>
                         </div>
                     </div>
                     
-                    <h3 class="name">ביקורות</h3>
+                    <h3 className="name">ביקורות</h3>
                     <br></br>
-                    <div class="w3-container">
+                    <div className="w3-container">
                         <ul>
                             <li><b>איציק :</b> הגיע בזמן ומאוד עזר לי</li>
                             <li><b>לאה :</b> אחלה נהג</li>
