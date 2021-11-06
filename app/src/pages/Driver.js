@@ -49,7 +49,7 @@ function Driver(name){
         if(x==="exit")
             setilter(user.exit)
 
-        await dbReq.orderBy(filter).get().then((q) => {
+        await dbReq.get().then((q) => {
             var req = [];
             q.forEach(doc=>{
                 let x= doc.data()
