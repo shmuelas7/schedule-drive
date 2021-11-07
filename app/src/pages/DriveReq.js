@@ -18,7 +18,7 @@ const [date , setdate]= useState(Date);
 const [exit , setexit]= useState("");
 const [destination , setdestination]= useState("");
 const [time,settime]= useState("");
-const [comment,setComment]=useState("")
+const [comment,setComment]=useState(null)
 const history = useHistory();
 
 
@@ -107,16 +107,6 @@ function handleSubmit(e) {
                             <textarea className="form-control" rows="2" onChange={(e)=>setComment(e.target.value)}></textarea>
                         </div>
                         
-                        <div className="text-right">
-                            <div className="form-check form-check-inline">
-                                <input className="form-check-input" type="checkbox"  value="option1"/>
-                                <label className="form-check-label" >כסא גלגלים</label>
-                            </div>
-                            <div className="form-check form-check-inline">
-                                <input className="form-check-input" type="checkbox"  value="option2"/>
-                                <label className="form-check-label" >מלווה</label>
-                            </div>
-                        </div>
                         <Button type="submit" variant="primary"  block className="log-btn mb-2">שלח</Button>
                     </form>
                 </div>
