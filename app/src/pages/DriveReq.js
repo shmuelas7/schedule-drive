@@ -50,6 +50,7 @@ function handleSubmit(e) {
     {
     console.log(currentUser.uid);
     const id = uuid();
+    console.log(id)
     dbReq.doc(id).set({
         Date:date,
         exit:exit,
