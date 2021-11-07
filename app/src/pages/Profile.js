@@ -93,6 +93,9 @@ function Profile(){
        setImgUrl(url)
       console.log("ac" +url)
   }
+  function movePage(){
+    history.push({pathname:'/CardProfile', id: currentUser.uid , flag:false  })
+  }
     return(
        
         <div className="container-fluid">
@@ -118,7 +121,9 @@ function Profile(){
                         <input type="file" className="custom-file-input" id="customFile" onChange={addImg}/>
                         <label className="custom-file-label ">בחר תמונה</label>
                     </div>
-
+                    <div className="text-right mt-2">
+                    <Button onClick={movePage} variant="success">מעבר לדף תגובות</Button> 
+                    </div>
                     <Button type="submit" disabled={loading} variant="primary"  block  className="log-btn">שלח</Button>              
                 </Form>
             </div>
