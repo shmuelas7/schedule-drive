@@ -135,6 +135,12 @@ function Driver(name){
             td6.className="text-right"
             td7.innerHTML=userAsk.first_name +" "+userAsk.last_name;
             td7.className="text-right"
+
+            if(req.comment !== null){
+                td7.onmouseover = (e) => {
+                show(req);
+                 }; 
+            }
             
             td1.appendChild(btn);
             td8.appendChild(uImg);
@@ -187,9 +193,27 @@ function Driver(name){
               })
               console.log("sucsses")
             }
-
+  
             
-            }
+ }
+ function show(req){
+    let timerInterval
+    Swal.fire({
+      title: 'מידע על הנסיעה',
+      text:req.comment,
+      timer: 2000,
+      timerProgressBar: true,
+
+      willClose: () => {
+        clearInterval(timerInterval)
+      }
+    }).then((result) => {
+      /* Read more about handling dismissals below */
+      if (result.dismiss === Swal.DismissReason.timer) {
+        console.log('I was closed by the timer')
+      }
+    })
+}
 
 
         
