@@ -62,9 +62,9 @@ function FutureDrive(){
         })
 
         console.log("dr"+element.id_driver)
-                if(element.driver!= null)
+            if(! element.driver === null)
                 dbUser.doc(element.id_driver)//מידע של הנהג
-            .get().then((driv)=>{
+                .get().then((driv)=>{
                 y = driv.data();
                 console.log("yy"+y)
             })
@@ -77,7 +77,7 @@ function FutureDrive(){
         function add(data,ask,driver){//מכניס מידע לטבלה
 
             console.log("check "+ask.age)
-            console.log("id1 "+driver)
+            console.log("id1 "+driver.first_name)
             console.log("id0 "+driver.id)
             var tbody = document.getElementById('tbody1');
             const tr= document.createElement('tr');
@@ -100,7 +100,7 @@ function FutureDrive(){
                     cancelation(data,driver,ask);
                   };
                 
-             if(driver.first_name === undefined)   
+             if(driver.first_name !== undefined)   
              {
             td2.innerHTML=driver.first_name;
             
