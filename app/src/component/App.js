@@ -15,6 +15,7 @@ import Contact from '../pages/Contact'
 import Home from '../pages/Home'
 import CardProfile from '../pages/CardProfile'
 import Terms from '../pages/Terms'
+import Donations from '../pages/Donations'
 
 
 
@@ -38,6 +39,7 @@ function App(p) {
           <Route path="/CardProfile" component={CardProfile}/>
           <Route path="/home" component={Home}/>
           <Route path="/Terms" component={Terms}/>
+          <Route path="/Donations" component={Donations}/>
           <Route path="*" />
           
         </Switch>

@@ -13,6 +13,9 @@ function Footer(){
                     <Link to="contact">
                         <p className="text-center text-info"><b>ליצירת קשר עם העמותה</b></p>
                     </Link>
+                    <Link to="Donations">
+                        <p className="text-center text-info"><b>לתרומות לעמותה</b></p>
+                    </Link>
                 </div>
                 <div className="col-6"></div>
             </div>
