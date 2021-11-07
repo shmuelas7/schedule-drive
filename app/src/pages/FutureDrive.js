@@ -20,7 +20,7 @@ function FutureDrive(){
 
     async function getdata () {//מוציא את פרטי הנסיעה של הנהג
        
-       await dbReq.get()
+       await dbReq.orderBy('Date').get()
             .then((q) => {
             var drive = [];
             q.forEach(doc=>{
@@ -52,29 +52,33 @@ function FutureDrive(){
         var tbody = document.getElementById('tbody1');
             tbody.innerHTML="";
         
-         drive.forEach(element =>{
+        await drive.forEach(element =>{
             var x="";
-            var y=";"
+            var y="";
             console.log(element.id_ask)
             dbUser.doc(element.id_ask)//מידע של מבקש הנסיעה
             .get().then((as)=>{
                     x =as.data()      
         })
 
-        console.log(element.id_driver)
+        console.log("dr"+element.id_driver)
                 if(element.driver!= null)
                 dbUser.doc(element.id_driver)//מידע של הנהג
             .get().then((driv)=>{
                 y = driv.data();
+                console.log("yy"+y)
             })
             setTimeout(() => {
-
+                console.log("y"+y)
+                console.log("x"+x)
                 add(element,x,y)},2500)
             })
         }
         function add(data,ask,driver){//מכניס מידע לטבלה
 
             console.log("check "+ask.age)
+            console.log("id1 "+driver)
+            console.log("id0 "+driver.id)
             var tbody = document.getElementById('tbody1');
             const tr= document.createElement('tr');
             const td1= document.createElement('td');
@@ -93,10 +97,10 @@ function FutureDrive(){
                 btn.className = "btn btn-primary  text-center";
                 btn.value = "בטל נסיעה";
                 btn.onclick = (e) => {
-                    cancelation(data,driver);
+                    cancelation(data,driver,ask);
                   };
                 
-             if(driver.first_name !== undefined)   
+             if(driver.first_name === undefined)   
              {
             td2.innerHTML=driver.first_name;
             
@@ -138,11 +142,12 @@ function FutureDrive(){
             tr.appendChild(td8);
             tr.appendChild(td9);
             tbody.appendChild(tr)
+            
         }
-        function cancelation(req,driver){//מוחק נסיעה
+        function cancelation(req,driver,ask){//מוחק נסיעה
                 console.log("user "+currentUser.uid)
                 console.log("driver "+driver.id)
-            if(currentUser.uid === driver.id )//אם הנהג מבטל נסיעה הנסיעה חוזרת למאגר הנסיעות
+            if(currentUser.uid === req.id_driver )//אם הנהג מבטל נסיעה הנסיעה חוזרת למאגר הנסיעות
             {
                 console.log("return tata base")
             dbReq.doc(req.id_req).update({
@@ -157,7 +162,20 @@ function FutureDrive(){
                 console.log("del")
                }
                 
-            swal.fire('הנסיעה בוטלה')
+               swal.fire({
+                title:' הנסיעה בוטלה ',
+                icon:'success',
+                confirmButtonText: 'אישור',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    if(currentUser.uid === req.id_driver )
+                        window.open("http://wa.me/972"+ask.phone_number+"/הנסיעה בוטלה")
+                    else
+                        window.open("http://wa.me/972"+driver.phone_number+"/הנסיעה בוטלה")
+
+                    window.location.reload();
+                }
+            })
         }
  
         
