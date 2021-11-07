@@ -49,7 +49,7 @@ function Driver(name){
         if(x==="exit")
             setilter(user.exit)
 
-        await dbReq.get().then((q) => {
+        await dbReq.orderBy(x).get().then((q) => {
             var req = [];
             q.forEach(doc=>{
                 let x= doc.data()
@@ -59,6 +59,26 @@ function Driver(name){
             getDataUserAsk(req)//פונקציה שמביא את הפרטים של מי שביקש את הנסיעה
           })
         }
+
+        async function getdataReelTime () {//מביא מידע של כל הבקשות נסיעה
+            let user=""
+            await dbUser.orderBy(x).doc(currentUser.uid).onSnapshot((u)=>{
+                user=u.data()
+            })
+            console.log(user)
+            if(x==="exit")
+                setilter(user.exit)
+    
+            await dbReq.get().then((q) => {
+                var req = [];
+                q.forEach(doc=>{
+                    let x= doc.data()
+                    if(x.have_driver===false && x.Date >= today)//בודק שהנסיעה בתוקף וגם שאין עדיין נהג שאישר את הנסיעה
+                        req.push(doc.data());
+                });
+                getDataUserAsk(req)//פונקציה שמביא את הפרטים של מי שביקש את הנסיעה
+              })
+            }
 
 
        async function getDataUserAsk(reqData){//מקבל מערך שך כל הבקשות נסיעה
@@ -111,7 +131,7 @@ function Driver(name){
             td4.className="text-right"
             td5.innerHTML=req.time;
             td5.className="text-right"
-            td6.innerHTML=req.date;
+            td6.innerHTML=req.Date;
             td6.className="text-right"
             td7.innerHTML=userAsk.first_name +" "+userAsk.last_name;
             td7.className="text-right"
