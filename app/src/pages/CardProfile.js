@@ -4,10 +4,14 @@ import '../style/CardProfile.css';
 import { useHistory } from 'react-router-dom';
 import { useEffect } from 'react';
 import {dbUser} from '../firebase'
+import Button  from 'react-bootstrap/Button';
+import { useAuth } from "../contexts/AuthContext"
+import { useState} from 'react';
 
 function CardProfile(){
     const history = useHistory()
-
+    const { currentUser } = useAuth();
+    const [state, setstate] = useState("")
     const data = history.location.id
     console.log("info" + data)
 
@@ -41,6 +45,17 @@ function CardProfile(){
         console.log(user.imgUrl)
 
     }
+    async function update(){
+        var user =""
+        await dbUser.doc(currentUser.uid).get().then((value)=> {
+             user = value.data()
+        })
+
+         await dbUser.doc(data).update({
+            comment:user.first_name +":"+state
+            
+        })
+    }
 
 
     return(
@@ -73,9 +88,9 @@ function CardProfile(){
                             </ul>
                             </div>  
                             <div className="text-right" dir="rtl">                          
-                        <textarea className="form-control" rows="1"></textarea>
+                        <textarea className="form-control" rows="1" onChange={(e)=>setstate(e.target.value)}></textarea>
                         </div>
-                        <button className="button-card">הוסף ביקורת</button>
+                        <Button className="button-card" onClick={update()}>הוסף ביקורת</Button>
                 </div>
             </div>
 
