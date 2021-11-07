@@ -120,7 +120,8 @@ import app from '../firebase';
         console.log(x);
         console.log("set"+imgUrl)
          await dbUser.doc(x).set({
-         first_name:firstname,
+        comment:[null],
+        first_name:firstname,
         last_name:lasttname,
         phone_number:phone,
         area:area,
