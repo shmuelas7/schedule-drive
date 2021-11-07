@@ -26,7 +26,7 @@ function FutureDrive(){
             q.forEach(doc=>{
                 let x= doc.data()
                 let count =0;
-
+                console.log("ddd"+x.Date)
                 if(x.Date > today)//בודק תאריך
                 {
                     console.log("ask "+x.id_ask)
@@ -58,11 +58,9 @@ function FutureDrive(){
             console.log(element.id_ask)
             dbUser.doc(element.id_ask)//מידע של מבקש הנסיעה
             .get().then((as)=>{
-                    x =as.data()
-                      
-                        
-                    
+                    x =as.data()      
         })
+
         console.log(element.id_driver)
                 if(element.driver!= null)
                 dbUser.doc(element.id_driver)//מידע של הנהג
@@ -142,14 +140,22 @@ function FutureDrive(){
             tbody.appendChild(tr)
         }
         function cancelation(req,driver){//מוחק נסיעה
-            if(currentUser.uid=== driver.id )//אם הנהג מבטל נסיעה הנסיעה חוזרת למאגר הנסיעות
+                console.log("user "+currentUser.uid)
+                console.log("driver "+driver.id)
+            if(currentUser.uid === driver.id )//אם הנהג מבטל נסיעה הנסיעה חוזרת למאגר הנסיעות
+            {
+                console.log("return tata base")
             dbReq.doc(req.id_req).update({
                 id_driver:null,
                 have_driver:false
               })
+            }
               
             else//אם המבקש נסיעה מבטל את הנסיעה הנסיעה מיטבטלת
-            dbReq.doc(req.id_req).delete()
+               {
+                dbReq.doc(req.id_req).delete()
+                console.log("del")
+               }
                 
             swal.fire('הנסיעה בוטלה')
         }
