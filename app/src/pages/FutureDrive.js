@@ -168,10 +168,16 @@ function FutureDrive(){
             }).then((result) => {
                 if (result.isConfirmed) {
                     if(req.have_driver===true)
-                        if(currentUser.uid === req.id_driver )
-                             window.open("http://wa.me/972"+ask.phone_number+"/הנסיעה בוטלה")
-                        else
-                             window.open("http://wa.me/972"+driver.phone_number+"/הנסיעה בוטלה")
+                        if(currentUser.uid === req.id_driver ){
+                            let phone = ask.phone_number.substring(1);
+                            console.log("phone "+phone)
+                             window.open("http://wa.me/972"+phone+"?text=הנסיעה בוטלה")
+                        }
+                        else{
+                            let phone = driver.phone_number.substring(1);
+                            console.log("phone "+phone)
+                             window.open("http://wa.me/972"+phone+"?text=הנסיעה בוטלה")
+                        }
 
                     window.location.reload();
                 }
