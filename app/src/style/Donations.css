@@ -1,12 +1,12 @@
 .icon1 {
     height: 200px;
     width: 200px;
-    padding: 10px;
-
+    padding: 20px;
   }
 
   .center {
-    margin: auto;
-    width: 40%;
-    padding: 10px;
+    text-align: center;
+    vertical-align: center;
+    color: rgba(68, 66, 66, 0.884);
+    height: 250px;
   }
