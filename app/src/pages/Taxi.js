@@ -4,6 +4,8 @@ import giva from "../icon/giva.png"
 import castel from "../icon/castel.png"
 import shoham from "../icon/shoham.png"
 import stars from "../icon/stars.png"
+import k8 from "../icon/k8.png"
+import itz from "../icon/itz.png"
 import "../style/taxi.css"
 
 
@@ -84,7 +86,38 @@ function Taxi(){
                                 <button onClick={()=>setShow(!show)}>הצגת מספר</button>
                             </div>
 
+
+                            <div className="col-md-2 col-sm-12 col-xs-12 text-center">
+                            <a href="http://www.taxik8.com/%D7%90%D7%99%D7%A0%D7%93%D7%A7%D7%A1-%D7%A9%D7%9C-%D7%9E%D7%95%D7%A0%D7%99%D7%95%D7%AA-%D7%A7%D7%A8%D7%99%D7%AA-%D7%A9%D7%9E%D7%95%D7%A0%D7%94/"> 
+                                <img src={k8} alt="img" className="icon1"/>
+                            </a>
+
+                                <br/>
+                                {
+                                    show?<h4>052-9121933</h4>:null
+                                }
+
+                                <button onClick={()=>setShow(!show)}>הצגת מספר</button>
                             </div>
+
+
+                            <div className="col-md-2 col-sm-12 col-xs-12 text-center">
+                            <a href="https://www.taxys.info/"> 
+                                <img src={itz} alt="img" className="icon1"/>
+                            </a>
+
+                                <br/>
+                                {
+                                    show?<h4>054-4641726</h4>:null
+                                }
+
+                                <button onClick={()=>setShow(!show)}>הצגת מספר</button>
+                            </div>
+
+
+                            </div>
+
+                            
 
 
                            {/*} {
