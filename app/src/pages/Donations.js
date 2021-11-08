@@ -20,14 +20,13 @@ function Donations(){
                     <h1 className="text-center">תרומות לעמותה</h1>
 
                     <div class="center">
-                        <h5>לחץ על התמונה על מנת לתרום לעמותה בצורה מאובטחת</h5>
+                        <h3>תרומה באמצעות פייפאל</h3>
+                        <h5>ניתן לתרום דרך חשבון פייפאל בלחיצה על הכפתור הבא</h5>
 
-                        <div className="col-md-2 col-sm-12 col-xs-12 text-center ">
                             <a href="https://www.paypal.com/il/home"> 
                                 <img src={paypal} alt="img" className="icon1"/>
                                 <br/>
                             </a>
-                    </div>
 
                  </div>  
             </div>
