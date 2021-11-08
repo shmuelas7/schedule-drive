@@ -4,7 +4,6 @@ import giva from "../icon/giva.png"
 import castel from "../icon/castel.png"
 import shoham from "../icon/shoham.png"
 import stars from "../icon/stars.png"
-import miryam from "../icon/miryam.png"
 import "../style/taxi.css"
 
 
