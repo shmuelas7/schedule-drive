@@ -16,6 +16,9 @@ function Footer(){
                     <Link to="Donations">
                         <p className="text-center text-info"><b>לתרומות לעמותה</b></p>
                     </Link>
+                    <Link to="Associations">
+                        <p className="text-center text-info"><b>עמותות רלוונטיות</b></p>
+                    </Link>
                 </div>
                 <div className="col-6"></div>
             </div>
