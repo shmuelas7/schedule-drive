@@ -11,7 +11,7 @@ import "../style/taxi.css"
 
 function Taxi(){
 
-    const [show,setShow] = useState(true)
+    const [show,setShow] = useState(false)
 
 
 
@@ -28,25 +28,64 @@ function Taxi(){
                     <div class="center">
                         <h5>בהזמנת מונית מאחת התחנות הללו דרך האתר ישנה הנחה של 10%</h5>
 
+                        <div className="row">
 
+
+                        <div className="col-md-2 col-sm-12 col-xs-12 text-center">
                             <a href="https://www.340.co.il/Pages/KastelTaxi.php?sID=152&dID=8&kID=1066"> 
                                 <img src={castel} alt="img" className="icon1"/>
                             </a>
+                            <br/>
+                                {
+                                    show?<h4>*3242</h4>:null
+                                }
+
+                                <button onClick={()=>setShow(!show)}>הצגת מספר</button>
+                            </div>
 
 
+                            <div className="col-md-2 col-sm-12 col-xs-12 text-center">
                             <a href="https://www.taxitogo.co.il/%D7%9E%D7%95%D7%A0%D7%99%D7%95%D7%AA-%D7%92%D7%91%D7%A2%D7%AA%D7%99%D7%99%D7%9D-%D7%98%D7%A7%D7%A1%D7%99-%D7%98%D7%95-%D7%92%D7%95-taxitogo/"> 
                                 <img src={giva} alt="img" className="icon1"/>
                             </a>
+                            <br/>
+                                {
+                                    show?<h4>058-5007008</h4>:null
+                                }
 
+                                <button onClick={()=>setShow(!show)}>הצגת מספר</button>
+                            </div>
+
+
+
+                            <div className="col-md-2 col-sm-12 col-xs-12 text-center">
                             <a href="https://taxi-shoham.co.il/%D7%AA%D7%97%D7%A0%D7%AA-%D7%9E%D7%95%D7%A0%D7%99%D7%95%D7%AA-%D7%91%D7%A9%D7%95%D7%94%D7%9D/"> 
                                 <img src={shoham} alt="img" className="icon1"/>
                             </a>
+                            <br/>
+                                {
+                                    show?<h4>03-3818000</h4>:null
+                                }
 
+                                <button onClick={()=>setShow(!show)}>הצגת מספר</button>
+                            </div>
+
+
+                            <div className="col-md-2 col-sm-12 col-xs-12 text-center">
                             <a href="https://stars-taxi.co.il/"> 
                                 <img src={stars} alt="img" className="icon1"/>
                             </a>
 
-                        
+                                <br/>
+                                {
+                                    show?<h4>08-9106106</h4>:null
+                                }
+
+                                <button onClick={()=>setShow(!show)}>הצגת מספר</button>
+                            </div>
+
+                            </div>
+
 
                            {/*} {
                                 show?<h1>000</h1>:null
