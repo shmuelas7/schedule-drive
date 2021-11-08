@@ -17,6 +17,7 @@ import CardProfile from '../pages/CardProfile'
 import Terms from '../pages/Terms'
 import Donations from '../pages/Donations'
 import Associations from '../pages/Associations'
+import Taxi from '../pages/Taxi'
 
 
 
@@ -42,6 +43,7 @@ function App(p) {
           <Route path="/Terms" component={Terms}/>
           <Route path="/Donations" component={Donations}/>
           <Route path="/Associations" component={Associations}/>
+          <Route path="/Taxi" component={Taxi}/>
           <Route path="*" />
           
         </Switch>
