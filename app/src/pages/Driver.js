@@ -181,7 +181,9 @@ function Driver(name){
                 denyButtonText: 'בטל נסיעה',
                 }).then((result) => {
                 if (result.isConfirmed) {
-                    window.open("http://wa.me/972"+user.phone_number+"/היי אני הנהג שלך")
+                    let phone = user.phone_number.substring(1);
+                    console.log("phone "+phone)
+                    window.open("http://wa.me/972"+phone+"?text=היי אני הנהג שלך")
 
                 } else if (result.isDenied) {
                   Swal.fire('הנסיעה בוטלה', '', 'info')
