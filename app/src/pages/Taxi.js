@@ -11,6 +11,9 @@ import "../style/taxi.css"
 
 function Taxi(){
 
+    const [show,setShow] = useState(true)
+
+
 
     return(
        
@@ -25,6 +28,7 @@ function Taxi(){
                     <div class="center">
                         <h5>בהזמנת מונית מאחת התחנות הללו דרך האתר ישנה הנחה של 10%</h5>
 
+
                             <a href="https://www.340.co.il/Pages/KastelTaxi.php?sID=152&dID=8&kID=1066"> 
                                 <img src={castel} alt="img" className="icon1"/>
                             </a>
@@ -38,15 +42,17 @@ function Taxi(){
                                 <img src={shoham} alt="img" className="icon1"/>
                             </a>
 
-                            
                             <a href="https://stars-taxi.co.il/"> 
                                 <img src={stars} alt="img" className="icon1"/>
                             </a>
 
+                        
 
+                           {/*} {
+                                show?<h1>000</h1>:null
+                            }
 
-
-
+                        <button onClick={()=>setShow(!show)}>הצגת מספר</button> */}
 
 
                  </div>  
