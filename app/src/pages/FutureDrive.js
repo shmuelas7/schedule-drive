@@ -61,12 +61,11 @@ function FutureDrive(){
                     x =as.data()      
         })
 
-        console.log("dr"+element.id_driver)
-            if(! element.driver === null)
+        console.log("dr  "+element.id_driver)
+            if( element.driver !== "")
                 dbUser.doc(element.id_driver)//מידע של הנהג
                 .get().then((driv)=>{
                 y = driv.data();
-                console.log("yy"+y)
             })
             setTimeout(() => {
                 console.log("y"+y)
@@ -168,10 +167,11 @@ function FutureDrive(){
                 confirmButtonText: 'אישור',
             }).then((result) => {
                 if (result.isConfirmed) {
-                    if(currentUser.uid === req.id_driver )
-                        window.open("http://wa.me/972"+ask.phone_number+"/הנסיעה בוטלה")
-                    else
-                        window.open("http://wa.me/972"+driver.phone_number+"/הנסיעה בוטלה")
+                    if(req.have_driver===true)
+                        if(currentUser.uid === req.id_driver )
+                             window.open("http://wa.me/972"+ask.phone_number+"/הנסיעה בוטלה")
+                        else
+                             window.open("http://wa.me/972"+driver.phone_number+"/הנסיעה בוטלה")
 
                     window.location.reload();
                 }
