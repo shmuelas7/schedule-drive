@@ -19,6 +19,9 @@ function Footer(){
                     <Link to="Associations">
                         <p className="text-center text-info"><b>עמותות רלוונטיות</b></p>
                     </Link>
+                    <Link to="Taxi">
+                        <p className="text-center text-info"><b> הזמנת מוניות</b></p>
+                    </Link>
                 </div>
                 <div className="col-6"></div>
             </div>
