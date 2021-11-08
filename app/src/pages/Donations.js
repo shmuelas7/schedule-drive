@@ -25,8 +25,9 @@ function Donations(){
 
                             <a href="https://www.paypal.com/il/home"> 
                                 <img src={paypal} alt="img" className="icon1"/>
-                                <br/>
                             </a>
+
+                            <p><b> התרומה מוכרת לצרכי מס לפי סעיף 46</b></p>
 
                  </div>  
             </div>
