@@ -8,11 +8,13 @@ import today from '../component/Date'
 import swal from 'sweetalert2'
 import {dbReq} from '../firebase';
 import {dbUser} from '../firebase';
+import { useHistory } from 'react-router-dom';
 
 
 function FutureDrive(){
 
     const { currentUser } = useAuth();
+    const history = useHistory()
     
 
 
@@ -62,7 +64,7 @@ function FutureDrive(){
         })
 
         console.log("dr  "+element.id_driver)
-            if( element.driver !== "")
+            if( element.have_driver)
                 dbUser.doc(element.id_driver)//מידע של הנהג
                 .get().then((driv)=>{
                 y = driv.data();
@@ -101,18 +103,34 @@ function FutureDrive(){
                 
              if(driver.first_name !== undefined)   
              {
-            td2.innerHTML=driver.first_name;
+                if(currentUser === data.id_ask )
+                {
+                    const btn2= document.createElement('input');
+                    btn2.type = "button";
+                    btn2.value = driver.first_name;
+                    btn2.className = "btn btn-success text-right";
+                    btn2.onclick = (e) => {
+                        history.push('/CardProfile', { id: data.id_driver, flag : false })
+                      };
+                    td2.appendChild(btn2);
+                }
+                else{
+                    td2.innerHTML=driver.first_name;
+                    td2.className="text-right"
+                }
             
-            td3.innerHTML=driver.phone_number;
-            
+                td3.innerHTML=driver.phone_number;
              }
              else{
                 td2.innerHTML="אין מתנדב עדיין";
+                td2.className="text-right"
             
                 td3.innerHTML="אין מתנדב עדיין";
 
              }
-             td2.className="text-right"
+
+             
+             
              td3.className="text-right"
 
             td4.innerHTML=ask.phone_number;
@@ -132,8 +150,8 @@ function FutureDrive(){
             
             td1.appendChild(btn);
             tr.appendChild(td1);
-            tr.appendChild(td2);
             tr.appendChild(td3);
+            tr.appendChild(td2);
             tr.appendChild(td4);
             tr.appendChild(td5);
             tr.appendChild(td6);
@@ -199,8 +217,9 @@ function FutureDrive(){
                 <thead className="text-right">
                     <tr>
                         <th>עריכת נסיעה</th>
-                        <th>שם המתנדב</th>
                         <th>טלפון מתנדב</th>
+                        <th>שם המתנדב</th>
+                        
                         <th>טלפון נוסע</th>
                         <th>יעד</th>
                         <th>מוצא</th>
