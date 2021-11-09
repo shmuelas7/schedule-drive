@@ -22,7 +22,7 @@ function PreviousDrive(){
 
     async function getdata () {//מקבל את המידע של הבקשת נסיעה
         await dbReq.where('id_driver', '==', currentUser.uid )
-        .orderBy("Date").get().then((q) => {
+        .get().then((q) => {
             var drive = [];
             
             q.forEach(doc=>{
@@ -30,7 +30,7 @@ function PreviousDrive(){
 
                 console.log(x)
                 console.log(today)
-                console.log(x.date)
+                console.log(x.Date)
                 if(x.Date < today)
                 {
                     console.log(today)
@@ -52,7 +52,7 @@ function PreviousDrive(){
         
         await drive.forEach(element =>{
             var x="";
-            var y=";"
+            var y="";
             console.log(element.id_ask)
            dbUser.doc(element.id_ask)
             .get().then((as)=>{
@@ -98,7 +98,7 @@ function PreviousDrive(){
             td4.innerHTML=data.time;
             td4.className="text-right"
 
-            td5.innerHTML=data.date;
+            td5.innerHTML=data.Date;
             td5.className="text-right"
 
             td6.innerHTML=ask.first_name;
