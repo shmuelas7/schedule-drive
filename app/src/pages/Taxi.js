@@ -45,11 +45,12 @@ function Taxi(){
                                     <img src={castel} alt="img" className="icon1"/>
                                 </a>
                                 <br/>
+                                   
+                                    <button onClick={()=>setShow1(!show1)}>הצגת מספר</button>
                                     {
                                         show1?<h4>*3242</h4>:null
                                     }
 
-                                    <button onClick={()=>setShow1(!show1)}>הצגת מספר</button>
                                 </div>
 
 
@@ -58,11 +59,12 @@ function Taxi(){
                                     <img src={giva} alt="img" className="icon1"/>
                                 </a>
                                 <br/>
+
+                                    <button onClick={()=>setShow2(!show2)}>הצגת מספר</button>
+
                                     {
                                         show2?<h4>058-5007008</h4>:null
                                     }
-
-                                    <button onClick={()=>setShow2(!show2)}>הצגת מספר</button>
                                 </div>
 
 
@@ -72,11 +74,13 @@ function Taxi(){
                                     <img src={shoham} alt="img" className="icon1"/>
                                 </a>
                                 <br/>
+                                   
+                                    <button onClick={()=>setShow3(!show3)}>הצגת מספר</button>
+
                                     {
                                         show3?<h4>03-3818000</h4>:null
                                     }
 
-                                    <button onClick={()=>setShow3(!show3)}>הצגת מספר</button>
                                 </div>
 
 
@@ -86,11 +90,12 @@ function Taxi(){
                                 </a>
 
                                     <br/>
+
+                                    <button onClick={()=>setShow4(!show4)}>הצגת מספר</button>
+
                                     {
                                         show4?<h4>08-9106106</h4>:null
                                     }
-
-                                    <button onClick={()=>setShow4(!show4)}>הצגת מספר</button>
                                 </div>
 
 
@@ -100,11 +105,13 @@ function Taxi(){
                                 </a>
 
                                     <br/>
+                                  
+                                    <button onClick={()=>setShow5(!show5)}>הצגת מספר</button>
+
                                     {
                                         show5?<h4>052-9121933</h4>:null
                                     }
 
-                                    <button onClick={()=>setShow5(!show5)}>הצגת מספר</button>
                                 </div>
 
 
@@ -114,11 +121,13 @@ function Taxi(){
                                 </a>
 
                                     <br/>
+                                  
+                                    <button onClick={()=>setShow6(!show6)}>הצגת מספר</button>
+
                                     {
                                         show6?<h4>054-4641726</h4>:null
                                     }
 
-                                    <button onClick={()=>setShow6(!show6)}>הצגת מספר</button>
                                 </div>
 
 
