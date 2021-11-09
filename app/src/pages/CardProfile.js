@@ -7,23 +7,28 @@ import {dbUser} from '../firebase'
 import Button  from 'react-bootstrap/Button';
 import { useAuth } from "../contexts/AuthContext"
 import { useState} from 'react';
+import firebase from 'firebase';
+import "firebase/firestore";
 
 function CardProfile(){
     const history = useHistory()
     const { currentUser } = useAuth();
-    const [state, setstate] = useState("")
+    const [comment, setcoment] = useState("")
+    
     const data = history.location.id
+    const flag =history.location.flag
     console.log("info" + data)
+    console.log("flag " + flag)
 
     useEffect(getdata)
-
+    var User =""
     async function getdata(){
-        var dataUser =""
+       
        await dbUser.doc(data).get().then((value)=> {
-            dataUser = value.data()
+            User = value.data()
             
         })
-        enterData(dataUser)
+        enterData(User)
     }
     function enterData(user){//מכניס את הנותים 
         let userName = document.getElementById('name');
@@ -36,9 +41,11 @@ function CardProfile(){
 
         let userCity = document.getElementById('city');
         userCity.innerHTML="מ"+user.area
-
+        if(flag)
+        {
         let userPhone = document.getElementById('phone');
         userPhone.innerHTML="הטלפון שלי  "+user.phone_number
+        }
 
         let userImg = document.getElementById('imge');
         userImg.src=user.imgUrl
@@ -46,15 +53,27 @@ function CardProfile(){
 
     }
     async function update(){
-        var user =""
-        await dbUser.doc(currentUser.uid).get().then((value)=> {
-             user = value.data()
-        })
+        if(flag){
+         await firebase.firestore().collection("comment").doc().set({
+            name:User.first_name,
+            comment:comment,
+            id:data
+         })
+         console.log("ok")
+        }
+        else
+        {
+            setTimeout(() => {
+                let b1 = document.getElementById('btn');
+                b1.style.display = "none"
+                let t1=document.getElementById('txt')
+                t1.style.display = "none"
 
-         await dbUser.doc(data).update({
-            comment:user.first_name +":"+state
+                },500)
+ 
+        }
+
             
-        })
     }
 
 
@@ -88,9 +107,9 @@ function CardProfile(){
                             </ul>
                             </div>  
                             <div className="text-right" dir="rtl">                          
-                        <textarea className="form-control" rows="1" onChange={(e)=>setstate(e.target.value)}></textarea>
+                        <textarea className="form-control" rows="1" id="txt" onChange={(e)=>setcoment(e.target.value)}></textarea>
                         </div>
-                        <Button className="button-card" onClick={update()}>הוסף ביקורת</Button>
+                        <Button className="button-card" id="btn" onClick={update()}>הוסף ביקורת</Button>
                 </div>
             </div>
 
