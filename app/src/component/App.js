@@ -18,6 +18,9 @@ import Terms from '../pages/Terms'
 import Donations from '../pages/Donations'
 import Associations from '../pages/Associations'
 import Taxi from '../pages/Taxi'
+import Manager from '../pages/Manager'
+import UsersList from '../pages/UsersList'
+import Messages from '../pages/Messages'
 
 
 
@@ -44,6 +47,9 @@ function App(p) {
           <Route path="/Donations" component={Donations}/>
           <Route path="/Associations" component={Associations}/>
           <Route path="/Taxi" component={Taxi}/>
+          <Route path="/Manager" component={Manager}/>
+          <Route path="/UsersList" component={UsersList}/>
+          <Route path="/Messages" component={Messages}/>
           <Route path="*" />
           
         </Switch>
