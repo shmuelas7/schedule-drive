@@ -1,9 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Link } from 'react-router-dom';
 import '../style/manager.css'
 import logo from "../style/black logo.png"
-import mes from "../icon/mes.png";
-import list from "../icon/list.png";
 
 
 function Manager(){
