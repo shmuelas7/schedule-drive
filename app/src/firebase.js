@@ -17,4 +17,5 @@ const app = firebase.initializeApp({
   export const auth = app.auth();
   export const dbReq = firebase.firestore().collection("request");
   export const dbUser = firebase.firestore().collection("users");
+  export const dbComment = firebase.firestore().collection("comment");
   export default app;
