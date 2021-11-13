@@ -86,7 +86,7 @@ function PreviousDrive(){
                 btn.className = "btn btn-primary  text-center";
                 btn.value = "דרג";
                 btn.onclick = (e) => {
-                    rating(ask);
+                    rating(data);
                   };
                 
             td2.innerHTML=data.destination;
@@ -120,10 +120,13 @@ function PreviousDrive(){
 
         function rating(req){
             if(currentUser.uid === req.id_driver )
-            history.push('/CardProfile', { id: req.id_ask , flag :true })
+            {
+                console.log(req.ask)
+            history.push({pathname:'/CardProfile',  id: req.id_ask , flag :true })
+            }
 
             else
-            history.push('/CardProfile', { id: req.id_driver, flag : true })
+            history.push({pathname:'/CardProfile', id: req.id_driver, flag : true })
         }
 
     return(
