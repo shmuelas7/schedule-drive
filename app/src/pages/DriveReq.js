@@ -18,7 +18,7 @@ const [date , setdate]= useState(Date);
 const [exit , setexit]= useState("");
 const [destination , setdestination]= useState("");
 const [time,settime]= useState("");
-const [comment,setComment]=useState(null)
+const [comment,setComment]=useState("אין פרטים")
 const history = useHistory();
 
 

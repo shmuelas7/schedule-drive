@@ -136,11 +136,7 @@ function Driver(name){
             td7.innerHTML=userAsk.first_name +" "+userAsk.last_name;
             td7.className="text-right"
 
-            if(req.comment !== null){
-                td7.onmouseover = (e) => {
-                show(req);
-                 }; 
-            }
+
             
             td1.appendChild(btn);
             td8.appendChild(uImg);
@@ -174,7 +170,7 @@ function Driver(name){
               })
               Swal.fire({
                 title:'  תודה שהתנדבת להסיע את ' + user.first_name,
-                text:   ' מספר טלפון ליצירת קשר '+user.phone_number,
+                text:   '  פרטים על הנסיעה : '+req.comment,
                 icon:'success',
                 confirmButtonText: 'ליצירת קשר',
                 showDenyButton: true,
@@ -198,24 +194,7 @@ function Driver(name){
   
             
  }
- function show(req){
-    let timerInterval
-    Swal.fire({
-      title: 'מידע על הנסיעה',
-      text:req.comment,
-      timer: 2000,
-      timerProgressBar: true,
 
-      willClose: () => {
-        clearInterval(timerInterval)
-      }
-    }).then((result) => {
-      /* Read more about handling dismissals below */
-      if (result.dismiss === Swal.DismissReason.timer) {
-        console.log('I was closed by the timer')
-      }
-    })
-}
 
 
         

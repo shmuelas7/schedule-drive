@@ -3,40 +3,72 @@ import Nav from "../component/Nav";
 import '../style/CardProfile.css';
 import { useHistory } from 'react-router-dom';
 import { useEffect } from 'react';
-import {dbUser} from '../firebase'
+import {dbUser,dbComment} from '../firebase'
 import Button  from 'react-bootstrap/Button';
 import { useAuth } from "../contexts/AuthContext"
 import { useState} from 'react';
-import firebase from 'firebase';
+import { uuid } from 'uuidv4';
 import "firebase/firestore";
 
 function CardProfile(){
     const history = useHistory()
     const { currentUser } = useAuth();
-    const [comment, setcoment] = useState("")
+    
+    const [comment,setComment]=useState("")
+
+    
+    
     
     const data = history.location.id
     const flag =history.location.flag
+
+    
     console.log("info" + data)
     console.log("flag " + flag)
 
     useEffect(getdata)
+    //getdata()
+    
     var User =""
+    var commentArry=[]
+    
+
     async function getdata(){
-       
+        
        await dbUser.doc(data).get().then((value)=> {
             User = value.data()
-            
         })
-        enterData(User)
+        
+        await dbComment.where('id','==',data).get().then((doc)=>{
+            
+             doc.forEach(x=>{
+                commentArry.push(x.data())
+                console.log("ac "+x.data())
+            }) 
+        })
+        console.log("ab "+commentArry.comment)
+        enterData(User,commentArry)
+
+ 
     }
-    function enterData(user){//מכניס את הנותים 
+    function enterData(user){//מכניס את הנותים
+        
+            if(!flag)
+            {
+            let b1 = document.getElementById('btn');
+            b1.style.display = "none"
+            let t1=document.getElementById('txt')
+            t1.style.display = "none"
+            }
+
+        
+
         let userName = document.getElementById('name');
         userName.innerHTML=user.first_name +" "+ user.last_name
         userName.className="font-weight-bold"
 
         let userAge = document.getElementById('age');
-        userAge.innerHTML= " בן  "+user.age
+        userAge.innerHTML= " גיל  "+user.age
         userAge.className="text-dark "
 
         let userCity = document.getElementById('city');
@@ -51,26 +83,37 @@ function CardProfile(){
         userImg.src=user.imgUrl
         console.log(user.imgUrl)
 
-    }
-    async function update(){
-        if(flag){
-         await firebase.firestore().collection("comment").doc().set({
-            name:User.first_name,
-            comment:comment,
-            id:data
-         })
-         console.log("ok")
-        }
-        else
-        {
-            setTimeout(() => {
-                let b1 = document.getElementById('btn');
-                b1.style.display = "none"
-                let t1=document.getElementById('txt')
-                t1.style.display = "none"
 
-                },500)
- 
+
+        const ul = document.getElementById('ul')
+        ul.className="ul-card"
+        commentArry.forEach(doc=>{
+            console.log("ss"+doc.comment)
+            var li = document.createElement('li');
+            li.textContent=doc.name+":"+ doc.comment
+            ul.appendChild(li)
+            
+        })
+        
+
+    }
+
+    async function update(){
+        const id = uuid();
+        console.log(User.first_name)
+        if(flag){
+          dbComment.doc(id).set({
+            name: User.first_name,
+            comment:comment,
+            id_comment:id,
+            id:data,
+            id_write:currentUser.uid
+         }).then(() =>{console.log("sucsse comment")
+                    window.location.reload()}
+         )
+         .catch((error)=>{
+            console.error("Error writing document: ", error);
+         })
         }
 
             
@@ -100,16 +143,14 @@ function CardProfile(){
                     <h3 className="name">ביקורות</h3>
                     <br></br>
                     <div className="w3-container">
-                        <ul>
-                            <li><b>איציק :</b> הגיע בזמן ומאוד עזר לי</li>
-                            <li><b>לאה :</b> אחלה נהג</li>
-                            <li><b>דני :</b> ממליץ מאוד לנסוע איתו</li>
-                            </ul>
-                            </div>  
+                        <ul id="ul">
+
+                        </ul>
+                    </div>  
                             <div className="text-right" dir="rtl">                          
-                        <textarea className="form-control" rows="1" id="txt" onChange={(e)=>setcoment(e.target.value)}></textarea>
+                        <textarea className="form-control" rows="1" id="txt" onChange={(e)=> setComment(e.target.value)}></textarea>
                         </div>
-                        <Button className="button-card" id="btn" onClick={update()}>הוסף ביקורת</Button>
+                        <Button className="button-card" id="btn" onClick={update}>הוסף ביקורת</Button>
                 </div>
             </div>
 
