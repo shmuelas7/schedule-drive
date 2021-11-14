@@ -29,9 +29,9 @@ export default function ForgotPassword() {
   }
 
   return (
-    <>
+    <div className="bg-primary">
       <Card>
-        <Card.Body>
+        <Card.Body >
         <img src={logo} alt="logo" className="login-logo" />
           <h2 className="text-center mb-4">איפוס סיסמה</h2>
           {error && <Alert variant="danger">{error}</Alert>}
@@ -53,6 +53,6 @@ export default function ForgotPassword() {
       <div className="w-100 text-center mt-2">
         צריך חשבון? <Link to="/Register">הרשמה</Link>
       </div>
-    </>
+    </div>
   )
 }
