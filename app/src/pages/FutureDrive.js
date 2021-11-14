@@ -11,6 +11,7 @@ import {dbUser} from '../firebase';
 import { useHistory } from 'react-router-dom';
 
 
+
 function FutureDrive(){
 
     const { currentUser } = useAuth();
@@ -91,19 +92,35 @@ function FutureDrive(){
             const td7= document.createElement('td');
             const td8= document.createElement('td');
             const td9= document.createElement('td');
+            const td10 =document.createElement('td');
+            const btn3 = document.createElement('input')
             const btn = document.createElement('input');
             
+
+            btn3.type="button"
+            btn3.className="btn btn-primary  text-center"
+            btn3.value="פרטים נוספים על נסיעה"
+            btn3.onclick=(e)=>{
+                swal.fire({
+                    icon: 'info',
+                    title: 'פרטים',
+                    text: data.comment,
+                    confirmButtonText: 'אישור',
+                  })
+
+            }
                 
                 btn.type = "button";
-                btn.className = "btn btn-primary  text-center";
+                btn.className = "btn btn-primary  text-right";
                 btn.value = "בטל נסיעה";
                 btn.onclick = (e) => {
                     cancelation(data,driver,ask);
                   };
-                
-             if(driver.first_name !== undefined)   
+            
+                  console.log("have driber"+ driver.first_name)
+             if(data.have_driver)   
              {
-                if(currentUser === data.id_ask )
+                if(currentUser.uid === data.id_ask )
                 {
                     const btn2= document.createElement('input');
                     btn2.type = "button";
@@ -149,7 +166,9 @@ function FutureDrive(){
             td9.className="text-right"
             
             td1.appendChild(btn);
+            td10.appendChild(btn3)
             tr.appendChild(td1);
+            tr.appendChild(td10)
             tr.appendChild(td3);
             tr.appendChild(td2);
             tr.appendChild(td4);
@@ -206,7 +225,7 @@ function FutureDrive(){
               
 
     return(
-        <div className="container-fluid">
+        <div>
             
             <Nav/>
 
@@ -217,6 +236,7 @@ function FutureDrive(){
                 <thead className="text-right">
                     <tr>
                         <th>עריכת נסיעה</th>
+                        <th>פרטים</th>
                         <th>טלפון מתנדב</th>
                         <th>שם המתנדב</th>
                         
