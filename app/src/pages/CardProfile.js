@@ -129,7 +129,7 @@ function CardProfile(){
             <h1 className="text-center">דף משתמש</h1>
 
             <div className="container mt-3">
-                <div className="card">
+                <div className="card card-profile">
                     <div className="top-container"> 
                         <img  className="img-fluid profile-image" width="100" alt="profile" id="imge"/>
                         <div className="ml-3">
