@@ -6,6 +6,7 @@ import '../style/Login.css';
 import { useHistory } from 'react-router-dom';
 import { useAuth } from "../contexts/AuthContext"
 import logo from '../style/black logo.png'
+import { Link } from "react-router-dom"
 
 
 
@@ -57,7 +58,9 @@ function Login(){
                         <Button variant="dark" type="submit" block  disabled={loading} className="log-btn">התחברות</Button>
                         
                         <Button variant="dark"  block  className="log-btn" onClick={()=>(history.push("/Register"))}>הרשמה</Button>
-                        
+                        <div className="w-100 text-center mt-3">
+                          <Link to="/forgot-password">שכחתי סיסמה</Link>
+                          </div>
                     </form>
                 </div>
             </div>
