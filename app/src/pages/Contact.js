@@ -4,6 +4,8 @@ import logo from '../style/black logo.png'
 import Button from 'react-bootstrap/Button';
 import firebase from 'firebase';
 import swal from 'sweetalert2'
+import {dbContact} from '../firebase'
+import { uuid } from 'uuidv4';
 
 function Contact(){
 
@@ -12,11 +14,13 @@ function Contact(){
 	const [subject,setSubject]=useState("")
 	const [messege,setMessege]=useState("")
 	
-	const data =   firebase.firestore().collection('contact')
+	
 
 
 	async function sentData(){
-        await data.set({
+		const id = uuid();
+        await dbContact.doc(id).set({
+		id:id,
         name:name,
         mail:mail,
         subject:subject,
