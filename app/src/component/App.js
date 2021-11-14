@@ -38,20 +38,20 @@ function App(p) {
           <Route path="/Login" exact component={Login}/>
           <Route path="/Register" component={Register}/>
           <PrivateRoute path="/driver" component={Driver}/>
-          <Route path="/DriveReq" component={DriveReq}/>
+          <PrivateRoute path="/DriveReq" component={DriveReq}/>
           <PrivateRoute path="/Profile" component={Profile}/>
-          <Route path="/FutureDrive" component={FutureDrive}/>
-          <Route path="/PreviousDrive" component={PreviousDrive}/>
+          <PrivateRoute path="/FutureDrive" component={FutureDrive}/>
+          <PrivateRoute path="/PreviousDrive" component={PreviousDrive}/>
           <Route path="/contact" component={Contact}/>
-          <Route path="/CardProfile" component={CardProfile}/>
-          <Route path="/home" component={Home}/>
+          <PrivateRoute path="/CardProfile" component={CardProfile}/>
+          <PrivateRoute path="/home" component={Home}/>
           <Route path="/Terms" component={Terms}/>
           <Route path="/Donations" component={Donations}/>
           <Route path="/Associations" component={Associations}/>
           <Route path="/Taxi" component={Taxi}/>
-          <Route path="/Manager" component={Manager}/>
-          <Route path="/UsersList" component={UsersList}/>
-          <Route path="/Messages" component={Messages}/>
+          <PrivateRoute path="/Manager" component={Manager}/>
+          <PrivateRoute path="/UsersList" component={UsersList}/>
+          <PrivateRoute path="/Messages" component={Messages}/>
           <Route path="/forgot-password" component={ForgotPassword} />
           <Route path="*" />
           
