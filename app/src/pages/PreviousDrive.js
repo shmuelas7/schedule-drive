@@ -130,9 +130,10 @@ function PreviousDrive(){
         }
 
     return(
-        <div className="container-fluid " >
-            <div className=" bg-warning">
+        <div>
+            
             <Nav/>
+            <div className=" bg-warning">
             <h1 className="text-center">היסטורית נסיעות</h1>
             <Search/>
             <Table striped bordered hover variant="dark" responsive>
