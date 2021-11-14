@@ -21,6 +21,7 @@ import Taxi from '../pages/Taxi'
 import Manager from '../pages/Manager'
 import UsersList from '../pages/UsersList'
 import Messages from '../pages/Messages'
+import ForgotPassword from "../pages/ForgotPassword"
 
 
 
@@ -34,6 +35,7 @@ function App(p) {
     <AuthProvider>
         <Switch>
           <Route path="/" exact component={Login}/>
+          <Route path="/Login" exact component={Login}/>
           <Route path="/Register" component={Register}/>
           <PrivateRoute path="/driver" component={Driver}/>
           <Route path="/DriveReq" component={DriveReq}/>
@@ -50,6 +52,7 @@ function App(p) {
           <Route path="/Manager" component={Manager}/>
           <Route path="/UsersList" component={UsersList}/>
           <Route path="/Messages" component={Messages}/>
+          <Route path="/forgot-password" component={ForgotPassword} />
           <Route path="*" />
           
         </Switch>
