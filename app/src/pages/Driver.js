@@ -201,7 +201,7 @@ function Driver(name){
 
 
     return(
-        <div className="container-fluid">
+        <div>
             <Nav/>
             
             <div className="bg-warning">
