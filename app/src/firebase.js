@@ -18,4 +18,5 @@ const app = firebase.initializeApp({
   export const dbReq = firebase.firestore().collection("request");
   export const dbUser = firebase.firestore().collection("users");
   export const dbComment = firebase.firestore().collection("comment");
+  export const dbContact = firebase.firestore().collection("contact")
   export default app;
