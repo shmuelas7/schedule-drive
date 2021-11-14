@@ -15,10 +15,10 @@ import Wheel from "../icon/Wheel.png";
 import caRQ from "../icon/carRQ.png";
 import alldrive from "../icon/alldrive.png"
 import logo from "../style/black logo.png"
+import managerLogo from '../style/manager.png'
 import { useEffect } from 'react';
-
-
 import {dbUser} from '../firebase'
+//import MangerPage from '../pages/Manager'
 
 
 
@@ -43,6 +43,14 @@ function Nav(){
         element.src = user.imgUrl
         element.className= " rounded-circle iconi "
        }
+       if(currentUser.uid === "p1QOseZ2wgOwBIdBUeKacgTOaaW2"){
+           let img =document.getElementById("manager")
+           img.src= managerLogo;
+           img.className="icon mt-3"
+           img.onclick = (e) => {
+            history.push({pathname:'/Manager'})
+          };
+       }
     }
     
  
@@ -58,10 +66,14 @@ function Nav(){
     }
 
     return(
-        <nav className="bg-light">
-        <div className="text-center  ">
-            <img src={logo} alt="logo " className="logo"/>
-            
+        <nav className=" container-fluid bg-whit">
+        <div className="text-center row ">
+            <div className="col-md-10 col-sm-12 col-xs-12">
+                <img src={logo} alt="logo " className="logo"/>
+            </div>
+            <div className="col-md-2 col-sm-12 col-xs-12 text">
+                <img id="manager"/>
+            </div>
         </div>
         {error && <Alert variant="danger">{error}</Alert>}
         <div className="row">
