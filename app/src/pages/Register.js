@@ -91,7 +91,7 @@ import app from '../firebase';
                     icon: 'error',
                     title: 'שגיאה',
                     text: 'סיסמאות לא תואמות',
-                    confirmButtonText: 'בסדר',
+                    confirmButtonText: 'אישור',
                   })
                 console.log("pass false");
                 return false;
