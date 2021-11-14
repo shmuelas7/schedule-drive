@@ -86,7 +86,7 @@ function CardProfile(){
 
 
         const ul = document.getElementById('ul')
-        ul.className="ul-card"
+        ul.className="ul-card mt-1 text-right"
         commentArry.forEach(doc=>{
             console.log("ss"+doc.comment)
             var li = document.createElement('li');
@@ -121,7 +121,7 @@ function CardProfile(){
 
 
     return(
-        <div className="container-fluid">
+        <div>
             
         <Nav/>
 
@@ -139,23 +139,19 @@ function CardProfile(){
                             <p className="mail" id="phone"></p>
                         </div>
                     </div>
-                    
-                    <h3 className="name">ביקורות</h3>
-                    <br></br>
-                    <div className="w3-container">
+                    <div>
+                        <h3 className="name">ביקורות</h3>
+                        <div className="w3-container">
                         <ul id="ul">
-
                         </ul>
-                    </div>  
-                            <div className="text-right" dir="rtl">                          
-                        <textarea className="form-control" rows="1" id="txt" onChange={(e)=> setComment(e.target.value)}></textarea>
                         </div>
-                        <Button className="button-card" id="btn" onClick={update}>הוסף ביקורת</Button>
+                    </div>  
+                    <div className="text-right " dir="rtl">                          
+                        <textarea className="form-control" rows="1" id="txt" onChange={(e)=> setComment(e.target.value)}></textarea>
+                    </div>
+                        <Button className="button-card mb-3" id="btn" onClick={update}>הוסף ביקורת</Button>
                 </div>
             </div>
-
-            <br></br>
-            <br></br>
 
         </div>
     </div>
