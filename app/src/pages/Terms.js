@@ -6,8 +6,7 @@ import '../style/Terms.css';
 function CardProfile(){
     return(
         <div className="container-fluid">
-            
-        <Nav/>
+        
 
         <div className="bg-warning" dir="rtl">
             <h2 className="text-center">תנאי שימוש ומדיניות פרטיות בשירותי האתר</h2>
