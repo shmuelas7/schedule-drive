@@ -30,6 +30,7 @@ export default function ForgotPassword() {
 
   return (
     <div className="bg-primary">
+      <br/>
       <Card>
         <Card.Body >
         <img src={logo} alt="logo" className="login-logo" />
