@@ -119,7 +119,7 @@ function Driver(name){
                   };
             
             uImg.setAttribute('src',userAsk.imgUrl );
-            uImg.className="img-fluid rounded-circle  img-responsive" 
+            uImg.className="img-fluid rounded-circle  img-responsive icondr" 
             uImg.onclick =(e)=>{
                 console.log("1  "+ userAsk.id)
                 history.push({pathname:'/CardProfile', id: userAsk.id , flag:false  })

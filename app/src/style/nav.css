@@ -2,10 +2,15 @@
     width: 15% ;
 }
 .icon{
-    width:20%;
+    width:30%;
     height:50%;
 }
 .iconi{
-    width:40%;
+    width:30%;
     height:50%; 
+}
+
+.icondr{
+    height:100px;
+    width:85%;
 }
