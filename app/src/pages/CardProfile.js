@@ -31,12 +31,17 @@ function CardProfile(){
     
     var User =""
     var commentArry=[]
+    var currnt=""
     
 
     async function getdata(){
         
        await dbUser.doc(data).get().then((value)=> {
             User = value.data()
+        })
+
+        await dbUser.doc(currentUser.uid).get().then((value)=> {
+            currnt = value.data()
         })
         
         await dbComment.where('id','==',data).get().then((doc)=>{
@@ -99,17 +104,18 @@ function CardProfile(){
     }
 
     async function update(){
+        console.log(x)
         const id = uuid();
-        console.log(User.first_name)
+        console.log(currnt.first_name)
         if(flag){
           dbComment.doc(id).set({
-            name: User.first_name,
-            comment:comment,
+            name: currnt.first_name,
+            comment:x,
             id_comment:id,
             id:data,
             id_write:currentUser.uid
-         }).then(() =>{console.log("sucsse comment")
-                    window.location.reload()}
+         }).then(() =>{console.log("sucsse comment")}
+         
          )
          .catch((error)=>{
             console.error("Error writing document: ", error);
@@ -117,6 +123,11 @@ function CardProfile(){
         }
 
             
+    }
+    var x=""
+    function addcoment(e){
+            x=e
+            console.log(x)
     }
 
 
@@ -147,7 +158,7 @@ function CardProfile(){
                         </div>
                     </div>  
                     <div className="text-right " dir="rtl">                          
-                        <textarea className="form-control" rows="1" id="txt" onChange={(e)=> setComment(e.target.value)}></textarea>
+                        <textarea className="form-control" rows="1" id="txt" onChange={(e)=> addcoment(e.target.value)}></textarea>
                     </div>
                         <Button className="button-card mb-3" id="btn" onClick={update}>הוסף ביקורת</Button>
                 </div>
