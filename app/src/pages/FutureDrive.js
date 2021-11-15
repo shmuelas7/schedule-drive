@@ -127,7 +127,7 @@ function FutureDrive(){
                     btn2.value = driver.first_name;
                     btn2.className = "btn btn-success text-right";
                     btn2.onclick = (e) => {
-                        history.push('/CardProfile', { id: data.id_driver, flag : false })
+                        history.push({pathname:'/CardProfile', id: data.id_driver , flag:false  })
                       };
                     td2.appendChild(btn2);
                 }
