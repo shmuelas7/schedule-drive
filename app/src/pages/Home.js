@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import '../style/home.css'
 import logo from "../style/black logo.png"
 import Button  from 'react-bootstrap/Button';
-
+import help2 from "../icon/help2.png"
+import ride from "../icon/ride.png"
 
 function Home(){
 
@@ -16,12 +17,16 @@ function Home(){
 
                 <div className='is-grouped col-lg-6 col-md-6 col-sm-12 '>
                     <Link to="DriveReq" >
-                        <Button className=" btn-xxl mb-4 btn btn-light" block>בקשת נסיעה</Button>
+                        <img src={ride} alt="img" className="iconho"/>
+                        <br/>
+                        <h2>בקשת נסיעה </h2>
                     </Link>
                 </div>
                 <div className='is-grouped col-lg-6 col-md-6 col-sm-12 '>
                     <Link to="Driver">
-                        <Button className="  btn-xxl btn btn-light " block>הצעת עזרה</Button>
+                        <img src={help2} alt="img" className="iconho"/>
+                        <br/>
+                        <h2> הצעת עזרה </h2>                    
                     </Link>
                 </div>
                      
