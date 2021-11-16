@@ -15,7 +15,7 @@ function Manager(){
     
    async function getData(){
          var messege = []
-       await dbContact.get().then((doc)=>{
+       await dbContact.where('delete','==',false).get().then((doc)=>{
             doc.forEach(mes=>{
                 messege.push(mes.data())
                 
@@ -56,7 +56,7 @@ function Manager(){
             btn1.className="w-35 btn btn-danger"
             btn1.value="טופל"
             btn1.onclick = (e) => {
-                finish(elment.id)
+                finish(elment)
               };
               var btn2= document.createElement('input')
               btn2.type="button"
@@ -77,8 +77,9 @@ function Manager(){
 
 
         })
-        function finish(id){
+        function finish(user){
             console.log("finis")
+            console.log(user.id)
             swal.fire({
                 title:' מחיקת אירוע',
                 text:   '  אם סיימתה לטפל ? לחץ על מחק אחרת לחץ על ביטול',
@@ -88,10 +89,14 @@ function Manager(){
                 denyButtonText: 'בטל פעולה',
                 }).then((result) => {
                 if (result.isConfirmed) {
-                    dbContact.doc(id).delete()
+                   
+                    dbContact.doc(user.id).update({
+                        delete:true
+                    }).then(console.log("ok"))
+                    .catch(err=>{console.log(err)})
             
                     console.log("del")
-                    window.location.reload();
+                   // window.location.reload();
                 }
               })
 
