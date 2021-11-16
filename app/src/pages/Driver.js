@@ -208,11 +208,8 @@ function Driver(name){
             <div className="bg-warning">
             <h1 className="text-center">כל הנסיעות</h1><div class="input-group">
             <div className="input-group mb-3 row" dir="rtl">
-                <div class="form-outline col-4 ">
-                    <input id="search-input" type="search" id="serch" onChange={(e=>serch(e.target.value))} class="form-control" />
-                </div>
-                    <button id="search-button" type="button" class="btn btn-primary" onclick="">חיפוש
-                    </button>
+
+            
                 </div>
             </div>
 
