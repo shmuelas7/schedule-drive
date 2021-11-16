@@ -1,7 +1,6 @@
 import React from 'react';
 import Nav from "../component/Nav";
 import Table from 'react-bootstrap/Table'
-import Search from '../component/Search';
 import { useEffect } from 'react';
 import { useAuth } from "../contexts/AuthContext"
 import today from '../component/Date'
@@ -231,7 +230,6 @@ function FutureDrive(){
 
             <div className="bg-warning">
                 <h1 className="text-center">הנסיעות שלי</h1>
-                <Search/>
                 <Table striped bordered hover variant="dark" responsive>
                 <thead className="text-right">
                     <tr>
