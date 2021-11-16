@@ -115,7 +115,6 @@ function CardProfile(){
             id:data,
             id_write:currentUser.uid
          }).then(() =>{console.log("sucsse comment")}
-         
          )
          .catch((error)=>{
             console.error("Error writing document: ", error);
