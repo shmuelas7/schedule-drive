@@ -1,7 +1,6 @@
 import { React} from 'react';
 import Nav from "../component/Nav";
 import Table from 'react-bootstrap/Table'
-import Search from '../component/Search';
 import { useEffect } from 'react';
 import { useAuth } from "../contexts/AuthContext"
 import {dbReq,dbUser} from '../firebase'
@@ -13,12 +12,9 @@ import { useState} from 'react'
 
 
  
-var x="Date"
 
-export const setDataReceivedFromChild=(index)=>{ 
-    console.log(index);
-    x=index
-}
+
+
 
 
 function Driver(name){
@@ -28,14 +24,19 @@ function Driver(name){
 
     const { currentUser } = useAuth();
     const history = useHistory()
-    const [filter,setilter]=useState("Date")
 
 
 
     console.log(x)
     
 
+    var x="Date"
 
+
+    function serch(s){
+        x=s
+        console.log(x)
+    }
 
 
     useEffect(getdata)
@@ -46,10 +47,8 @@ function Driver(name){
             user=u.data()
         })
         console.log(user)
-        if(x==="exit")
-            setilter(user.exit)
 
-        await dbReq.orderBy(x).get().then((q) => {
+        await dbReq.orderBy('Date').get().then((q) => {
             var req = [];
             q.forEach(doc=>{
                 let x= doc.data()
@@ -66,8 +65,6 @@ function Driver(name){
                 user=u.data()
             })
             console.log(user)
-            if(x==="exit")
-                setilter(user.exit)
     
             await dbReq.get().then((q) => {
                 var req = [];
@@ -109,13 +106,17 @@ function Driver(name){
             const td8= document.createElement('td');
             const btn = document.createElement('input');
             const uImg = document.createElement("img");
+
+            if(currentUser.uid === req.id_ask)
+            btn.disabled=true
             
                 
                 btn.type = "button";
                 btn.className = "btn btn-primary text-right";
                 btn.value = "אשר נסיעה";
                 btn.onclick = (e) => {
-                    RideApproval(userAsk,req );
+
+                        RideApproval(userAsk,req );
                   };
             
             uImg.setAttribute('src',userAsk.imgUrl );
@@ -205,8 +206,18 @@ function Driver(name){
             <Nav/>
             
             <div className="bg-warning">
-            <h1 className="text-center">כל הנסיעות</h1>
-            <Search/>
+            <h1 className="text-center">כל הנסיעות</h1><div class="input-group">
+            <div className="input-group mb-3 row" dir="rtl">
+                <div class="form-outline col-4 ">
+                    <input id="search-input" type="search" id="serch" onChange={(e=>serch(e.target.value))} class="form-control" />
+                </div>
+                    <button id="search-button" type="button" class="btn btn-primary" onclick="">חיפוש
+                    </button>
+                </div>
+            </div>
+
+            
+            
             <Table striped bordered hover variant="dark" id="drive" responsive>
                 <thead className="text-right">
                 <tr>
