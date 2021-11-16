@@ -25,6 +25,7 @@ function Contact(){
         mail:mail,
         subject:subject,
         messege:messege,
+		delete:false
       })
       .then(() => {
           console.log("Document successfully written!");
