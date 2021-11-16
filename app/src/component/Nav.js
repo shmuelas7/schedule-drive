@@ -7,6 +7,7 @@ import '../style/nav.css';
 import { useAuth } from "../contexts/AuthContext"
 import { useHistory } from "react-router-dom"
 import Button  from 'react-bootstrap/Button';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import exit from "../icon/exit.png"
 import Car from "../icon/Car.png"
@@ -73,6 +74,22 @@ function Nav(){
             </div>
             <div className="col-md-2 col-sm-12 col-xs-12 text">
                 <img id="manager"/>
+            </div>
+            <div className="col-md-2 col-sm-12 col-xs-12 text">
+                    <div>
+                        <Link to="/Donations">תרומות</Link>
+                    </div>
+                    <div>
+                        <Link to="/Associations"> עמותות נוספות</Link>
+                    </div>
+                    <div>
+                        <Link to="/Taxi"> מוניות
+                        </Link>
+                    </div>
+
+                    <hr />
+
+
             </div>
         </div>
         {error && <Alert variant="danger">{error}</Alert>}
