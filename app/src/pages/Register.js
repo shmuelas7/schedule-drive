@@ -127,7 +127,8 @@ import app from '../firebase';
         area:area,
         age:age,
         id:x,
-        imgUrl:imgUrl
+        imgUrl:imgUrl,
+        deletUser:false
       })
       .then(() => {
           console.log("Document successfully written!");
