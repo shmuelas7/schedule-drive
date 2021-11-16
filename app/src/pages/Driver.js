@@ -53,7 +53,7 @@ function Driver(name){
             var req = [];
             q.forEach(doc=>{
                 let x= doc.data()
-                if(x.have_driver===false && x.Date >= today)//בודק שהנסיעה בתוקף וגם שאין עדיין נהג שאישר את הנסיעה
+                if(x.have_driver===false && x.Date >= today )//בודק שהנסיעה בתוקף וגם שאין עדיין נהג שאישר את הנסיעה
                     req.push(doc.data());
             });
             getDataUserAsk(req)//פונקציה שמביא את הפרטים של מי שביקש את הנסיעה
