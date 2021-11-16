@@ -20,7 +20,7 @@ function Associations(){
 
             <div className="row bg-warning" >
                 <div className="col-md-12 col-sm-12 col-xs-12">
-                    <h1 className="text-center"> ארגונים רלוונטיים</h1>
+                    <h1 className="text-center"> עמותות נוספות לעזרה </h1>
                 </div>
                 <div className="col-md-12 col-sm-12 col-xs-12">
                     <h6 className="text-right">בלחיצה על האייקון תועבר לדף העמותה</h6>

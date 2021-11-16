@@ -17,7 +17,7 @@ function Footer(){
                         <p className="text-center text-info"><b>לתרומות לעמותה</b></p>
                     </Link>
                     <Link to="Associations">
-                        <p className="text-center text-info"><b>עמותות רלוונטיות</b></p>
+                        <p className="text-center text-info"><b>עמותות נוספות</b></p>
                     </Link>
                     <Link to="Taxi">
                         <p className="text-center text-info"><b> הזמנת מוניות</b></p>
