@@ -76,18 +76,6 @@ function Nav(){
                 <img id="manager"/>
             </div>
             <div className="col-md-2 col-sm-12 col-xs-12 text">
-                   
-
-                    <div class="dropup">
-                        <button class="dropbtn">עזרות נוספות</button>
-                        <div class="dropup-content">
-                        <Link to="/Donations">תרומות</Link>
-                        <Link to="/Associations"> עמותות </Link>
-                        <Link to="/Taxi"> מוניות</Link>
-                        </div>
-                    </div>   
-
-                    <hr />
 
 
             </div>
