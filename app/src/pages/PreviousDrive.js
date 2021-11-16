@@ -1,7 +1,6 @@
 import React from 'react';
 import Nav from "../component/Nav";
 import Table from 'react-bootstrap/Table'
-import Search from '../component/Search';
 import { useEffect } from 'react';
 import { useAuth } from "../contexts/AuthContext"
 import { useHistory } from 'react-router-dom';
@@ -135,7 +134,7 @@ function PreviousDrive(){
             <Nav/>
             <div className=" bg-warning">
             <h1 className="text-center">היסטורית נסיעות</h1>
-            <Search/>
+            
             <Table striped bordered hover variant="dark" responsive>
                 <thead className="text-right">
                     <tr>
