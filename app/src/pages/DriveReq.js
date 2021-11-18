@@ -87,7 +87,7 @@ function handleSubmit(e) {
     
 }
     return(
-        <div className="container-fluid">
+        <div>
             <Nav/>
             <div className="row bg-warning">
                 <div className="col-md-2 col-sm-4 col-xs-12 "></div>  
